@@ -1,0 +1,469 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Production Guide — Persona + Veo 3</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%AC%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#0a0b10; --bg2:#0e1018; --card:#13151f; --card2:#171a26;
+  --line:#242838; --line2:#2f3346;
+  --txt:#e7e9f2; --mut:#9aa0b4; --dim:#6d7288;
+  --a1:#ff5cae; --a2:#a24bff; --a3:#39c6ff;
+  --good:#37d9a0; --warn:#ffb84d; --bad:#ff6b6b;
+  --grad:linear-gradient(100deg,var(--a1),var(--a2) 55%,var(--a3));
+  --r:16px; font-synthesis:none;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:
+    radial-gradient(1200px 700px at 82% -8%,rgba(162,75,255,.16),transparent 60%),
+    radial-gradient(900px 600px at 6% 4%,rgba(255,92,174,.12),transparent 55%),var(--bg);
+  color:var(--txt);font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  line-height:1.62;-webkit-font-smoothing:antialiased;letter-spacing:.1px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+a{color:var(--a3);text-decoration:none}a:hover{text-decoration:underline}
+#prog{position:fixed;top:0;left:0;height:3px;width:0;background:var(--grad);z-index:60;box-shadow:0 0 12px rgba(162,75,255,.6)}
+header{position:relative;padding:66px 0 26px;overflow:hidden}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);
+  border:1px solid var(--line);background:rgba(255,255,255,.02);padding:7px 13px;border-radius:100px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--a1);box-shadow:0 0 10px var(--a1)}
+.back{font-size:13px;color:var(--mut);margin-left:10px}
+h1{font-size:clamp(28px,5vw,48px);line-height:1.05;margin:18px 0 8px;font-weight:800;letter-spacing:-.02em}
+h1 .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{font-size:clamp(15px,2.2vw,19px);color:var(--mut);max-width:780px}
+.golden{margin:22px 0 4px;border:1px solid var(--line2);border-radius:var(--r);background:linear-gradient(160deg,rgba(162,75,255,.12),var(--card));padding:16px 20px}
+.golden b{color:var(--txt)}
+nav.toc{position:sticky;top:0;z-index:40;background:rgba(10,11,16,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);margin-top:26px}
+nav.toc .wrap{display:flex;gap:6px;overflow-x:auto;padding:11px 22px;scrollbar-width:none}
+nav.toc .wrap::-webkit-scrollbar{display:none}
+nav.toc a{white-space:nowrap;font-size:13px;color:var(--mut);padding:6px 12px;border-radius:100px;border:1px solid transparent}
+nav.toc a:hover{color:var(--txt);text-decoration:none;background:rgba(255,255,255,.03);border-color:var(--line)}
+section{padding:48px 0 8px;scroll-margin-top:60px}
+.kicker{font-size:12.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--a2);font-weight:700;margin:0 0 6px}
+h2{font-size:clamp(22px,3.4vw,31px);margin:0 0 6px;font-weight:800;letter-spacing:-.02em}
+h2 .n{color:var(--dim);font-weight:700;font-size:.6em;margin-right:12px}
+.lead{color:var(--mut);font-size:16px;max-width:840px;margin:2px 0 20px}
+h3{font-size:18px;margin:26px 0 8px;font-weight:700;letter-spacing:-.01em}
+h4{font-size:15.5px;margin:18px 0 6px;font-weight:700;color:var(--txt)}
+.card{background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;margin:14px 0}
+.grid{display:grid;gap:14px}
+@media(min-width:720px){.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:1fr 1fr 1fr}}
+.note{border-left:3px solid var(--a2);background:rgba(162,75,255,.06);padding:13px 17px;border-radius:0 12px 12px 0;margin:16px 0}
+.note.good{border-color:var(--good);background:rgba(55,217,160,.06)}
+.note.warn{border-color:var(--warn);background:rgba(255,184,77,.06)}
+.note b{color:var(--txt)}
+.tbl{width:100%;overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);margin:16px 0}
+table{width:100%;border-collapse:collapse;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:rgba(255,255,255,.025);color:var(--mut);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase}
+tr:last-child td{border-bottom:none}
+td b{color:var(--txt)}
+code.k{background:rgba(255,255,255,.06);border:1px solid var(--line2);border-radius:6px;padding:1px 6px;font-size:.86em;font-family:ui-monospace,Menlo,Consolas,monospace;color:#d8dcec}
+.phases{list-style:none;counter-reset:s;padding:0;margin:14px 0}
+.phases>li{counter-increment:s;position:relative;padding:14px 4px 14px 54px;border-bottom:1px solid var(--line)}
+.phases>li:last-child{border-bottom:none}
+.phases>li::before{content:counter(s);position:absolute;left:6px;top:14px;width:34px;height:34px;border-radius:10px;
+  background:var(--grad);color:#08090d;font-weight:800;display:grid;place-items:center;font-size:15px}
+.phases>li.zero::before{content:"0"}
+.phases>li b{color:var(--txt)}
+.meta{font-size:12px;color:var(--dim);display:inline-block;margin-left:8px;border:1px solid var(--line);border-radius:100px;padding:1px 9px}
+ul.tick{list-style:none;padding:0;margin:10px 0}
+ul.tick li{position:relative;padding:5px 0 5px 26px;color:var(--mut)}
+ul.tick li::before{content:"";position:absolute;left:4px;top:12px;width:7px;height:7px;border-radius:2px;background:var(--grad)}
+ul.tick li b{color:var(--txt)}
+ul.check{list-style:none;padding:0;margin:8px 0;columns:1}
+@media(min-width:640px){ul.check{columns:2;column-gap:26px}}
+ul.check li{position:relative;padding:4px 0 4px 26px;color:var(--mut);break-inside:avoid;font-size:14px}
+ul.check li::before{content:"▢";position:absolute;left:2px;top:3px;color:var(--a3);font-size:14px}
+ul.check li.star::before{content:"★";color:var(--warn)}
+.copywrap{position:relative;margin:14px 0}
+.copywrap .bar{display:flex;justify-content:space-between;align-items:center;background:#0c0e15;border:1px solid var(--line);border-bottom:none;border-radius:12px 12px 0 0;padding:9px 14px}
+.copywrap .bar span{font-size:12.5px;color:var(--mut);letter-spacing:.02em;font-weight:600}
+.copybtn{cursor:pointer;font:inherit;font-size:12.5px;font-weight:700;color:var(--txt);background:rgba(255,255,255,.04);border:1px solid var(--line2);padding:5px 12px;border-radius:8px;transition:.18s}
+.copybtn:hover{background:var(--grad);color:#08090d;border-color:transparent}
+.copybtn.done{background:var(--good);color:#08120d;border-color:transparent}
+pre{margin:0;background:#0c0e15;border:1px solid var(--line);border-radius:0 0 12px 12px;padding:15px;overflow-x:auto;
+  font-family:"SF Mono",ui-monospace,"JetBrains Mono",Menlo,Consolas,monospace;font-size:12.5px;line-height:1.7;color:#cdd3e6;white-space:pre-wrap}
+.tplgrid{display:grid;gap:14px}
+@media(min-width:860px){.tplgrid{grid-template-columns:1fr 1fr}}
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+.mut{color:var(--mut)}.dim{color:var(--dim)}.good{color:var(--good)}.warn{color:var(--warn)}.bad{color:var(--bad)}
+footer{border-top:1px solid var(--line);margin-top:56px;padding:30px 0 60px;color:var(--dim);font-size:13.5px}
+</style>
+
+<div id="prog"></div>
+
+<header>
+  <div class="wrap">
+    <span class="eyebrow"><span class="dot"></span> Production Guide · ai-persona</span><a href="index.html" class="back">← back to strategy</a>
+    <h1>Persona + <span class="g">Veo 3</span> production guide</h1>
+    <p class="sub">Build ONE consistent, photorealistic, original SFW "worker-girl" persona and turn her into high-retention 9:16 Facebook videos. All craft — consistency, realism, engagement. 8 copy-paste Veo 3 prompts at the bottom.</p>
+    <div class="golden"><b>The one rule that governs everything:</b> identity is locked in the <b>still image first</b>, then motion is added in Veo. Build a reusable <b>Identity Bank</b> once and reuse it on every generation — faces that drift between posts kill the persona.</div>
+  </div>
+</header>
+
+<nav class="toc"><div class="wrap">
+  <a href="#persona">1 · Persona</a>
+  <a href="#shots">2 · Shot-list</a>
+  <a href="#formula">3 · Veo formula</a>
+  <a href="#templates">4 · Prompt templates</a>
+  <a href="#hooks">5 · Hooks &amp; story</a>
+  <a href="#qa">6 · Iteration &amp; QA</a>
+</div></nav>
+
+<main class="wrap">
+
+<!-- PERSONA -->
+<section id="persona" class="reveal">
+  <p class="kicker">Lock her once</p>
+  <h2><span class="n">01</span>Persona creation — step by step</h2>
+
+  <h3>The three identity layers (build order)</h3>
+  <div class="tbl"><table>
+    <tr><th>Layer</th><th>What it does</th><th>Tool</th></tr>
+    <tr><td><b>Anchor</b></td><td>Bakes her face + build into owned weights that hold across hundreds of images</td><td>Flux character LoRA</td></tr>
+    <tr><td><b>Reinforce</b></td><td>Re-asserts the exact face per-image</td><td>IP-Adapter FaceID + FaceDetailer</td></tr>
+    <tr><td><b>Control</b></td><td>Locks pose, body proportions, scene, wardrobe</td><td>ControlNet (OpenPose + Depth) + inpainting</td></tr>
+  </table></div>
+
+  <h3>Recommended path (the scalable, pro track)</h3>
+  <ol class="phases">
+    <li class="zero"><b>Design the hero face.</b> <span class="meta">~1–2 hrs · ~$0 on sub</span><br>Generate ~10 face variations in <b>Midjourney v7/v8</b> (best "beautiful" instinct) or <b>Flux.1 / FLUX.2 [dev]</b> (best skin texture, and stays "in-family" for the LoRA). Pick the single best. Save it as your <b>master reference</b> + a fixed character-description you reuse verbatim forever (age, ethnicity, exact hair, eyes, face shape, build, freckles). Deliberately make her a distinct synthetic person — not a real likeness.</li>
+    <li><b>Bootstrap the dataset.</b> <span class="meta">~30 min · ~$3–15</span><br>A LoRA needs 20–30 images; you have one. Use <b>Higgsfield Soul ID</b> or <b>Nano Banana Pro</b> multi-reference to generate varied shots from the hero, then hand-cull the ~25 most on-model.</li>
+    <li><b>Train the identity anchor (Flux LoRA).</b> <span class="meta">~30–60 min · ~$2–5</span><br>20–30 sharp images (front / left / right / waist-up / full-body, varied expressions), auto-caption then refine (caption what <em>varies</em>, let the face bind to the trigger), one unique trigger word, ~1000 steps. Trainer: <b>FluxGym on RunPod</b> or <b>fal.ai Portrait Trainer</b>. Output <code class="k">hero.safetensors</code> — your permanent anchor. <span class="good">This is the step where hired help pays off most; after it, you self-serve.</span></li>
+    <li><b>Generate locked variations.</b> <span class="meta">~pennies/image</span><br>ComfyUI graph below keeps <em>her the same person</em> while scene/outfit/pose change. Swap wardrobe by masking only the clothing region and inpainting.</li>
+    <li><b>Realism finishing (every image).</b> <span class="meta">~1–2 min/image</span><br>FaceDetailer → <b>MeshGraphormer Hand Refiner</b> (fixes ~90% of hand errors — matters for tool shots) → <b>SUPIR</b> upscale (rebuilds pore texture) → light film grain. Now it's monetization-grade.</li>
+  </ol>
+
+  <div class="copywrap">
+    <div class="bar"><span>🎨 Seed hero prompt</span><button class="copybtn" data-copy="seed">Copy</button></div>
+<pre id="seed">Candid photo of a 25-year-old woman on a construction site, white hard hat,
+hi-vis orange vest over a grey t-shirt, worn tan tool belt; friendly confident
+half-smile; soft directional morning light from camera-left; shot on 85mm f/1.8,
+shallow depth of field; natural skin texture with visible pores, subtle
+imperfections, subsurface scattering; photojournalistic, high detail.</pre>
+  </div>
+
+  <div class="copywrap">
+    <div class="bar"><span>🧩 ComfyUI locked-variation graph</span><button class="copybtn" data-copy="comfy">Copy</button></div>
+<pre id="comfy">[Load Checkpoint: Flux.1 dev]
+   -> [Load LoRA: hero.safetensors]   strength 0.55-0.65 · trigger word in prompt
+   -> [IP-Adapter FaceID Apply]        weight 0.70-0.85 · reference = hero face
+   -> [ControlNet OpenPose Apply]      pose skeleton (ladder / pointing / leaning)
+   -> [ControlNet Depth Apply]         body proportions + jobsite geometry
+   -> [KSampler]                       DPM++ 2M Karras/SDE · 28-35 steps · CFG 5-7
+   -> [FaceDetailer (Impact Pack)]     guide_size 512 · max_size 768
+   -> [Upscale -> output]</pre>
+  </div>
+
+  <div class="note"><b>Beginner escape hatch (no ComfyUI):</b> skip the LoRA + graph entirely. Run <b>Higgsfield Soul ID</b> or <b>Nano Banana Pro</b> as your whole pipeline — lock identity in ~3–5 min, generate every still via multi-reference, pay per image. Lower ceiling, no owned weights, but zero GPU. Best way to <em>start</em>; graduate to the LoRA track once volume justifies it.</div>
+
+  <h3>Photorealism — the 4 tells to kill</h3>
+  <div class="tbl"><table>
+    <tr><th>Tell</th><th>Fix</th></tr>
+    <tr><td><b>Plastic skin</b> (#1 giveaway)</td><td><code class="k">natural skin texture, visible pores, subtle fine lines, subsurface scattering</code>. Negative: <code class="k">smooth, waxy, airbrushed, plastic, beauty filter, 3d render, cgi</code></td></tr>
+    <tr><td><b>Flat lighting</b></td><td>One clear direction + real shadows: <code class="k">soft directional morning light from the left</code>. Never ring-light flat.</td></tr>
+    <tr><td><b>Fake optics</b></td><td>Name a real lens + DOF: <code class="k">shot on 85mm, shallow depth of field, faint film grain</code></td></tr>
+    <tr><td><b>Clean pixels</b></td><td>Add sensor noise/grain finishing pass; upscale with SUPIR (low-res looks plastic because pores have nowhere to render).</td></tr>
+  </table></div>
+</section>
+
+<!-- SHOTS -->
+<section id="shots" class="reveal">
+  <p class="kicker">What to generate</p>
+  <h2><span class="n">02</span>Production still shot-list</h2>
+  <p class="lead">Which stills to make so they animate cleanly in Veo. Input quality caps output quality.</p>
+
+  <h3>Still-prep rules for clean image-to-video</h3>
+  <ul class="tick">
+    <li><b>Native 9:16 vertical</b>, highest resolution, razor sharp, zero motion blur / compression artifacts.</li>
+    <li><b>Eyes on the upper-third line</b>, modest headroom so a push-in doesn't clip the crown. Face in the central ~60% "thumb-zone."</li>
+    <li><b>Lead room = where the camera or subject travels.</b> Leave space in the gaze/motion direction; tight-to-all-edges kills camera moves.</li>
+    <li><b>Eye-line into the lens</b> for talking clips. Never use a profile as a talking source (forces the model to re-invent features).</li>
+    <li><b>No occlusion:</b> no hand across face, no crossed limbs, no object cutting the body, no hair over features. Hands fully in frame, fingers countable.</li>
+    <li><b>Simple, stable, high-separation background.</b> With start+end frames, keep ~60% of background shared to curb drift.</li>
+    <li><b>One camera move + one action per clip.</b> Don't stack move + gesture + expression-change + lighting-change.</li>
+  </ul>
+
+  <h3>Shot types ranked by how cleanly they animate</h3>
+  <div class="tbl"><table>
+    <tr><th>Rank</th><th>Shot</th><th>Use for</th></tr>
+    <tr><td>★★★★★</td><td><b>Close-up talking-head</b> (chest-up, front or 3/4)</td><td>Every hook, every lip-sync clip — your workhorse</td></tr>
+    <tr><td>★★★★</td><td>Medium / waist-up (one gesture only)</td><td>Talking + point / hold-a-tool / shrug</td></tr>
+    <tr><td>★★★★</td><td>3/4 angle (body ~30–45°, face to camera)</td><td>Default "hero" framing, livelier than dead-front</td></tr>
+    <tr><td>★★★</td><td>Selfie-POV (arm out of frame)</td><td>"Come on site with me" hooks</td></tr>
+    <tr><td>★★★</td><td>Over-the-shoulder / reaction</td><td>Comedy reactions, "look at this" beats</td></tr>
+    <tr><td>★★</td><td>Full-body / walking-toward-camera</td><td>Short (2–4s) establishing beats only</td></tr>
+    <tr><td>★★</td><td>Wide establishing</td><td>Animate the <em>scene</em> (dust, machinery), not her</td></tr>
+  </table></div>
+  <p class="mut">~80% of talking clips should start from a close-up or medium/3-4 still. Full-body, walk-ins, and wides are seasoning — keep them short and low-motion.</p>
+
+  <h3>The checklist</h3>
+  <div class="card">
+    <h4>Step 0 — Identity Bank (build ONCE, reuse as reference "ingredients", never animate)</h4>
+    <ul class="check">
+      <li class="star">Front close-up face (neutral, mouth closed, eyes to camera)</li>
+      <li class="star">3/4 face close-up</li>
+      <li class="star">Profile (reference only)</li>
+      <li class="star">Front medium / waist-up (tee + hi-vis + tool belt visible)</li>
+      <li class="star">Full-body front (boots to hard-hat)</li>
+    </ul>
+    <p class="mut" style="margin:6px 0 0"><b>Wardrobe/continuity lock — write it down, reuse verbatim in every prompt:</b> hard hat (fixed color) · hi-vis vest (fixed color/style) · plain tee (fixed color) · tool belt · gloves on/off (pick one) · hairstyle (ponytail vs tucked — pick one) · any fixed accessory.</p>
+  </div>
+  <div class="grid g2">
+    <div class="card"><h4>A · Talking-head / hook stills</h4><ul class="check">
+      <li>Close-up front, neutral mouth, eyes to lens (prime lip-sync base)</li>
+      <li>Close-up 3/4, slight smile</li>
+      <li>Close-up wide-eyed surprise (scroll-stopper)</li>
+      <li>Close-up skeptical eyebrow-raise (curiosity gap)</li>
+      <li>Close-up lean-in "secret"</li>
+      <li>Selfie-POV close-up</li>
+    </ul></div>
+    <div class="card"><h4>B · Action / holding-tools (medium only)</h4><ul class="check">
+      <li>Holding a cordless drill up to inspect</li>
+      <li>Tape measure pulled out, looking at camera</li>
+      <li>Tapping hard-hat brim ("safety first")</li>
+      <li>Thumbs-up, big grin (payoff/CTA)</li>
+      <li>Pointing off-frame (leave lead room on the point side)</li>
+    </ul></div>
+    <div class="card"><h4>C · Movement (short beats)</h4><ul class="check">
+      <li>Walking TOWARD camera, straight-on, clear floor (2–4s max)</li>
+      <li>Full-body hands-on-hips power pose</li>
+      <li>3/4 mid-stride</li>
+    </ul></div>
+    <div class="card"><h4>D · Reaction / comedic (one expression + one pose)</h4><ul class="check">
+      <li>Facepalm</li><li>"Wait, WHAT?" double-take</li><li>Shrug, palms up</li>
+      <li>Eye-roll</li><li>Big open laugh</li><li>OTS reaction to a consistent object</li>
+    </ul></div>
+  </div>
+  <div class="note"><b>Per-concept budget:</b> 1 hero still minimum · 2–3 stills for a single 8s beat (neutral → peak → optional B-roll) · 3–5 for a multi-shot short. Capture each expression as a <b>neutral base</b> AND an <b>emotional peak</b> so you can interpolate first-frame(neutral) → last-frame(peak) for a natural "builds to a reaction." Always attach the Identity Bank as references on every generation.</div>
+</section>
+
+<!-- FORMULA -->
+<section id="formula" class="reveal">
+  <p class="kicker">Speak film-crew</p>
+  <h2><span class="n">03</span>Veo 3 prompt formula</h2>
+  <p class="lead">Veo was trained on professional film footage — it rewards camera/lens/light/audio vocabulary. Vague prose = generic, plasticky, drifting. Specific = stable and intentional.</p>
+
+  <div class="copywrap">
+    <div class="bar"><span>📐 Field order (front-load the camera)</span><button class="copybtn" data-copy="fields">Copy</button></div>
+<pre id="fields">[Cinematography] + [Subject] + [Action] + [Context] + [Style & Ambiance] + [Audio] + [Negatives]</pre>
+  </div>
+  <div class="tbl"><table>
+    <tr><th>Field</th><th>How to write it</th></tr>
+    <tr><td><b>Shot + camera move</b></td><td>Front-load it: <code class="k">Medium tracking shot, 35mm, shallow depth of field</code>. Pick ONE move.</td></tr>
+    <tr><td><b>Subject</b></td><td>Physical specifics + <b>materials</b>: <code class="k">mid-20s, brown ponytail under a white hard hat, light freckles, yellow hi-vis vest over a grey tee, worn tan tool belt</code>. Material words give a light-reflection profile that stabilizes her.</td></tr>
+    <tr><td><b>Action</b></td><td>ONE primary action, temporal order. The verb carries motion: striding vs ambling vs rushing.</td></tr>
+    <tr><td><b>Context</b></td><td>Specific: <code class="k">sunlit half-framed suburban jobsite, sawdust in the air</code></td></tr>
+    <tr><td><b>Lighting</b></td><td>Quality + direction + source + temp: <code class="k">warm late-afternoon backlight through timber framing, soft rim light</code>. Never "well-lit".</td></tr>
+    <tr><td><b>Audio</b></td><td>Dialogue after a colon, no quotes; <code class="k">SFX:</code>; <code class="k">Ambient:</code></td></tr>
+    <tr><td><b>Negatives</b></td><td>Describe absence: <code class="k">no subtitles, no on-screen text, clean audio, no background music</code></td></tr>
+  </table></div>
+  <p class="mut"><b>Length:</b> 3–6 sentences / ~100–150 words. Rule: <b>maximal description of the static scene, minimal number of distinct events/moves.</b></p>
+
+  <div class="grid g2">
+    <div class="card"><h4>Camera vocabulary Veo understands</h4><p class="mut">Static (most stable, best for dialogue) · pan · tilt · <b>dolly push-in</b> (intimacy — prefer over zoom) · pull-back (reveal) · tracking · <b>orbit/arc</b> (Veo is notably good at these) · crane · handheld · POV. <b>One primary move per clip</b> — stacking moves warps.</p></div>
+    <div class="card"><h4>Audio &amp; lip-sync (text, not sliders)</h4><ul class="tick">
+      <li><b>Dialogue after a colon, no quote marks</b> — also stops Veo burning in subtitles: <code class="k">She says: first coat goes on today.</code></li>
+      <li><code class="k">SFX:</code> a nail gun fires twice · <code class="k">Ambient:</code> open-air site, wind</li>
+      <li>One line, under ~15 words, for a 3–6s clip. Keep the speaker visible + stable. Add <code class="k">no background music</code>. Drop contractions ("I am" not "I'm") — renders cleaner.</li>
+    </ul></div>
+  </div>
+
+  <h3>Image-to-video + cross-clip consistency</h3>
+  <ul class="tick">
+    <li><b>Start frame</b> — one hero still as first frame = strongest single-clip identity lock + native audio.</li>
+    <li><b>Ingredients-to-Video (Veo 3.1)</b> — up to 3 references: a <b>Subject</b> image (locks identity), an <b>Environment</b> image (locks the jobsite), a <b>Style</b> image. Front + 3/4 + profile of the same character measurably reduces drift.</li>
+    <li><b>First-and-last-frame</b> — give start + end image; Veo generates the transition (great for walk-in → stop → talk).</li>
+    <li><b>Hold ONE character across MANY clips:</b> extend / last-frame chain in ~7s hops (up to ~20). On <b>every hop re-state the full character description, outfit, setting, lighting, audio</b> — the single biggest determinant of whether a series holds together. Hold the seed + same 3 references. Generate 2–3 options per hop, keep the least-drifted, then chain. Fixing drift at hop 2 is far cheaper than hop 6.</li>
+  </ul>
+
+  <div class="grid g2">
+    <div class="card"><h4>Known weaknesses → workarounds</h4><ul class="tick">
+      <li><b>Hands:</b> keep out of tight close-ups; frame medium for tools; slow/simple motion; cherry-pick.</li>
+      <li><b>On-screen text:</b> garbles — add all titles/CTAs/captions in CapCut post-gen.</li>
+      <li><b>Fast motion:</b> smears — use <code class="k">slow, steady, gentle</code>; speed-ramp in edit.</li>
+      <li><b>Multi-person:</b> identities bleed — stay single-character, others background/out-of-focus.</li>
+    </ul></div>
+    <div class="card"><h4 class="good">Fast vs Quality (the money-saver)</h4><p class="mut">Draft each beat in <b>Fast</b> (~$0.10–0.15/sec), run the prompt <b>8–10×</b> to dial framing/motion/expression, lock prompt+seed+references on a keeper, then re-render <b>only the keeper in Quality</b> (~$0.40/sec) + upscale. On <code class="k">veo-flow-multi</code>, parallelize the Fast draft stage across accounts; reserve Quality for locked keepers.</p></div>
+  </div>
+</section>
+
+<!-- TEMPLATES -->
+<section id="templates" class="reveal">
+  <p class="kicker">Copy, tweak, generate</p>
+  <h2><span class="n">04</span>Ready-to-use Veo 3 prompt templates</h2>
+  <p class="lead">Copy, then swap the bracketed line/scene. All assume you attach your Identity Bank references and/or a hero start-frame. Fully SFW — engaging via novelty, framing and charisma.</p>
+
+  <div class="tplgrid">
+    <div class="copywrap"><div class="bar"><span>A · Talking-head hook</span><button class="copybtn" data-copy="tA">Copy</button></div>
+<pre id="tA">Static medium close-up, 50mm, shallow depth of field. A woman in her mid-20s with a
+brown ponytail under a white hard hat, light freckles, yellow hi-vis vest over a grey
+tee. She leans slightly toward camera, wide-eyed, and says: nobody expects the new hire
+to do this. Soft directional morning light from camera-left, realistic skin texture,
+subsurface scattering, photorealistic. Ambient: open-air jobsite, faint power-saw whine.
+Clean audio, no background music. (no subtitles, no on-screen text)</pre></div>
+
+    <div class="copywrap"><div class="bar"><span>B · Walking reveal onto site</span><button class="copybtn" data-copy="tB">Copy</button></div>
+<pre id="tB">Medium tracking shot, 35mm, shallow depth of field. The same mid-20s woman - brown
+ponytail under a white hard hat, yellow hi-vis vest, grey tee, worn tan tool belt -
+strides confidently toward camera across a sunlit half-framed suburban jobsite, sawdust
+drifting. She glances to camera and says: first coat goes on today. Warm late-afternoon
+backlight through timber framing, soft rim light, cinematic. Ambient: wind, distant
+hammering. No background music. (no subtitles, no on-screen text)</pre></div>
+
+    <div class="copywrap"><div class="bar"><span>C · Comedic reaction (neutral → peak)</span><button class="copybtn" data-copy="tC">Copy</button></div>
+<pre id="tC">Static medium shot, 50mm. The same woman stands beside a sawhorse holding a spirit
+level, matte white hard hat, yellow hi-vis. She does a slow double-take, eyes widening,
+then facepalms. SFX: a single metal clang, distant power drill. Overcast soft daylight,
+realistic skin texture. No background music, no dialogue. (no subtitles, no on-screen text)</pre></div>
+
+    <div class="copywrap"><div class="bar"><span>D · Selfie / POV vlog</span><button class="copybtn" data-copy="tD">Copy</button></div>
+<pre id="tD">Selfie POV, handheld, slight natural camera bob, 24mm wide, close framing (holding arm
+out of frame). The same mid-20s woman in a white hard hat and yellow hi-vis walks and
+talks to camera: come see what we are building today. Bright overcast daylight, natural
+skin texture, authentic vlog feel. Ambient: footsteps on gravel, jobsite hum, faint
+radio chatter. No background music. (no subtitles, no on-screen text)</pre></div>
+
+    <div class="copywrap"><div class="bar"><span>E · Dramatic story reel</span><button class="copybtn" data-copy="tE">Copy</button></div>
+<pre id="tE">Slow dolly push-in, low angle, 35mm, shallow depth of field. The same woman in a white
+hard hat and yellow hi-vis stands still on a half-framed deck at golden hour, wind moving
+loose strands of hair. She looks off-frame, then to camera, and says: they said a girl
+could not run this site. Warm golden backlight, long soft shadows, cinematic, photorealistic.
+Ambient: low wind, distant machinery. No background music. (no subtitles, no on-screen text)</pre></div>
+
+    <div class="copywrap"><div class="bar"><span>F · "Part 1" cliffhanger</span><button class="copybtn" data-copy="tF">Copy</button></div>
+<pre id="tF">Static medium close-up, 50mm. The same woman in a white hard hat and yellow hi-vis holds
+an unusual tool up to the lens, confident smirk. She says: bet you cannot guess what this
+does. She starts to demonstrate, then freezes mid-motion. Soft directional daylight,
+realistic skin texture. Ambient: jobsite hum. No background music. (no subtitles, no on-screen text)</pre></div>
+
+    <div class="copywrap"><div class="bar"><span>G · Orbit hero establishing</span><button class="copybtn" data-copy="tG">Copy</button></div>
+<pre id="tG">Slow orbit shot, low angle, 35mm. The camera circles the same mid-20s woman in a white
+hard hat, yellow hi-vis, tan tool belt, as she looks up at a steel frame overhead, hands
+on hips, confident. Warm late-afternoon sun through scaffolding, soft rim light, cinematic,
+photorealistic. Ambient: open-air site, wind, distant saw. No background music, no dialogue.
+(no subtitles, no on-screen text)</pre></div>
+
+    <div class="copywrap"><div class="bar"><span>H · Timestamp mini-sequence (one 8s gen)</span><button class="copybtn" data-copy="tH">Copy</button></div>
+<pre id="tH">[00:00-00:03] Medium tracking shot, the same woman in a white hard hat and yellow hi-vis
+walks toward camera across a sunny jobsite. Ambient: wind, distant saw.
+[00:03-00:06] Push-in to a close-up, confident half-smile. She says: we pour the
+foundation at six.
+[00:06-00:08] Cut wide, low angle, she picks up a level off a sawhorse. SFX: light metal
+clink. No background music. (no subtitles, no on-screen text)</pre></div>
+  </div>
+</section>
+
+<!-- HOOKS -->
+<section id="hooks" class="reveal">
+  <p class="kicker">Win the first 3 seconds</p>
+  <h2><span class="n">05</span>Hook &amp; story cheatsheet</h2>
+
+  <div class="grid g2">
+    <div class="card"><h4>First-3-seconds rules</h4><ul class="tick">
+      <li><b>First frame = the single most striking frame</b> of the whole video. No slow pan-in, no logo, no "hey guys".</li>
+      <li><b>First spoken word within ~0.5s; on-screen text from word one</b> (60%+ watch muted).</li>
+      <li>If the best beat is at 0:15, ~70% already left. <b>Open with the payoff/shock, then explain.</b></li>
+      <li>Target intro retention <b>&gt;70%</b>; a viewed-vs-swiped ratio of <b>70–90%</b> is where distribution takes off; under 60% collapses reach.</li>
+    </ul></div>
+    <div class="card"><h4>Structure for completion + shares</h4><p class="mut"><code class="k">Hook (0–3s) → Escalation (→~80%) → Payoff (final 15–25%) → CTA/Loop (final 3–5s)</code>. Every beat opens a small new question as it closes the last.</p>
+      <ul class="tick">
+        <li><b>Seamless loop</b> — end frame flows into the first; viewers re-watch without deciding to.</li>
+        <li><b>Cliffhanger</b> — end mid-tension with a partial result + a new open question.</li>
+        <li><b>Serialization</b> — "Follow for Part 2"; the algo then serves Part 2 to Part-1 completers. Post next episode <b>48–72h later</b>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Five hook engines (pick one per video)</h3>
+  <div class="tbl"><table>
+    <tr><th>Engine</th><th>Example opener</th></tr>
+    <tr><td>Visual incongruity / pattern-interrupt</td><td>hard-hat close-up → she lifts something heavy effortlessly</td></tr>
+    <tr><td>Curiosity gap</td><td>"There's one thing nobody tells you about…"</td></tr>
+    <tr><td>Micro-story mid-drop</td><td>"I broke a $40,000 machine on my first shift. Here's what I did."</td></tr>
+    <tr><td>Bold / contrarian claim</td><td>"Everything you think about construction girls is wrong."</td></tr>
+    <tr><td>Direct question</td><td>"Bet you've never seen a site lead do THIS?"</td></tr>
+  </table></div>
+  <p class="mut">Spoken hook lands best at <b>~10–14 words</b> in the first 3s.</p>
+
+  <div class="note good"><b>Why the "attractive woman in an unexpected role" angle works (the SFW lever):</b> the pull is <b>competence + confidence + charisma in an unexpected context — novelty, not skin.</b> A polished person confidently running a jobsite is a <em>positive expectancy violation</em>: attention snaps to her, she reads likeable not threatening, and it sparks a low-grade "is this real / how / why" debate that's a <b>comment magnet</b>. High-arousal emotion (awe, amusement) drives ~34% more sharing. Keeping it SFW both performs <em>and</em> protects reach (Meta throttles suggestive; novelty-of-role doesn't).</div>
+
+  <div class="card"><h4>Named recurring formats for this persona</h4><p class="mut">"Day ___ on the site" · "Things that break on a jobsite" · "Rookie vs. veteran" · "Guess what this tool does" — each self-contained but ending on a cliffhanger + "Part 2 tomorrow, follow." Principle: <b>predictability + surprise</b> (recognizable format, different execution). "That's literally us" relatability is shared ~5× more.</p></div>
+
+  <div class="card"><h4>Captions &amp; on-screen text specs</h4><ul class="tick">
+    <li><b>3–7 words/line, 32–42 chars max</b>, on screen 1.5–3s; break at phrase boundaries.</li>
+    <li><b>High-contrast, large, bold</b> — must survive bright jobsite sunlight.</li>
+    <li>Keep text in the <b>center third</b>; avoid top ~20% (handle) and bottom ~25% (like/comment/share UI).</li>
+    <li>Reinforce the verbal hook with a text overlay (≥2s). Add all text in your editor — never rely on Veo.</li>
+    <li><b>A/B the hook, not the video:</b> ship 3 versions with different first-3s, compare 3-second retention, keep the winner.</li>
+  </ul></div>
+</section>
+
+<!-- QA -->
+<section id="qa" class="reveal">
+  <p class="kicker">Numbers game</p>
+  <h2><span class="n">06</span>Iteration &amp; QA workflow</h2>
+
+  <div class="grid g2">
+    <div class="card"><h4>Gens-per-keeper</h4><ul class="tick">
+      <li><b>Stills:</b> batch generously; keep only the most on-model.</li>
+      <li><b>Veo Fast drafts:</b> run each beat <b>8–10×</b>; several throwaways per keeper. Lock prompt+seed+references, then Quality re-render.</li>
+      <li><b>Extend hops:</b> 2–3 options per hop, keep the least-drifted, then chain.</li>
+    </ul></div>
+    <div class="card"><h4>Reject a take if it has any of</h4><ul class="tick">
+      <li>Hands: extra/fused fingers, warping</li>
+      <li>Face warp / feature re-invention (head turns, walk-ins)</li>
+      <li>Foot-sliding / leg-swap (walking shots)</li>
+      <li>Burned-in garbled text/captions</li>
+      <li>Plastic/waxy skin, flat lighting</li>
+      <li>Wardrobe or hair drift from the lock</li>
+    </ul></div>
+  </div>
+
+  <div class="note warn"><b>Anti-"unoriginal content" (Meta's #1 demonetization risk for synthetic personas):</b> every clip must be genuinely new footage — new scene, new premise, new voiceover, new on-screen text. <b>Never re-cut the same generation into many posts.</b> The Identity Bank gives one recognizable persona; the A–E shot library gives enough distinct compositions to avoid the duplicate-content flag.</div>
+
+  <div class="card"><h4>Keeping her consistent across a series</h4><ul class="tick">
+    <li><b>One source of truth:</b> Identity Bank + fixed character-description + wardrobe lock, reused verbatim.</li>
+    <li><b>Every generation:</b> attach the same references, hold the seed, re-state the full description on each extend hop.</li>
+    <li><b>Anti-drift finishing:</b> FaceDetailer on every still; SUPIR upscale keeps identity while rebuilding texture.</li>
+  </ul></div>
+
+  <div class="copywrap">
+    <div class="bar"><span>🔁 The full production loop (one line)</span><button class="copybtn" data-copy="loop">Copy</button></div>
+<pre id="loop">Lock hero sheet (front/3-4/profile) -> build stills library (LoRA + ComfyUI graph)
+-> finish (FaceDetailer -> hands -> SUPIR -> grain) -> draft each 8s beat in Veo 3.1
+Fast (8-10 takes, hold seed + references) -> keep least-drifted -> Quality re-render +
+upscale -> chain next beat off the last frame -> assemble + add hook text/captions/CTA
+in editor -> label as AI -> ship -> A/B the hook.</pre>
+  </div>
+
+  <div class="note"><b>Compliance, built in:</b> label photorealistic AI where Meta's tools ask (treat her as a "digital creator," never a claimed real person — properly disclosed AI is fully monetization-eligible and doesn't reduce reach). Keep her clearly original/synthetic. Optimize for <b>completion + shares + US-heavy audience + high original-post volume</b> — the blend Facebook Content Monetization actually pays on.</div>
+</section>
+
+</main>
+
+<footer><div class="wrap">
+  <b>ai-persona</b> · production guide · internal, not for distribution · noindex<br>
+  <a href="index.html">← Strategy &amp; monetization plan</a> · the Loop guide lands next.
+</div></footer>
+
+<script>
+var prog=document.getElementById('prog');
+addEventListener('scroll',function(){var h=document.documentElement,max=h.scrollHeight-h.clientHeight;
+  prog.style.width=(max>0?(h.scrollTop||document.body.scrollTop)/max*100:0)+'%';},{passive:true});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.06});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+document.querySelectorAll('.copybtn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var el=document.getElementById(btn.getAttribute('data-copy'));if(!el)return;
+    var text=el.innerText;
+    function ok(){var o=btn.textContent;btn.textContent='✓ Copied';btn.classList.add('done');setTimeout(function(){btn.textContent=o;btn.classList.remove('done')},1500)}
+    function fb(){try{var ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';
+      document.body.appendChild(ta);ta.focus();ta.select();var d=document.execCommand('copy');document.body.removeChild(ta);
+      if(d)ok();else alert('Copy failed — select manually.')}catch(e){alert('Copy failed — select manually.')}}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(ok).catch(fb)}else{fb()}
+  });
+});
+</script>
