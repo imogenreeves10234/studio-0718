@@ -1,0 +1,525 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>AI Persona Playbook — Facebook-CMT-first</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%92%A0%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#0a0b10; --bg2:#0e1018; --card:#13151f; --card2:#171a26;
+  --line:#242838; --line2:#2f3346;
+  --txt:#e7e9f2; --mut:#9aa0b4; --dim:#6d7288;
+  --a1:#ff5cae; --a2:#a24bff; --a3:#39c6ff;
+  --good:#37d9a0; --warn:#ffb84d; --bad:#ff6b6b;
+  --grad:linear-gradient(100deg,var(--a1),var(--a2) 55%,var(--a3));
+  --r:16px;
+  font-synthesis:none;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:
+    radial-gradient(1200px 700px at 82% -8%,rgba(162,75,255,.16),transparent 60%),
+    radial-gradient(900px 600px at 6% 4%,rgba(255,92,174,.12),transparent 55%),
+    var(--bg);
+  color:var(--txt);
+  font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  line-height:1.62;-webkit-font-smoothing:antialiased;letter-spacing:.1px;
+}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+a{color:var(--a3);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* progress bar */
+#prog{position:fixed;top:0;left:0;height:3px;width:0;background:var(--grad);z-index:60;box-shadow:0 0 12px rgba(162,75,255,.6)}
+
+/* hero */
+header{position:relative;padding:74px 0 30px;overflow:hidden}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);
+  border:1px solid var(--line);background:rgba(255,255,255,.02);padding:7px 13px;border-radius:100px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--a1);box-shadow:0 0 10px var(--a1)}
+h1{font-size:clamp(30px,5vw,52px);line-height:1.04;margin:20px 0 8px;font-weight:800;letter-spacing:-.02em}
+h1 .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{font-size:clamp(16px,2.2vw,20px);color:var(--mut);max-width:760px;margin:0 0 8px}
+.tweetcard{margin:26px 0 6px;border:1px solid var(--line);border-radius:var(--r);background:linear-gradient(180deg,var(--card2),var(--card));padding:18px 20px;position:relative}
+.tweetcard b{color:var(--txt)}
+.tweetcard .flag{color:var(--warn);font-weight:600}
+.tweetcard .src{font-size:12.5px;color:var(--dim);margin-top:8px}
+
+/* toc */
+nav.toc{position:sticky;top:0;z-index:40;background:rgba(10,11,16,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);margin-top:30px}
+nav.toc .wrap{display:flex;gap:6px;overflow-x:auto;padding:11px 22px;scrollbar-width:none}
+nav.toc .wrap::-webkit-scrollbar{display:none}
+nav.toc a{white-space:nowrap;font-size:13px;color:var(--mut);padding:6px 12px;border-radius:100px;border:1px solid transparent}
+nav.toc a:hover{color:var(--txt);text-decoration:none;background:rgba(255,255,255,.03);border-color:var(--line)}
+
+/* sections */
+section{padding:52px 0 8px;scroll-margin-top:60px}
+.kicker{font-size:12.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--a2);font-weight:700;margin:0 0 6px}
+h2{font-size:clamp(23px,3.4vw,33px);margin:0 0 6px;font-weight:800;letter-spacing:-.02em}
+h2 .n{color:var(--dim);font-weight:700;font-size:.62em;margin-right:12px;vertical-align:middle}
+.lead{color:var(--mut);font-size:16.5px;max-width:820px;margin:2px 0 22px}
+h3{font-size:18.5px;margin:26px 0 8px;font-weight:700;letter-spacing:-.01em}
+
+/* cards & grid */
+.card{background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;margin:14px 0}
+.grid{display:grid;gap:14px}
+@media(min-width:720px){.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:1fr 1fr 1fr}}
+.pill{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.04em;padding:3px 9px;border-radius:100px;border:1px solid var(--line2)}
+.pill.now{color:var(--good);border-color:rgba(55,217,160,.4);background:rgba(55,217,160,.08)}
+.pill.later{color:var(--a3);border-color:rgba(57,198,255,.35);background:rgba(57,198,255,.07)}
+.pill.risk{color:var(--warn);border-color:rgba(255,184,77,.4);background:rgba(255,184,77,.08)}
+
+/* callouts */
+.note{border-left:3px solid var(--a2);background:rgba(162,75,255,.06);padding:14px 18px;border-radius:0 12px 12px 0;margin:16px 0}
+.note.good{border-color:var(--good);background:rgba(55,217,160,.06)}
+.note.warn{border-color:var(--warn);background:rgba(255,184,77,.06)}
+.note.bad{border-color:var(--bad);background:rgba(255,107,107,.06)}
+.note b{color:var(--txt)}
+
+/* tables */
+.tbl{width:100%;overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);margin:16px 0}
+table{width:100%;border-collapse:collapse;font-size:14.5px;min-width:560px}
+th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:rgba(255,255,255,.025);color:var(--mut);font-weight:600;font-size:12.5px;letter-spacing:.05em;text-transform:uppercase}
+tr:last-child td{border-bottom:none}
+td b{color:var(--txt)}
+.yes{color:var(--good);font-weight:700}
+.own{color:var(--a1);font-weight:700}
+
+/* steps */
+ol.steps{list-style:none;counter-reset:s;padding:0;margin:14px 0}
+ol.steps>li{counter-increment:s;position:relative;padding:14px 4px 14px 56px;border-bottom:1px solid var(--line)}
+ol.steps>li:last-child{border-bottom:none}
+ol.steps>li::before{content:counter(s);position:absolute;left:8px;top:13px;width:34px;height:34px;border-radius:10px;
+  background:var(--grad);color:#08090d;font-weight:800;display:grid;place-items:center;font-size:15px}
+ol.steps>li b{color:var(--txt)}
+.tag{font-size:11.5px;color:var(--dim);display:block;margin-top:3px}
+
+ul.tick{list-style:none;padding:0;margin:12px 0}
+ul.tick li{position:relative;padding:6px 0 6px 26px;color:var(--mut)}
+ul.tick li::before{content:"";position:absolute;left:4px;top:13px;width:7px;height:7px;border-radius:2px;background:var(--grad)}
+ul.tick li b{color:var(--txt)}
+
+/* copy block */
+.copywrap{position:relative;margin:16px 0}
+.copywrap .bar{display:flex;justify-content:space-between;align-items:center;background:#0c0e15;border:1px solid var(--line);border-bottom:none;border-radius:12px 12px 0 0;padding:9px 14px}
+.copywrap .bar span{font-size:12.5px;color:var(--mut);letter-spacing:.04em}
+.copybtn{cursor:pointer;font:inherit;font-size:12.5px;font-weight:700;color:var(--txt);background:rgba(255,255,255,.04);border:1px solid var(--line2);
+  padding:5px 12px;border-radius:8px;transition:.18s}
+.copybtn:hover{background:var(--grad);color:#08090d;border-color:transparent}
+.copybtn.done{background:var(--good);color:#08120d;border-color:transparent}
+pre{margin:0;background:#0c0e15;border:1px solid var(--line);border-radius:0 0 12px 12px;padding:16px;overflow-x:auto;
+  font-family:"SF Mono",ui-monospace,"JetBrains Mono",Menlo,Consolas,monospace;font-size:13px;line-height:1.7;color:#cdd3e6;white-space:pre-wrap}
+
+/* phase banner */
+.phaseband{display:grid;gap:12px;margin:18px 0}
+@media(min-width:720px){.phaseband{grid-template-columns:1fr 1fr}}
+.phase{border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;position:relative;overflow:hidden}
+.phase.p1{background:linear-gradient(160deg,rgba(55,217,160,.09),var(--card))}
+.phase.p2{background:linear-gradient(160deg,rgba(57,198,255,.08),var(--card))}
+.phase h4{margin:8px 0 6px;font-size:17px}
+.phase .big{font-size:13px;color:var(--mut)}
+
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+
+footer{border-top:1px solid var(--line);margin-top:60px;padding:34px 0 60px;color:var(--dim);font-size:13.5px}
+.big-move{background:linear-gradient(160deg,rgba(162,75,255,.14),rgba(255,92,174,.06));border:1px solid var(--line2);border-radius:20px;padding:26px 26px;margin:16px 0}
+.big-move h2{margin-bottom:10px}
+kbd{font-family:inherit;background:rgba(255,255,255,.06);border:1px solid var(--line2);border-radius:6px;padding:1px 7px;font-size:.9em}
+.mut{color:var(--mut)}.dim{color:var(--dim)}.good{color:var(--good)}.warn{color:var(--warn)}.bad{color:var(--bad)}
+hr{border:none;border-top:1px solid var(--line);margin:34px 0}
+</style>
+
+<div id="prog"></div>
+
+<header>
+  <div class="wrap">
+    <span class="eyebrow"><span class="dot"></span> Internal strategy · built for Bob · 18 Jul 2026</span>
+    <h1>Duplicate the <span class="g">AI-girl money machine</span><br>— but run it on your turf.</h1>
+    <p class="sub">The viral tweet's model is real. Its numbers are marketing. Here's the honest, end-to-end plan to build one flagship AI persona and monetize her the way <em>you</em> already win: Facebook per-view money first, spicy off-platform money later.</p>
+
+    <div class="tweetcard">
+      <b>What the tweet actually claimed:</b> A 21-yo Brazilian generated an AI "construction-worker girl", posted her clips on TikTok, funneled fans to a <b>Fanvue</b> sub page ($9.99/mo), and got <b>764 subs = $7,632</b> on ~$200 of AI costs, in 37 days.
+      <div style="margin-top:8px"><span class="flag">⚠ Community-noted:</span> that account repeatedly posts unverified "young guy gets rich off an AI girl" stories. The business model is legit; the specific screenshot is a thumbnail, not a P&amp;L.</div>
+      <div class="src">Source: @Bober_smart · 4.75M views · decoded via fxtwitter/vxtwitter</div>
+    </div>
+  </div>
+</header>
+
+<nav class="toc">
+  <div class="wrap">
+    <a href="#pivot">The Pivot</a>
+    <a href="#reality">Reality Check</a>
+    <a href="#pipeline">The Pipeline</a>
+    <a href="#tools">Tool Stack</a>
+    <a href="#persona">Persona Picks</a>
+    <a href="#cmt">Facebook CMT</a>
+    <a href="#growth">Ban-Avoidance</a>
+    <a href="#roadmap">90-Day Plan</a>
+    <a href="#risk">Guardrails</a>
+    <a href="#move">First Move</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<!-- PIVOT -->
+<section id="pivot" class="reveal">
+  <p class="kicker">Your call, decoded</p>
+  <h2>The strategy pivot — and the one tension in it</h2>
+  <p class="lead">You picked <b>suggestive tease</b> + <b>one flagship persona</b> + <b>Facebook Content Monetization (CMT)</b> as the money engine. That last choice is smart: it reuses the one thing you already do profitably (VegToons FB per-view video) instead of a cold Fanvue/DM-closing operation you'd learn from scratch. But two of your answers pull against each other:</p>
+
+  <div class="note bad"><b>The tension:</b> Facebook CMT does <b>not</b> pay on sexually-suggestive content — Meta's monetization policy limits/excludes it. So "suggestive tease" and "FB CMT money" can't be the <em>same</em> content. If you make her thirst-baity on Facebook, you get reach maybe, but demonetized or throttled — no CMT dollars.</div>
+
+  <div class="note good"><b>The resolution — sequence them, don't merge them.</b> Run a <b>clean-glam, monetization-safe</b> persona on Facebook for CMT cash now; add the <b>suggestive → off-platform</b> layer only after she has an audience. Same face, two funnels, two phases.</div>
+
+  <div class="phaseband">
+    <div class="phase p1">
+      <span class="pill now">PHASE 1 · NOW</span>
+      <h4>Facebook CMT — per-view cash</h4>
+      <p class="big">Clean, attractive, <b>story-driven</b> Reels (your VegToons narrator format, new face). Monetization-safe → earns from view one. US/Tier-1 audience = real RPM. Batch-produced on <b>veo-flow-multi</b>. This is the whole job for the first ~60 days.</p>
+    </div>
+    <div class="phase p2">
+      <span class="pill later">PHASE 2 · LATER (deferred)</span>
+      <h4>Off-platform — the spicy upside</h4>
+      <p class="big">Once she has followers, bolt on a bio funnel → suggestive tease → <b>Fanvue subs + chat</b>, then brand deals / affiliate. You said you've no expertise here yet — that's fine, it's deferred. I'll walk you through each when Phase 1 proves out.</p>
+    </div>
+  </div>
+
+  <div class="note"><b>Why this is genuinely your edge:</b> content is now trivially cheap and you already own the two hardest layers — <b>batch video (veo-flow-multi)</b> and <b>multi-account isolation (Vantage + Gonzo)</b>. You also already know FB per-view monetization cold. The only truly new muscle in Phase 1 is <b>locking one consistent AI face</b> — and I can build that pipeline <em>for</em> you.</div>
+</section>
+
+<!-- REALITY -->
+<section id="reality" class="reveal">
+  <p class="kicker">Read before spending a dollar</p>
+  <h2><span class="n">01</span>Reality check</h2>
+  <p class="lead">No hype. Here's what this actually is so you go in with the right expectations.</p>
+
+  <div class="grid g3">
+    <div class="card"><h3 style="margin-top:0">The tweet is bait</h3><p class="mut">Hyper-specific un-round number, 37-day urgency, novelty gimmick niche, community-noted repeat-poster who almost certainly sells a course/Discord downstream. Real; not a case study.</p></div>
+    <div class="card"><h3 style="margin-top:0">Winners are teams</h3><p class="mut">The "solo genius" stories aren't. Aitana López (the famous AI model) averages ~€3k/mo and is an 11-person agency. Peak earners run 14-16h days. This is work, not passive.</p></div>
+    <div class="card"><h3 style="margin-top:0">It's a power law</h3><p class="mut">Most AI personas earn ~$0. A diligent operator who survives the slow months realistically lands <b>$500-$5k/mo within a year</b> — with a real chance of nothing. Portfolio math, not one lottery ticket.</p></div>
+  </div>
+
+  <h3>What separates the ~5% who win</h3>
+  <ul class="tick">
+    <li><b>Distribution + consistency</b>, not the prettiest images. Posting daily for months is the moat now.</li>
+    <li><b>A locked, consistent face</b> people actually recognize and follow — not generic AI thirst-trap #4,000,000.</li>
+    <li><b>Watch-time / completion / shares</b> — the currency of both the FB algorithm and CMT payouts.</li>
+    <li><b>Persistence past the dead months</b> and owning the destination (your Page + email list), so a ban resets reach, not revenue.</li>
+  </ul>
+
+  <div class="note warn"><b>The RPM truth you already learned on VegToons:</b> FB pays per-view, and views are <b>not</b> equal — a US viewer is worth many times an India viewer. Phase 1 lives or dies on making a persona and content that pull a <b>US/Tier-1</b> audience. A million cheap-geo views is pennies; that's the trap to avoid.</div>
+</section>
+
+<!-- PIPELINE -->
+<section id="pipeline" class="reveal">
+  <p class="kicker">The factory</p>
+  <h2><span class="n">02</span>The end-to-end pipeline</h2>
+  <p class="lead">One coordinated workflow — the fix for "AI slop." Slop comes from stitching four uncoupled tools; a single pipeline with a human QA gate kills it. Identity is guaranteed at the <em>still</em> stage, never left to the video model.</p>
+
+  <ol class="steps">
+    <li><b>Lock the persona (once, manual).</b> Age, look, a 1-second visual hook (signature hair/tattoo), name, 3-line backstory, personality, niche, geo. Write the "persona bible" below.<span class="tag">Highest-leverage decision you make. Imagination is the moat.</span></li>
+    <li><b>Seed a consistent dataset.</b> One hero portrait → chain-reference into 15-30 varied shots (Nano Banana Pro / Higgsfield Soul ID), always feeding the last output back as reference. Curate ruthlessly; discard any drift.<span class="tag">Reuses your VegToons "character-lock" anti-drift discipline.</span></li>
+    <li><b>Train the identity (the pro lock-in).</b> A <b>Flux character LoRA</b> on that set (fal.ai / RunPod), unique trigger word. ~$2-15, ~30 min. Your face+body source-of-truth forever.<span class="tag">I can do this whole step for you.</span></li>
+    <li><b>Generate stills on demand.</b> ComfyUI: LoRA + IP-Adapter FaceID + ControlNet pose + FaceDetailer. Any outfit/scene/pose, identity guaranteed.<span class="tag">Sub-cent per image once set up.</span></li>
+    <li><b>Realism finishing pass.</b> The 2026 "obvious AI" tell is skin &amp; light, not hands: natural skin texture, one clear light direction, a named lens/film stock, subtle grain. Never smooth it back to plastic.</li>
+    <li><b>Animate — image → video.</b> Locked still → <b class="own">Veo 3.1 on veo-flow-multi</b> for talking / walking / selfie / lifestyle. 4-8s clips. Overflow/cheap drafts → Seedance/Kling.<span class="tag">Your fleet = near-zero marginal cost. This is the spine.</span></li>
+    <li><b>Voice + lip-sync.</b> Clone a signature voice (ElevenLabs); Hedra / HeyGen / LivePortrait to sync talking clips. Vary pacing — flat cadence is the #1 cheap tell.</li>
+    <li><b>Caption, edit, QA gate.</b> Burn-in captions (+watch-time), 3-second hook, 9:16, consistent grade. Over-generate 20, keep 3-10. Reject any slop tell. This human gate is the quality moat.</li>
+    <li><b>Post via official scheduler.</b> Meta Business Suite / Buffer. AI label ON. <b>Never</b> browser-automate posting (ban magnet).</li>
+    <li><b>Monetize.</b> Phase 1: FB Content Monetization on the reach. Phase 2: bio → bridge page → Fanvue tease → subs + chat.</li>
+  </ol>
+
+  <div class="copywrap">
+    <div class="bar"><span>📋 Persona Bible — template (fill one per persona, keep it locked)</span><button class="copybtn" data-copy="pb">Copy</button></div>
+<pre id="pb">PERSONA BIBLE — v1  (never change locked fields after launch)
+
+NAME:            (first name + handle, US-friendly, easy to spell)
+AGE READ:        unambiguously adult, 24-32
+GEO / VIBE:      (e.g. Miami / Austin / LA — Tier-1 US audience magnet)
+ETHNICITY/LOOK:  (locked)
+FACE:            face shape / eyes / brows / lips (locked)
+HAIR:            colour + cut (locked — this is 50% of recognisability)
+BODY:            build (locked)
+1-SEC HOOK:      the instant-recognise signature (hair colour / freckles /
+                 tattoo / signature outfit). People scroll fast — she needs
+                 to be identifiable in one frame.
+VOICE:           tone + accent (for the ElevenLabs clone)
+PERSONALITY:     3 adjectives + one "edge" (sarcastic / soft / chaotic)
+BACKSTORY:       3 sentences. Relatable + a reason to root for her.
+NICHE / FORMAT:  the recurring show (see Persona Picks)
+DO-NOT list:     things that break her (wrong hair length, wrong age read,
+                 wrong body) — same anti-drift format as VegToons character-lock
+CONTENT LANE:    Phase-1 = monetization-SAFE (no suggestive). Phase-2 = tease.
+</pre>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section id="tools" class="reveal">
+  <p class="kicker">Buy vs. already-own</p>
+  <h2><span class="n">03</span>Tool stack</h2>
+  <p class="lead">The point of this table: you already own the two most expensive layers. New spend is small.</p>
+  <div class="tbl">
+  <table>
+    <tr><th>Job</th><th>Tool</th><th>Cost</th><th>Your stack?</th></tr>
+    <tr><td>Seed dataset / no-train face</td><td>Nano Banana Pro <span class="dim">or</span> Higgsfield Soul ID</td><td>~$15-40/mo</td><td>new (cheap)</td></tr>
+    <tr><td>Identity lock</td><td><b>Flux character LoRA</b> (fal.ai / RunPod)</td><td>~$2-15/train</td><td>reuses VegToons character-lock know-how</td></tr>
+    <tr><td>Volume image gen + control</td><td>ComfyUI (LoRA + IP-Adapter + ControlNet + FaceDetailer)</td><td>~sub-cent/img</td><td>self-host</td></tr>
+    <tr><td><b>Image → video (the spine)</b></td><td><b>Veo 3.1</b> (Fast=drafts, Full=hero)</td><td>on your fleet</td><td class="own">✅ veo-flow-multi</td></tr>
+    <tr><td>Video overflow / cheap volume</td><td>Seedance, Kling</td><td>pay-per-clip</td><td>overflow only</td></tr>
+    <tr><td>Voice (signature)</td><td>ElevenLabs</td><td>$5-22/mo</td><td>new</td></tr>
+    <tr><td>Talking-head lip-sync</td><td>Hedra / HeyGen / LivePortrait(free)</td><td>~$1-3/min</td><td>partly VegToons I2V exp.</td></tr>
+    <tr><td>Scheduling (official API)</td><td>Meta Business Suite / Buffer</td><td>~$0-30/mo</td><td>new — never bot-post</td></tr>
+    <tr><td><b>Multi-account isolation</b></td><td><b>Vantage</b> (per-persona fingerprint)</td><td>owned</td><td class="own">✅ Vantage</td></tr>
+    <tr><td><b>Residential IPs</b></td><td><b>Gonzo</b> sticky, geo-matched</td><td>low, session-based</td><td class="own">✅ Gonzo</td></tr>
+    <tr><td>Bio bridge page <span class="dim">(phase 2)</span></td><td>Beacons / AllMyLinks + email capture</td><td>free-$10/mo</td><td>your landing-page skill</td></tr>
+    <tr><td>Paywall + chat <span class="dim">(phase 2)</span></td><td>Fanvue (80/20, AI-disclosed)</td><td>20% take</td><td>deferred</td></tr>
+  </table>
+  </div>
+  <div class="note bad"><b>Never buy</b> follower/like/DM "growth" bots — ~15-30%/yr ban rate vs &lt;0.5% for official-API posting. That 30× swing is the whole game once you clone across accounts.</div>
+</section>
+
+<!-- PERSONA PICKS -->
+<section id="persona" class="reveal">
+  <p class="kicker">Imagination is the moat</p>
+  <h2><span class="n">04</span>Persona &amp; format picks</h2>
+  <p class="lead">Reframed for <b>your</b> path — each is <b>FB-CMT-safe</b> (monetizable now), pulls a <b>US/Tier-1</b> audience, and has clear <b>Phase-2 suggestive upside</b>. The smartest play stacks your VegToons narrator-storytelling skill onto an attractive recurring face: <b>story reels</b> drive completion + shares (= CMT $) and build the parasocial audience Phase 2 monetizes.</p>
+
+  <div class="grid g2">
+    <div class="card"><h3 style="margin-top:0">🎬 "Storyteller" — dramatic POV / relatable-story reels <span class="pill now">best fit</span></h3><p class="mut">Attractive US girl narrates short dramatic/relatable stories (betrayal, glow-up, "AITA", life lessons) — VegToons narrator format, new face. Sky-high completion + shares, brutally monetization-safe, US-native. <b>Start here.</b></p></div>
+    <div class="card"><h3 style="margin-top:0">✈️ "Luxe Lifestyle" — aspirational day-in-the-life</h3><p class="mut">Aesthetic luxury/travel/"soft-life" glam. Safe, aspirational, high US watch-time, natural brand-deal + Phase-2 GFE upside. Fully clothed, pure vibe.</p></div>
+    <div class="card"><h3 style="margin-top:0">💪 "Coach" — fitness motivation (not thirst)</h3><p class="mut">Gym/discipline/accountability angle, framed as motivation &amp; coaching. Keep it SAFE (form/mindset, not thirst) to stay monetized; big Phase-2 PPV-plan upside.</p></div>
+    <div class="card"><h3 style="margin-top:0">🎮 "Gamer/Cosplay" — fandom-native</h3><p class="mut">One signature look, rotating costumes at zero cost. Loyal, tip-heavy fandoms; shares well; strong Phase-2 conversion. Slightly younger-skewing US/EU audience.</p></div>
+  </div>
+
+  <h3>The rules</h3>
+  <ul class="tick">
+    <li><b>Micro-niche, don't macro-niche.</b> "Attractive girl" loses; "sarcastic Austin girl who tells 45-second betrayal stories" wins.</li>
+    <li><b>Geo her to the RPM.</b> US-coded name/accent/setting. US anchors ~half of high-value traffic; it's the CMT lever.</li>
+    <li><b>Commit.</b> Pivoting the persona resets the audience to zero. Pick one, run 50 posts before judging.</li>
+    <li><b>One face, many formats</b> — but launch the <b>Storyteller</b> lane first; it's the safest CMT money and the strongest follow-driver.</li>
+  </ul>
+</section>
+
+<!-- CMT -->
+<section id="cmt" class="reveal">
+  <p class="kicker">Phase-1 money engine</p>
+  <h2><span class="n">05</span>Facebook Content Monetization — the playbook</h2>
+  <p class="lead">This is the part you already know how to run. The only new variables are "does an AI persona qualify" and "how safe must the content be." <span class="dim" id="cmt-verify">Verified Jul 2026 against Meta's <b>Facebook Content Monetization (FCM)</b> policies. $ figures below are creator-reported estimates — Meta publishes no official RPM.</span></p>
+
+  <div class="grid g2">
+    <div class="card">
+      <h3 style="margin-top:0">✅ What earns</h3>
+      <ul class="tick">
+        <li><b>Per-performance payouts</b> on Reels + video via Meta's merged Content Monetization program (views-based).</li>
+        <li><b>Original, high-retention</b> content. Story reels, lifestyle, motivation — completion &amp; shares are the payout drivers.</li>
+        <li><b>AI content, when labeled + original.</b> The AI label itself does not throttle compliant content.</li>
+        <li><b>US/Tier-1 audience</b> — the single biggest RPM multiplier.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">🚫 What gets demonetized / throttled</h3>
+      <ul class="tick">
+        <li><b>Sexually-suggestive / thirst content</b> — monetization-limited. This is why Phase 1 stays clean-glam.</li>
+        <li><b>Unoriginal / low-effort / "reused" content</b> — the AI-slop trap. Your QA gate + narrative format is the defense.</li>
+        <li><b>Unlabeled realistic AI</b> — active takedown vector. Always toggle the label.</li>
+        <li><b>Engagement-bait, recycled clips, cheap-geo view farming.</b></li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>The 3 silent-demonetization traps your concept stacks — and how we dodge each</h3>
+  <p class="mut" style="margin-top:2px">The honest core finding: an attractive AI persona hits <b>three</b> of Meta's monetization-risk classifiers at once. None is an outright <em>ban</em> — each just quietly <b>throttles reach + kills payout with no notification</b>. The plan is built to neutralize all three:</p>
+  <div class="tbl">
+    <table>
+      <tr><th>Trap (Meta policy)</th><th>What it does</th><th>How the plan dodges it</th></tr>
+      <tr><td><b>Sexual subject matter</b><br><span class="dim">Content Monetization Policies</span></td><td>"Reduced or disabled monetization" for suggestive content — real <em>or</em> fictional. Posts fine, earns nothing.</td><td class="yes">Phase-1 stays clean-glam / fully-clothed. Tease lives off-platform (Phase 2).</td></tr>
+      <tr><td><b>Unoriginal / reused content</b><br><span class="dim">Mar-2026 originality policy</span></td><td>Duplicative, minor-edit, mass-produced AI = deprioritized + demonetized. The AI-slop killer.</td><td class="yes">Human-led <b>story</b> format = genuine per-post creative value. QA gate rejects near-duplicates.</td></tr>
+      <tr><td><b>Deceptive synthetic media</b><br><span class="dim">AI-authenticity disclosure</span></td><td>Realistic AI passed as real can get distribution cut hard. A photoreal "real woman" is exactly this case.</td><td class="yes">Toggle the native <b>AI label</b> — protects reach; disclosed AI personas still get followed.</td></tr>
+    </table>
+  </div>
+  <div class="note good"><b>Why the Storyteller lane is the answer, not just a preference:</b> it's the one format that structurally clears all three at once — SFW (dodges trap 1), human-led narrative value (dodges trap 2), and label-friendly (dodges trap 3) — while story completion + shares are exactly what FCM pays for. That's why it's the flagship.</div>
+
+  <h3>Eligibility &amp; the shortcut worth knowing</h3>
+  <div class="grid g2">
+    <div class="card"><h3 style="margin-top:0">The gate (cold start)</h3>
+      <ul class="tick">
+        <li><b>10,000 followers</b> <span class="dim">OR</span> <b>600,000 watch-minutes in 60 days</b> (≥60k from 1min+ videos), 5+ videos/30 days, Page in good standing, 18+.</li>
+        <li><b>Invite-only right now</b> — submit the interest form in the Professional Dashboard → Monetization. Location-gated (US/UK/EU/AU eligible).</li>
+        <li>Payout monthly (~17th-22nd), <b>$100 minimum</b>.</li>
+      </ul>
+    </div>
+    <div class="card" style="background:linear-gradient(160deg,rgba(55,217,160,.10),var(--card))"><h3 style="margin-top:0" class="good">⚡ Creator Fast Track — the accelerator</h3>
+      <ul class="tick">
+        <li>Already have <b>100k+ followers on IG / TikTok / YouTube</b>? → <b>$1,000/mo guaranteed for 3 months</b> ($3k/mo at 1M+) <b>+ instant FCM access</b>, no minimum-view requirement. US/Canada.</li>
+        <li><b>Implication:</b> if a persona pops on TikTok/IG first, porting her to FB unlocks guaranteed cash + skips the cold ramp. Worth engineering toward.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="note" id="cmt-rpm"><b>RPM &amp; geo (the whole economics):</b> FCM is a per-view game and views are wildly unequal by country. Creator-reported (not Meta-official) US/Tier-1 entertainment-Reels RPM ≈ <b>$0.30-$1.50 per 1k views</b> (~<b>$300-$1,500 per 1M</b>); India/Tier-3 ≈ <b>$0.01-0.05</b> (~$10-50 per 1M) — roughly a <b>10-12× gap</b> (US ad CPM ~$16 vs India ~$1.36). Exactly your VegToons "India RPM pennies" lesson. <b>Design the persona to pull a US audience</b> — geo beats raw view count.</div>
+
+  <h3>Reuse your VegToons FB engine, verbatim</h3>
+  <ul class="tick">
+    <li><b>9:16 vertical, short, complete-payoff</b> reels; 3-second hook; burned-in captions.</li>
+    <li><b>Invisible personal-profile-as-Page-admin</b> setup — never a second personal profile.</li>
+    <li><b>Cover the Veo watermark</b> in the edit.</li>
+    <li><b>Consistent daily-ish cadence</b> at fixed times — rhythm is itself a trust signal.</li>
+    <li><b>Serialize</b> ("Part 1 → follow for Part 2") to compound follows and watch-time.</li>
+  </ul>
+
+  <div class="note warn"><b>Ramp honesty:</b> from a cold FB start, clearing the 10k-follower / 600k-watch-min gate is realistically <b>weeks-to-months</b> of consistent posting before the money switch flips — not day-one payouts, and you won't hit $10k in month one. The Fast Track is the way to collapse that if a persona pops on TikTok/IG first.</div>
+</section>
+
+<!-- GROWTH / BAN -->
+<section id="growth" class="reveal">
+  <p class="kicker">Keep the accounts alive</p>
+  <h2><span class="n">06</span>Ban-avoidance &amp; multi-account (for when you clone)</h2>
+  <p class="lead">Phase 1 is one persona, so this is light now — but bake it in from day one so the winner clones cleanly across your stack.</p>
+
+  <div class="grid g2">
+    <div class="card"><h3 style="margin-top:0">4 isolation layers (all required)</h3>
+      <ul class="tick">
+        <li><b>IP (Gonzo):</b> one sticky residential IP per persona, geo/tz-matched, never hop countries.</li>
+        <li><b>Fingerprint (Vantage):</b> one stable distinct profile per persona. <span class="dim">Classic death: 20 IPs, one shared device fingerprint = 20 linked accounts.</span></li>
+        <li><b>Behavior:</b> stagger posting windows, don't cross-engage your own accounts, don't run the cluster back-to-back in one session. This is what actually links clusters in 2026 — it's on you + a VA.</li>
+        <li><b>Content de-dup:</b> before a concept hits a 2nd account, change ≥4 of 7 signals (hook, caption, sound, cover, niche, language, time).</li>
+      </ul>
+    </div>
+    <div class="card"><h3 style="margin-top:0">Disclosure = cheap insurance</h3>
+      <ul class="tick">
+        <li>Toggle the native <b>AI label</b> on every platform. It satisfies policy and doesn't tank reach.</li>
+        <li>You don't need "AI" plastered on her face — the native toggle is enough.</li>
+        <li><b>EU AI Act Art. 50 goes live 2 Aug 2026</b> — labeling becomes law, not optional.</li>
+        <li>Warm new accounts (esp. IG) ~7-14 days of neutral content <em>before</em> any link/offer.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section id="roadmap" class="reveal">
+  <p class="kicker">Execution</p>
+  <h2><span class="n">07</span>30 / 60 / 90-day plan + budget</h2>
+
+  <div class="grid g3">
+    <div class="card"><h3 style="margin-top:0">Days 1-30 <span class="pill now">build</span></h3>
+      <ul class="tick">
+        <li>Write 2-3 persona bibles; pick the flagship (start Storyteller lane).</li>
+        <li>Seed dataset → train Flux LoRA → stand up ComfyUI → wire veo-flow-multi.</li>
+        <li>Clone voice; produce a 20-clip test batch through the QA gate.</li>
+        <li>Stand up the FB Page (invisible-admin), Vantage profile + Gonzo IP.</li>
+        <li><b>Milestone:</b> posting daily, AI-labeled, pipeline doing 3-10 clean clips/day.</li>
+      </ul>
+    </div>
+    <div class="card"><h3 style="margin-top:0">Days 31-60 <span class="pill now">monetize</span></h3>
+      <ul class="tick">
+        <li>Push for CMT eligibility; keep content monetization-safe + US-targeted.</li>
+        <li>Double down on whatever format is getting completion + shares.</li>
+        <li>Onboard 1 VA for editing/captions/scheduling QC.</li>
+        <li><b>Milestone:</b> CMT switched on; first per-view dollars; a repeatable daily rhythm.</li>
+      </ul>
+    </div>
+    <div class="card"><h3 style="margin-top:0">Days 61-90 <span class="pill later">scale / layer</span></h3>
+      <ul class="tick">
+        <li>Read the data: kill or scale. If she's pulling US views → clone the format to a 2nd account (Vantage/Gonzo).</li>
+        <li>If audience is real, <b>start Phase 2</b>: bio bridge page → suggestive tease → Fanvue. I'll walk you through it.</li>
+        <li><b>Milestone:</b> a data-driven scale/kill decision + Phase-2 funnel live if warranted.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tbl">
+    <table>
+      <tr><th>Budget item (first 90 days)</th><th>Est. range</th></tr>
+      <tr><td>GPU (LoRA train + ComfyUI volume)</td><td>$60-300</td></tr>
+      <tr><td>Veo (on your fleet, Fast lane mix)</td><td>low — you already run it</td></tr>
+      <tr><td>Voice (ElevenLabs) + lip-sync</td><td>$150-400</td></tr>
+      <tr><td>Seed/identity SaaS (Nano Banana / Soul ID)</td><td>$45-120</td></tr>
+      <tr><td>Gonzo proxies (session-based)</td><td>$60-180</td></tr>
+      <tr><td>Scheduler</td><td>$0-90</td></tr>
+      <tr><td>1 VA (part-time, from month 2)</td><td>$600-1,500</td></tr>
+      <tr><td><b>Total (excl. your existing tools)</b></td><td><b>~$1,000-2,600</b></td></tr>
+    </table>
+  </div>
+  <p class="mut">Cash to start is genuinely small. The binding constraint is <b>daily labor</b> — generating and posting every day. "Passive" is a lie; treat it like a content job that compounds.</p>
+</section>
+
+<!-- RISK -->
+<section id="risk" class="reveal">
+  <p class="kicker">Non-negotiable</p>
+  <h2><span class="n">08</span>Risks &amp; guardrails</h2>
+  <div class="grid g2">
+    <div class="card"><h3 style="margin-top:0" class="bad">Hard lines</h3>
+      <ul class="tick">
+        <li><b>Synthetic / original faces ONLY.</b> Never build from a real person (celeb, ex, "a girl from IG"). Stacks right-of-publicity + NCII + the TAKE IT DOWN Act (48-hr removal, FTC-enforced). Not a gray zone.</li>
+        <li><b>Persona reads unambiguously adult.</b> Any age ambiguity is an absolute hard line.</li>
+        <li><b>No explicit content from me.</b> I'll build the SFW/clean-glam pipeline and plan the Phase-2 business; I won't generate explicit imagery.</li>
+      </ul>
+    </div>
+    <div class="card"><h3 style="margin-top:0" class="warn">Compliance to bake in</h3>
+      <ul class="tick">
+        <li><b>Disclose the AI.</b> Native labels + FTC clear-and-conspicuous; EU AI Act Art. 50 live 2 Aug 2026.</li>
+        <li><b>Tax:</b> self-employment income from dollar one; FB issues a 1099-K on gross — deduct fees on Schedule C.</li>
+        <li><b>Phase 2:</b> Fanvue requires prominent AI disclosure + operator ID verification; OnlyFans <em>bans</em> pure-synthetic personas. Chat must be AI-draft → human-sends.</li>
+        <li><b>Own the destination</b> (Page + email list) so a ban resets reach, not revenue.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FIRST MOVE -->
+<section id="move" class="reveal">
+  <div class="big-move">
+    <p class="kicker">Don't overthink it</p>
+    <h2>The single highest-leverage first move</h2>
+    <p style="font-size:17px;margin:0 0 14px">Build <b>one flagship persona end-to-end</b> — locked LoRA face → veo-flow-multi clips → a week of clean, US-targeted <b>Storyteller</b> reels on one warmed Facebook Page — before you touch a second account or think about Fanvue. Your content and isolation layers are already solved. The whole thing lives or dies on the one new muscle: <b>a consistent, recognizable AI face that a US audience follows.</b> Prove that, get CMT switched on, then clone the winner.</p>
+    <div class="note good" style="margin-bottom:0"><b>What I can take off your plate right now:</b> pick + lock the persona, run the full image pipeline (seed → LoRA → ComfyUI stills), stand up the Veo batching, produce a first 20-clip test batch, and set up the Page + bridge scaffolding. You decide the persona vibe; I build the machine. <b>Say go and I'll start with 3 persona concepts to pick from.</b></div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <b>ai-persona</b> · internal strategy, not for distribution · noindex · built 18 Jul 2026<br>
+    Model is real; the viral numbers are marketing. Phase 1 = Facebook CMT (clean-glam). Phase 2 = off-platform tease. One face, sequenced.
+  </div>
+</footer>
+
+<script>
+// scroll progress
+var prog=document.getElementById('prog');
+addEventListener('scroll',function(){
+  var h=document.documentElement,max=h.scrollHeight-h.clientHeight;
+  prog.style.width=(max>0?(h.scrollTop||document.body.scrollTop)/max*100:0)+'%';
+},{passive:true});
+
+// reveal on scroll
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.08});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+
+// robust copy (clipboard API + execCommand fallback)
+document.querySelectorAll('.copybtn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var el=document.getElementById(btn.getAttribute('data-copy'));
+    if(!el)return;
+    var text=el.innerText;
+    function ok(){var o=btn.textContent;btn.textContent='✓ Copied';btn.classList.add('done');setTimeout(function(){btn.textContent=o;btn.classList.remove('done')},1600)}
+    function fallback(){
+      try{
+        var ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';
+        document.body.appendChild(ta);ta.focus();ta.select();
+        var done=document.execCommand('copy');document.body.removeChild(ta);
+        if(done)ok();else alert('Copy failed — select the text manually.');
+      }catch(e){alert('Copy failed — select the text manually.')}
+    }
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(ok).catch(fallback);
+    }else{fallback();}
+  });
+});
+</script>
