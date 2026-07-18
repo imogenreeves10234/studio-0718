@@ -1,0 +1,287 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Prompt Mastery — Nano Banana Pro + Omni-Flash</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%AF%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#0a0b10;--card:#13151f;--card2:#171a26;--line:#242838;--line2:#2f3346;
+  --txt:#e7e9f2;--mut:#9aa0b4;--dim:#6d7288;
+  --a1:#ff5cae;--a2:#a24bff;--a3:#39c6ff;--good:#37d9a0;--warn:#ffb84d;--bad:#ff6b6b;
+  --grad:linear-gradient(100deg,var(--a1),var(--a2) 55%,var(--a3));--r:16px;font-synthesis:none;
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:
+    radial-gradient(1200px 700px at 82% -8%,rgba(162,75,255,.16),transparent 60%),
+    radial-gradient(900px 600px at 6% 4%,rgba(255,92,174,.12),transparent 55%),var(--bg);
+  color:var(--txt);font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  line-height:1.62;-webkit-font-smoothing:antialiased;letter-spacing:.1px}
+.wrap{max-width:1020px;margin:0 auto;padding:0 22px}
+a{color:var(--a3);text-decoration:none}a:hover{text-decoration:underline}
+#prog{position:fixed;top:0;left:0;height:3px;width:0;background:var(--grad);z-index:60;box-shadow:0 0 12px rgba(162,75,255,.6)}
+header{padding:62px 0 22px}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);
+  border:1px solid var(--line);background:rgba(255,255,255,.02);padding:7px 13px;border-radius:100px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--a1);box-shadow:0 0 10px var(--a1)}
+.back{font-size:13px;color:var(--mut);margin-left:8px}
+h1{font-size:clamp(26px,5vw,44px);line-height:1.06;margin:18px 0 8px;font-weight:800;letter-spacing:-.02em}
+h1 .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{font-size:clamp(15px,2.2vw,18px);color:var(--mut);max-width:820px}
+.golden{margin:20px 0 4px;border:1px solid var(--line2);border-radius:var(--r);background:linear-gradient(160deg,rgba(255,184,77,.12),var(--card));padding:15px 19px}
+.golden b{color:var(--txt)}
+nav.toc{position:sticky;top:0;z-index:40;background:rgba(10,11,16,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);margin-top:24px}
+nav.toc .wrap{display:flex;gap:6px;overflow-x:auto;padding:11px 22px;scrollbar-width:none}
+nav.toc .wrap::-webkit-scrollbar{display:none}
+nav.toc a{white-space:nowrap;font-size:13px;color:var(--mut);padding:6px 12px;border-radius:100px;border:1px solid transparent}
+nav.toc a:hover{color:var(--txt);text-decoration:none;background:rgba(255,255,255,.03);border-color:var(--line)}
+section{padding:44px 0 8px;scroll-margin-top:60px}
+.kicker{font-size:12.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--a2);font-weight:700;margin:0 0 4px}
+h2{font-size:clamp(21px,3.3vw,29px);margin:0 0 6px;font-weight:800;letter-spacing:-.02em}
+h2 .n{color:var(--dim);font-weight:700;font-size:.62em;margin-right:10px}
+.lead{color:var(--mut);font-size:15.5px;max-width:840px;margin:6px 0 14px}
+h3{font-size:17px;margin:22px 0 6px;font-weight:700}
+.card{background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--line);border-radius:var(--r);padding:16px 20px;margin:14px 0}
+.grid{display:grid;gap:14px}
+@media(min-width:720px){.g2{grid-template-columns:1fr 1fr}}
+.note{border-left:3px solid var(--a2);background:rgba(162,75,255,.06);padding:13px 17px;border-radius:0 12px 12px 0;margin:14px 0}
+.note.good{border-color:var(--good);background:rgba(55,217,160,.06)}
+.note.warn{border-color:var(--warn);background:rgba(255,184,77,.06)}
+.note.bad{border-color:var(--bad);background:rgba(255,107,107,.08)}
+.note b{color:var(--txt)}
+code.k{background:rgba(255,255,255,.06);border:1px solid var(--line2);border-radius:6px;padding:1px 6px;font-size:.85em;font-family:ui-monospace,Menlo,Consolas,monospace;color:#d8dcec}
+ul.tick{list-style:none;padding:0;margin:10px 0}
+ul.tick li{position:relative;padding:5px 0 5px 26px;color:var(--mut)}
+ul.tick li::before{content:"";position:absolute;left:4px;top:12px;width:7px;height:7px;border-radius:2px;background:var(--grad)}
+ul.tick li b{color:var(--txt)}
+ul.bad-list li::before{background:var(--bad)}
+ul.good-list li::before{background:var(--good)}
+.beat{display:flex;gap:12px;align-items:baseline;padding:7px 0;border-bottom:1px solid var(--line)}
+.beat:last-child{border-bottom:none}
+.beat .t{font-family:ui-monospace,monospace;font-size:12.5px;color:var(--a3);min-width:62px;font-weight:700}
+.tbl{width:100%;overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);margin:16px 0}
+table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:640px}
+th,td{text-align:left;padding:11px 13px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:rgba(255,255,255,.025);color:var(--mut);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase}
+tr:last-child td{border-bottom:none}
+td b{color:var(--txt)}
+.copywrap{position:relative;margin:12px 0}
+.copywrap .bar{display:flex;justify-content:space-between;align-items:center;background:#0c0e15;border:1px solid var(--line);border-bottom:none;border-radius:12px 12px 0 0;padding:9px 14px}
+.copywrap .bar span{font-size:12.5px;color:var(--mut);font-weight:600}
+.copybtn{cursor:pointer;font:inherit;font-size:12.5px;font-weight:700;color:var(--txt);background:rgba(255,255,255,.04);border:1px solid var(--line2);padding:5px 12px;border-radius:8px;transition:.18s}
+.copybtn:hover{background:var(--grad);color:#08090d;border-color:transparent}
+.copybtn.done{background:var(--good);color:#08120d;border-color:transparent}
+pre{margin:0;background:#0c0e15;border:1px solid var(--line);border-radius:0 0 12px 12px;padding:15px;overflow-x:auto;
+  font-family:"SF Mono",ui-monospace,"JetBrains Mono",Menlo,Consolas,monospace;font-size:12.5px;line-height:1.7;color:#cdd3e6;white-space:pre-wrap}
+.tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:100px;margin-left:8px}
+.tag.safe{color:var(--good);border:1px solid rgba(55,217,160,.4);background:rgba(55,217,160,.08)}
+.tag.hi{color:var(--warn);border:1px solid rgba(255,184,77,.4);background:rgba(255,184,77,.08)}
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+.mut{color:var(--mut)}.dim{color:var(--dim)}.good{color:var(--good)}.warn{color:var(--warn)}.bad{color:var(--bad)}
+footer{border-top:1px solid var(--line);margin-top:52px;padding:28px 0 60px;color:var(--dim);font-size:13.5px}
+</style>
+
+<div id="prog"></div>
+
+<header><div class="wrap">
+  <span class="eyebrow"><span class="dot"></span> Prompt Mastery · ai-persona</span><a href="index.html" class="back">← strategy</a> · <a href="production.html" class="back" style="margin-left:0">production</a> · <a href="build.html" class="back" style="margin-left:0">build</a>
+  <h1>Prompt mastery — <span class="g">Nano Banana Pro</span> + Omni-Flash</h1>
+  <p class="sub">Two tools, two jobs: <b>Nano Banana Pro</b> (Gemini 3 Pro Image) makes/edits the locked still · <b>Omni-Flash</b> (Gemini Omni Flash — 3–10s, 720p, 24fps, native audio) animates it. Both are <b>reasoning LLMs, not tag-parsers</b> — they punish keyword soup, meta-instructions, and stacked actions. Everything here is built around that.</p>
+  <div class="golden"><b>Why your edit worked:</b> deleting <code class="k">"suggestive but not explicit / no nudity"</code> is exactly right — those words don't just fail (the model can't follow negation), they make the classifier read <b>"nudity / explicit / sexual"</b> in your string and <b>silently block your own request</b>. You were flagging yourself. Set the boundary by describing the real clothed outfit, never by disclaiming.</div>
+</div></header>
+
+<nav class="toc"><div class="wrap">
+  <a href="#how">1 · How to prompt it</a>
+  <a href="#formula">2 · The I2V formula</a>
+  <a href="#prompts">3 · 6 ready prompts</a>
+  <a href="#fix">4 · Quick-fix table</a>
+</div></nav>
+
+<main class="wrap">
+
+<!-- HOW -->
+<section id="how" class="reveal">
+  <p class="kicker">Rule #1: write prose, not tags</p>
+  <h2><span class="n">01</span>How to actually prompt it</h2>
+  <p class="lead">Both models reason over your prompt before rendering. Full sentences that state real spatial relationships beat Midjourney-style comma soup — a keyword list wastes their comprehension and leaves object relationships ambiguous.</p>
+
+  <h3>The Nano Banana Pro still-prompt formula</h3>
+  <p class="mut">One paragraph, ~40–120 words, ordered clauses:</p>
+  <div class="copywrap"><div class="bar"><span>🖼️ Nano Banana Pro — still-prompt order</span><button class="copybtn" data-copy="stilltpl">Copy</button></div>
+<pre id="stilltpl">shot type -> subject -> wardrobe (specific garments + fit + fabric + colour)
+-> pose / expression / eyeline -> setting + time -> lighting (source, direction,
+quality) -> camera (lens / focal length, aperture, angle) -> colour / mood
+-> explicit aspect ratio + resolution</pre></div>
+  <ul class="tick">
+    <li>State resolution as <code class="k">1K</code> / <code class="k">2K</code> / <code class="k">4K</code> — <b>uppercase K</b> (`1k` is rejected). Faces are sharper at 2K/4K.</li>
+    <li>For edits, name <b>what to change AND what to preserve</b>: <em>"change only X to Y; keep her face, pose, lighting and the rest unchanged."</em></li>
+    <li>Iterate conversationally — refine in the next turn instead of cramming everything into one prompt.</li>
+  </ul>
+
+  <div class="grid g2">
+    <div class="card"><h3 style="margin-top:0" class="bad">✗ Meta that HURTS (delete these)</h3><ul class="tick bad-list">
+      <li><b>Safety-negation:</b> "suggestive but not explicit", "no nudity", "keep it tasteful", "sexy" — trips the silent block + does nothing.</li>
+      <li><b>Exclusions as "no X / don't show X"</b> — negation leaks ("no cars" can summon cars). Describe the positive alternative.</li>
+      <li><b>Video preamble</b> "make a video of… / turn this image into…" — gets half-parsed as content, muddies the motion. Open on the action.</li>
+    </ul></div>
+    <div class="card"><h3 style="margin-top:0" class="good">✓ Meta that HELPS (keep these)</h3><ul class="tick good-list">
+      <li><b>Craft/composition:</b> "shot on 85mm f/1.8", "keep background unchanged", "single continuous shot", "2K, 4:5".</li>
+      <li><b>Affirmative register</b> for the boundary: "editorial fashion photograph", "authentic jobsite documentary look", "catalog lighting".</li>
+      <li><b>Positive descriptions</b> of the real clothed outfit — attractiveness comes from face/build/framing, never from disclaimers.</li>
+    </ul></div>
+  </div>
+  <div class="note bad"><b>If a borderline prompt no-ops:</b> strip every flagged word, rephrase positively, and re-roll — consistency across runs isn't guaranteed, so a re-roll alone sometimes fixes it.</div>
+</section>
+
+<!-- FORMULA -->
+<section id="formula" class="reveal">
+  <p class="kicker">The image carries identity; the prompt carries time</p>
+  <h2><span class="n">02</span>The image-to-video formula</h2>
+  <p class="lead">Your locked persona already encodes her face, hair, wardrobe, freckles, hard hat. Spend <b>zero</b> words re-describing her — spend all of them on what happens over 10 seconds.</p>
+
+  <div class="copywrap"><div class="bar"><span>🎬 Reusable I2V template</span><button class="copybtn" data-copy="i2vtpl">Copy</button></div>
+<pre id="i2vtpl">[SUBJECT-ANCHOR: minimal — "she" / "the worker", tool already in her hands
+ and contacting a surface]. [ONE ACTION ARC — a single primary beat, e.g.
+ "she pulls the tape a few inches and reads the number"]. [MOTION DETAIL —
+ breathing, weight shift hip-to-hip, loose ponytail drifting, blurred
+ coworkers far behind]. At the end she looks up into the lens with a faint
+ knowing half-smile. [CAMERA — ONE move only]. [AMBIENT — light continuity +
+ audio]. Real-time natural speed, not slow motion. Keep the reference subject
+ intact. Single continuous shot.</pre></div>
+
+  <h3>The 10-second beat sheet (three jobs max: one motion, one camera move, one consistency rule)</h3>
+  <div class="card" style="padding:8px 20px">
+    <div class="beat"><span class="t">0–2s</span><span><b>Settle</b> — already mid-posture, small breath / weight shift, eyes on the work (lets the model lock the frame).</span></div>
+    <div class="beat"><span class="t">2–6s</span><span><b>The task beat</b> — the single action, the only real change.</span></div>
+    <div class="beat"><span class="t">6–8s</span><span><b>Complete + reset</b> — lower/relax the tool, small nod, brush dust (stops it looping into a hallucinated 2nd motion).</span></div>
+    <div class="beat"><span class="t">8–10s</span><span><b>Look-to-camera</b> — eyes lift, faint half-smile, one breath (the persona hook, near-zero motion budget).</span></div>
+  </div>
+
+  <h3>The DON'Ts — each one is a melt guarantee</h3>
+  <ul class="tick bad-list">
+    <li><b>Don't stack actions</b> ("measures, then drills, then waves") → blends to mush. One verb.</li>
+    <li><b>Don't re-describe her face/hair/clothes</b> → identity drift (diffusion treats a restated face as a new prior and morphs it). Say <code class="k">keep the reference subject intact</code>.</li>
+    <li><b>Don't fight camera against subject</b> ("camera pulls back while she runs toward camera") → net motion ≈ 0, looks frozen. One moves, one holds.</li>
+    <li><b>Don't introduce a new object mid-clip</b> (reach off-frame, pick a plank off the ground) → it morphs into existence. Everything visible at t=0.</li>
+    <li><b>Don't leave motion vague</b> ("make it move") → tiny/no motion. Name a specific, directional, physical motion.</li>
+    <li><b>Don't ask for slow-mo or glassy camera</b> → that IS the "AI floaty" tell. Add <code class="k">real-time natural speed, not slow motion</code>, <code class="k">handheld, subtle shake, phone-shot documentary look</code>, and name contact points (tool on the board, feet planted) = gravity = not floating.</li>
+  </ul>
+  <div class="note good"><b>Camera vocab that works:</b> static/locked-off (safest), slow push-in, gentle dolly-in, tracking, low-angle, eye-level, rack focus. <b>Avoid</b> orbits, drone moves, and any shot where camera + subject both travel. <br><b>If a task keeps melting, fix the START FRAME, not the prompt</b> — regenerate the still so the tool is already touching a surface in her hands, then re-run.</div>
+</section>
+
+<!-- PROMPTS -->
+<section id="prompts" class="reveal">
+  <p class="kicker">For your exact image</p>
+  <h2><span class="n">03</span>6 ready-to-use ~10s prompts</h2>
+  <p class="lead">Each a different real task + different camera, no meta-negation, no face re-description. Copy as-is. <b>Test 3.1 first</b> — lowest artifact risk.</p>
+
+  <div class="copywrap"><div class="bar"><span>3.1 · Spirit level check <span class="tag safe">test this first</span></span><button class="copybtn" data-copy="p1">Copy</button></div>
+<pre id="p1">She holds the spirit level flat against the steel framing at chest height,
+both hands steady on it. She nudges it a touch to true it up, eyes flicking
+down to the bubble, then gives a small satisfied nod. Subtle secondary motion:
+chest rising with a breath, a hip-to-hip weight shift, ponytail drifting
+slightly in the breeze, two blurred coworkers moving far behind her. At the
+end she lifts her eyes to the lens with a faint knowing half-smile. Camera
+locked off with a hint of handheld shake. Warm golden-hour light stays
+constant; ambient jobsite hum, distant power tool. Real-time natural speed,
+not slow motion. Single continuous shot. Keep the reference subject intact.</pre></div>
+
+  <div class="copywrap"><div class="bar"><span>3.2 · Tape-measure read</span><button class="copybtn" data-copy="p2">Copy</button></div>
+<pre id="p2">The tape measure is already pulled a few inches, the blade lying flat against
+a stud, one hand on the case and one pinching the tab. She draws the tape a
+couple more inches and glances at the number, then a tiny approving nod and
+tucks a loose strand of hair back. Subtle secondary motion: a slow breath,
+weight settling onto one hip, dust drifting in the light, blurred workers far
+behind. At the end she looks up into the lens with a soft half-smile. Camera
+holds a very slow push-in over the full shot. Golden-hour light holds steady;
+faint tape-reel click, distant site chatter. Real-time natural speed, not slow
+motion. Single continuous shot. Keep the reference subject intact.</pre></div>
+
+  <div class="copywrap"><div class="bar"><span>3.3 · Cordless drill drive</span><button class="copybtn" data-copy="p3">Copy</button></div>
+<pre id="p3">The cordless drill is already tip-to-board on a steel bracket at chest height,
+both hands in a natural grip. She squeezes the trigger and the drill dips
+slightly into the board, then eases back and blows the sawdust away. Subtle
+secondary motion: shoulders rising with a breath, a small weight shift, hi-vis
+vest shifting, blurred coworkers far in the background. At the end she raises
+her eyes to the camera with a faint knowing smile. Low-angle shot, locked off
+with subtle handheld shake. Warm sunset light stays constant; brief drill whir,
+ambient site noise. Real-time natural speed, not slow motion. Single continuous
+shot. Keep the reference subject intact.</pre></div>
+
+  <div class="copywrap"><div class="bar"><span>3.4 · Mark a line (pencil + speed square)</span><button class="copybtn" data-copy="p4">Copy</button></div>
+<pre id="p4">A speed square is held flat against a plank, the pencil tip already touching
+the wood at the square's edge. She drags the pencil a short line along the
+square, straightens up, and tucks the pencil behind her ear. Subtle secondary
+motion: a natural blink, a breath, weight shifting hip to hip, ponytail moving
+a little, blurred coworkers far behind. At the end she glances up into the lens
+with a faint half-smile. Camera slowly tracks a few inches to the right. Golden
+light holds steady; soft pencil scratch, distant hammering. Real-time natural
+speed, not slow motion. Single continuous shot. Keep the reference subject intact.</pre></div>
+
+  <div class="copywrap"><div class="bar"><span>3.5 · Carry a plank on the shoulder <span class="tag hi">higher reward</span></span><button class="copybtn" data-copy="p5">Copy</button></div>
+<pre id="p5">A long timber plank is already balanced on her shoulder, one hand steadying it
+near her collarbone. She settles the plank with a small weight shift and a
+half-step to plant her stance, breathing out. Subtle secondary motion: chest
+rising, hi-vis vest and ponytail shifting with the movement, blurred workers
+far behind in the haze. At the end she turns her eyes to the lens with a faint
+knowing half-smile. Camera holds steady, slight handheld shake. Warm
+golden-hour light stays constant; wood creak, ambient jobsite hum. Real-time
+natural speed, not slow motion. Single continuous shot. Keep the reference
+subject intact. The plank stays rigid and steady.</pre></div>
+
+  <div class="copywrap"><div class="bar"><span>3.6 · Wipe brow + look to camera <span class="tag safe">near-zero risk</span></span><button class="copybtn" data-copy="p6">Copy</button></div>
+<pre id="p6">She lifts a gloved forearm and wipes her brow, then lowers her arm and lets out
+a slow breath, a light sheen on her skin in the warm light. Subtle secondary
+motion: shoulders rising and settling, a hip-to-hip weight shift, ponytail
+drifting in the breeze, dust motes floating, blurred coworkers far behind. At
+the end she looks directly into the lens with a faint knowing half-smile and
+one calm breath. Camera very slow push-in over the full shot. Golden-hour light
+holds constant; ambient site hum, distant chatter. Real-time natural speed, not
+slow motion. Single continuous shot. Keep the reference subject intact.</pre></div>
+</section>
+
+<!-- FIX -->
+<section id="fix" class="reveal">
+  <p class="kicker">When it glitches</p>
+  <h2><span class="n">04</span>Quick-fix table</h2>
+  <div class="tbl"><table>
+    <tr><th>Symptom</th><th>Cause</th><th>Do this</th></tr>
+    <tr><td><b>Returns text/blank, no output</b></td><td>Safety classifier tripped — often by YOUR words ("suggestive", "no nudity", "sexy")</td><td>Delete all safety-negation words; describe the clothed reality positively; re-roll</td></tr>
+    <tr><td><b>Barely moves / frozen</b></td><td>Vague motion, or camera + subject fighting (net displacement ≈ 0)</td><td>Name one specific directional motion; make camera + subject cooperate (one moves, one holds)</td></tr>
+    <tr><td><b>Face morphs / drifts</b></td><td>You re-described her face/hair/wardrobe → identity-embedding drift</td><td>Remove all appearance description; add <code class="k">keep the reference subject intact</code></td></tr>
+    <tr><td><b>Hands/tool melt</b></td><td>Tool not in hand at t=0, or a big two-handed motion</td><td>Regenerate start frame with the tool already contacting a surface; keep motion small</td></tr>
+    <tr><td><b>Object spawns from nowhere</b></td><td>You asked for something not visible at t=0</td><td>Put everything the clip needs into the start frame; animate only what's already visible</td></tr>
+    <tr><td><b>"AI floaty" dreamy look</b></td><td>Slow-mo default + glassy camera + hazy bloom</td><td>Add "real-time natural speed, not slow motion", "handheld subtle shake, phone-shot look"; name contact points</td></tr>
+    <tr><td><b>Loops into a weird 2nd motion</b></td><td>No "reset" beat; model fills leftover time</td><td>Add the 6–8s complete/reset beat (lower tool, small nod) before the look-to-camera</td></tr>
+    <tr><td><b>Prompt partly ignored</b></td><td>Overload / contradiction / buried key detail</td><td>Cut to three jobs (one motion, one camera, one consistency rule); order the clauses</td></tr>
+    <tr><td><b>Garbled text in the still</b></td><td>Too much text, or Flash tier</td><td>Shorten; put exact copy in quotes; use Pro; raise to 2K/4K</td></tr>
+    <tr><td><b>Small face mangled in the still</b></td><td>Composed too wide / low res</td><td>Compose closer; request <code class="k">2K</code> or <code class="k">4K</code> (uppercase K)</td></tr>
+    <tr><td><b>Still melts no matter the prompt</b></td><td>It's an image problem, not a text problem</td><td>Fix the START FRAME, not the prompt — then re-run the same video prompt</td></tr>
+  </table></div>
+</section>
+
+</main>
+
+<footer><div class="wrap">
+  <b>ai-persona</b> · prompt mastery · internal, not for distribution · noindex<br>
+  <a href="index.html">← Strategy</a> · <a href="production.html">Production</a> · <a href="build.html">Build</a> · <a href="loop.html">Loop</a>
+</div></footer>
+
+<script>
+var prog=document.getElementById('prog');
+addEventListener('scroll',function(){var h=document.documentElement,max=h.scrollHeight-h.clientHeight;
+  prog.style.width=(max>0?(h.scrollTop||document.body.scrollTop)/max*100:0)+'%';},{passive:true});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.06});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+document.querySelectorAll('.copybtn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var el=document.getElementById(btn.getAttribute('data-copy'));if(!el)return;
+    var text=el.innerText;
+    function ok(){var o=btn.textContent;btn.textContent='✓ Copied';btn.classList.add('done');setTimeout(function(){btn.textContent=o;btn.classList.remove('done')},1500)}
+    function fb(){try{var ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';
+      document.body.appendChild(ta);ta.focus();ta.select();var d=document.execCommand('copy');document.body.removeChild(ta);
+      if(d)ok();else alert('Copy failed — select manually.')}catch(e){alert('Copy failed — select manually.')}}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(ok).catch(fb)}else{fb()}
+  });
+});
+</script>
