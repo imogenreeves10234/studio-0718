@@ -1,0 +1,246 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Build It — Exact Stack, Start to Finish</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%9B%A0%EF%B8%8F%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#0a0b10;--card:#13151f;--card2:#171a26;--line:#242838;--line2:#2f3346;
+  --txt:#e7e9f2;--mut:#9aa0b4;--dim:#6d7288;
+  --a1:#ff5cae;--a2:#a24bff;--a3:#39c6ff;--good:#37d9a0;--warn:#ffb84d;--bad:#ff6b6b;
+  --grad:linear-gradient(100deg,var(--a1),var(--a2) 55%,var(--a3));--r:16px;font-synthesis:none;
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:
+    radial-gradient(1200px 700px at 82% -8%,rgba(162,75,255,.16),transparent 60%),
+    radial-gradient(900px 600px at 6% 4%,rgba(255,92,174,.12),transparent 55%),var(--bg);
+  color:var(--txt);font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  line-height:1.62;-webkit-font-smoothing:antialiased;letter-spacing:.1px}
+.wrap{max-width:1020px;margin:0 auto;padding:0 22px}
+a{color:var(--a3);text-decoration:none}a:hover{text-decoration:underline}
+#prog{position:fixed;top:0;left:0;height:3px;width:0;background:var(--grad);z-index:60;box-shadow:0 0 12px rgba(162,75,255,.6)}
+header{padding:64px 0 24px}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);
+  border:1px solid var(--line);background:rgba(255,255,255,.02);padding:7px 13px;border-radius:100px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--a1);box-shadow:0 0 10px var(--a1)}
+.back{font-size:13px;color:var(--mut);margin-left:8px}
+h1{font-size:clamp(27px,5vw,46px);line-height:1.05;margin:18px 0 8px;font-weight:800;letter-spacing:-.02em}
+h1 .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{font-size:clamp(15px,2.2vw,19px);color:var(--mut);max-width:800px}
+.golden{margin:20px 0 4px;border:1px solid var(--line2);border-radius:var(--r);background:linear-gradient(160deg,rgba(55,217,160,.10),var(--card));padding:15px 19px}
+.golden b{color:var(--txt)}
+nav.toc{position:sticky;top:0;z-index:40;background:rgba(10,11,16,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);margin-top:24px}
+nav.toc .wrap{display:flex;gap:6px;overflow-x:auto;padding:11px 22px;scrollbar-width:none}
+nav.toc .wrap::-webkit-scrollbar{display:none}
+nav.toc a{white-space:nowrap;font-size:13px;color:var(--mut);padding:6px 12px;border-radius:100px;border:1px solid transparent}
+nav.toc a:hover{color:var(--txt);text-decoration:none;background:rgba(255,255,255,.03);border-color:var(--line)}
+section{padding:44px 0 8px;scroll-margin-top:60px}
+.kicker{font-size:12.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--a2);font-weight:700;margin:0 0 4px}
+h2{font-size:clamp(21px,3.3vw,29px);margin:0 0 4px;font-weight:800;letter-spacing:-.02em}
+h2 .n{color:var(--dim);font-weight:700;font-size:.62em;margin-right:10px}
+.once{font-size:12px;color:var(--dim);border:1px solid var(--line);border-radius:100px;padding:2px 10px;margin-left:8px;vertical-align:middle}
+.lead{color:var(--mut);font-size:15.5px;max-width:820px;margin:6px 0 14px}
+h3{font-size:17px;margin:22px 0 6px;font-weight:700}
+ol.steps{list-style:none;counter-reset:s;padding:0;margin:12px 0}
+ol.steps>li{counter-increment:s;position:relative;padding:11px 4px 11px 46px;border-bottom:1px solid var(--line);color:var(--txt)}
+ol.steps>li:last-child{border-bottom:none}
+ol.steps>li::before{content:counter(s);position:absolute;left:6px;top:11px;width:28px;height:28px;border-radius:9px;
+  background:var(--grad);color:#08090d;font-weight:800;display:grid;place-items:center;font-size:14px}
+ol.steps>li small{display:block;color:var(--mut);font-size:13px;margin-top:2px}
+.card{background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--line);border-radius:var(--r);padding:16px 20px;margin:14px 0}
+.grid{display:grid;gap:14px}
+@media(min-width:720px){.g2{grid-template-columns:1fr 1fr}}
+.note{border-left:3px solid var(--a2);background:rgba(162,75,255,.06);padding:13px 17px;border-radius:0 12px 12px 0;margin:14px 0}
+.note.good{border-color:var(--good);background:rgba(55,217,160,.06)}
+.note.warn{border-color:var(--warn);background:rgba(255,184,77,.06)}
+.note.bad{border-color:var(--bad);background:rgba(255,107,107,.08)}
+.note b{color:var(--txt)}
+code.k{background:rgba(255,255,255,.06);border:1px solid var(--line2);border-radius:6px;padding:1px 6px;font-size:.85em;font-family:ui-monospace,Menlo,Consolas,monospace;color:#d8dcec}
+.copywrap{position:relative;margin:12px 0}
+.copywrap .bar{display:flex;justify-content:space-between;align-items:center;background:#0c0e15;border:1px solid var(--line);border-bottom:none;border-radius:12px 12px 0 0;padding:9px 14px}
+.copywrap .bar span{font-size:12.5px;color:var(--mut);font-weight:600}
+.copybtn{cursor:pointer;font:inherit;font-size:12.5px;font-weight:700;color:var(--txt);background:rgba(255,255,255,.04);border:1px solid var(--line2);padding:5px 12px;border-radius:8px;transition:.18s}
+.copybtn:hover{background:var(--grad);color:#08090d;border-color:transparent}
+.copybtn.done{background:var(--good);color:#08120d;border-color:transparent}
+pre{margin:0;background:#0c0e15;border:1px solid var(--line);border-radius:0 0 12px 12px;padding:15px;overflow-x:auto;
+  font-family:"SF Mono",ui-monospace,"JetBrains Mono",Menlo,Consolas,monospace;font-size:12.5px;line-height:1.7;color:#cdd3e6;white-space:pre-wrap}
+ul.tick{list-style:none;padding:0;margin:10px 0}
+ul.tick li{position:relative;padding:5px 0 5px 26px;color:var(--mut)}
+ul.tick li::before{content:"";position:absolute;left:4px;top:12px;width:7px;height:7px;border-radius:2px;background:var(--grad)}
+ul.tick li b{color:var(--txt)}
+.must{border:1px solid var(--line2);border-radius:var(--r);background:linear-gradient(160deg,rgba(255,92,174,.10),var(--card));padding:18px 22px;margin:14px 0}
+.must h3{margin-top:0}
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+.mut{color:var(--mut)}.dim{color:var(--dim)}.good{color:var(--good)}.warn{color:var(--warn)}.bad{color:var(--bad)}
+footer{border-top:1px solid var(--line);margin-top:52px;padding:28px 0 60px;color:var(--dim);font-size:13.5px}
+</style>
+
+<div id="prog"></div>
+
+<header><div class="wrap">
+  <span class="eyebrow"><span class="dot"></span> Build It · ai-persona</span><a href="index.html" class="back">← strategy</a> · <a href="production.html" class="back" style="margin-left:0">production</a> · <a href="loop.html" class="back" style="margin-left:0">loop</a>
+  <h1>Build it — the <span class="g">exact stack</span>, start to finish</h1>
+  <p class="sub">Everything runs FREE and LOCAL on your beast (RTX PRO 6000 + 5090). Veo 3 is the only paid piece, and it's optional — a free local model makes the videos too. Do Parts 0–1 once, Part 2 once per girl, Part 3 every video.</p>
+  <div class="golden"><b>The whole kit in one line:</b> ComfyUI + Flux.1 dev (images) + PuLID + ControlNet + FaceDetailer + FluxGym (locks her face) + Wan 2.2 (free video) — with Veo 3 kept for the money shots. All free/local except Veo.</div>
+</div></header>
+
+<nav class="toc"><div class="wrap">
+  <a href="#machine">0 · Machine</a>
+  <a href="#install">1 · Install</a>
+  <a href="#persona">2 · Create her</a>
+  <a href="#video">3 · Each video</a>
+  <a href="#fork">Free vs Veo 3</a>
+  <a href="#must">Is this everything?</a>
+</div></nav>
+
+<main class="wrap">
+
+<!-- MACHINE -->
+<section id="machine" class="reveal">
+  <p class="kicker">Do first</p>
+  <h2><span class="n">0</span>Prep the machine<span class="once">once</span></h2>
+  <div class="note bad"><b>The #1 thing that breaks new installs:</b> your 5090 and PRO 6000 are <b>Blackwell</b> cards. Normal PyTorch won't run on them — ComfyUI will error or fall back to CPU. You MUST use the CUDA 12.8 build (step below). Miss this and nothing works.</div>
+  <ol class="steps">
+    <li><b>Update NVIDIA driver to 570+ and install CUDA Toolkit 12.8+.</b><small>Required for Blackwell (sm_120). Older CUDA = dead on arrival.</small></li>
+    <li><b>Install Python 3.11 (or 3.12), git, and ffmpeg</b> (ffmpeg must be on PATH).<small>Avoid Python 3.13 — some nodes lag. ffmpeg handles all video in/out.</small></li>
+    <li><b>Make a free HuggingFace account</b> (you'll accept the Flux license to download it).</li>
+    <li><b>Free ~500 GB on a fast NVMe SSD</b> for models.<small>Slow HDD = everything crawls. This is not optional at this scale.</small></li>
+  </ol>
+</section>
+
+<!-- INSTALL -->
+<section id="install" class="reveal">
+  <p class="kicker">The stack</p>
+  <h2><span class="n">1</span>Install ComfyUI + everything<span class="once">once</span></h2>
+  <ol class="steps">
+    <li><b>Install ComfyUI</b> (git clone) and make a fresh Python venv for it.</li>
+    <li><b>Install PyTorch for Blackwell</b> — this exact command, inside the venv. Then start ComfyUI once to confirm it sees the GPU.</li>
+  </ol>
+  <div class="copywrap"><div class="bar"><span>⚙️ PyTorch for Blackwell (run in the ComfyUI venv)</span><button class="copybtn" data-copy="torch">Copy</button></div>
+<pre id="torch">pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu128
+
+# Do NOT install xformers — it breaks on Blackwell. ComfyUI's native attention is fine.</pre></div>
+  <ol class="steps" start="3" style="counter-reset:s 2">
+    <li><b>Install ComfyUI Manager</b> (the first custom node). You'll install everything else through it with one click each.</li>
+    <li><b>Download the Flux.1 dev model files</b> into these exact folders.</li>
+  </ol>
+  <div class="copywrap"><div class="bar"><span>📦 Flux.1 dev — files → folders</span><button class="copybtn" data-copy="fluxfiles">Copy</button></div>
+<pre id="fluxfiles">ComfyUI/models/diffusion_models/   flux1-dev.safetensors
+ComfyUI/models/text_encoders/      clip_l.safetensors
+ComfyUI/models/text_encoders/      t5xxl_fp16.safetensors
+ComfyUI/models/vae/                ae.safetensors
+
+# Flux is gated: log in to HuggingFace + accept the license, or downloads fail (403).</pre></div>
+  <ol class="steps" start="5" style="counter-reset:s 4">
+    <li><b>Install the consistency nodes</b> via ComfyUI Manager (search each name, click install). These are what keep her the same girl every time — not optional.</li>
+  </ol>
+  <div class="copywrap"><div class="bar"><span>🧩 Custom nodes (install via ComfyUI Manager)</span><button class="copybtn" data-copy="nodes">Copy</button></div>
+<pre id="nodes">ComfyUI-PuLID-Flux        face / identity lock   (best for Flux in 2026; pulls InsightFace)
+FLUX.1 ControlNet Union-Pro 2.0   pose + depth in one   -> models/controlnet/
+ComfyUI-Impact-Pack + Impact-Subpack   FaceDetailer (clean face)
+   -> also drop a detector model  face_yolov8m.pt  into  models/ultralytics/bbox/
+ComfyUI-SUPIR             realism upscale        (needs any SDXL checkpoint in models/checkpoints/)
+ComfyUI-ReActor           face-swap rescue for stubborn shots (handy, not required)</pre></div>
+  <ol class="steps" start="6" style="counter-reset:s 5">
+    <li><b>Install FluxGym</b> (the LoRA trainer — locks her face into a file) and the <b>Wan 2.2</b> video model.<small>FluxGym = one web UI, trains on your card in minutes. Wan 2.2 = free local video (next).</small></li>
+  </ol>
+  <div class="copywrap"><div class="bar"><span>🎞️ Free local video — Wan 2.2 (Apache-2.0, commercial OK)</span><button class="copybtn" data-copy="wan">Copy</button></div>
+<pre id="wan">Wan 2.2 14B image-to-video   -> ComfyUI/models/diffusion_models/
+umt5 text encoder            -> ComfyUI/models/text_encoders/
+Wan 2.2 VAE                  -> ComfyUI/models/vae/
+
+# Official ComfyUI workflow: docs.comfy.org/tutorials/video/wan/wan2_2
+# ~5s clips at 720p; chain the last frame to extend. Your 96GB card runs the 14B easily.</pre></div>
+  <div class="note good"><b>Done.</b> Your machine is now a full persona factory — image gen, face-lock, LoRA training, and free video, all local.</div>
+</section>
+
+<!-- PERSONA -->
+<section id="persona" class="reveal">
+  <p class="kicker">Make the girl</p>
+  <h2><span class="n">2</span>Create the persona<span class="once">once per girl</span></h2>
+  <ol class="steps">
+    <li><b>Hero face.</b> Run the corrected <a href="production.html#persona">seed prompt</a> in ComfyUI (Flux.1 dev), make ~10, pick the single best face. Save it.<small>Young + attractive is the whole hook — use the fixed prompt, not the old one.</small></li>
+    <li><b>Dataset.</b> From that hero, generate 20–30 varied shots (different angles/expressions) with PuLID keeping the face identical. Keep the ~25 cleanest.</li>
+    <li><b>Train her LoRA.</b> Feed those ~25 into FluxGym, ~1,500–2,000 steps → one file that IS her face forever.</li>
+    <li><b>Build the Identity Bank.</b> Generate her locked front / 3-4 / profile / medium / full-body stills (LoRA + PuLID + ControlNet + FaceDetailer → SUPIR). You reuse these as reference on every future image.</li>
+  </ol>
+</section>
+
+<!-- VIDEO -->
+<section id="video" class="reveal">
+  <p class="kicker">The repeatable part</p>
+  <h2><span class="n">3</span>Make each video<span class="once">repeat</span></h2>
+  <ol class="steps">
+    <li><b>Still.</b> Generate the shot in ComfyUI (LoRA + PuLID + ControlNet pose + FaceDetailer), then finish with SUPIR + a touch of grain.</li>
+    <li><b>Animate the still →</b> pick one:<small><b>Free:</b> Wan 2.2 (local, run it on your 2nd GPU). &nbsp;•&nbsp; <b>Best:</b> Veo 3 via your veo-flow-multi — for money shots + when you want built-in audio. Use the <a href="production.html#templates">8 Veo prompt templates</a>.</small></li>
+    <li><b>Only if she talks:</b> clone her voice with <b>Chatterbox</b> (free, commercial-safe), then lip-sync with <b>LatentSync</b>.<small>Skip this entirely for silent + voiceover-in-edit clips.</small></li>
+    <li><b>Edit.</b> Assemble 9:16 in <b>CapCut</b> (easiest auto-captions) or <b>Kdenlive</b> (fully free). Add the hook text, captions, CTA; cover any watermark.</li>
+    <li><b>Post</b> manually to Facebook.</li>
+  </ol>
+</section>
+
+<!-- FORK -->
+<section id="fork" class="reveal">
+  <p class="kicker">The one choice you asked about</p>
+  <h2>Free (Wan 2.2) vs Veo 3</h2>
+  <div class="grid g2">
+    <div class="card"><h3 style="margin-top:0" class="good">Wan 2.2 — free, local</h3><ul class="tick">
+      <li>All your <b>volume</b>, drafts, and iteration — zero cost.</li>
+      <li>Runs on your beast; commercial use allowed.</li>
+      <li>Silent — you add voice/music in the edit.</li>
+    </ul></div>
+    <div class="card"><h3 style="margin-top:0">Veo 3 — paid, for money shots</h3><ul class="tick">
+      <li>Higher cinematic fidelity + better physics on hard motion.</li>
+      <li><b>Built-in synced audio/dialogue</b> in the clip.</li>
+      <li>Use only for the few hero clips that need the polish.</li>
+    </ul></div>
+  </div>
+  <p class="mut">Simple rule: <b>Wan for the daily batch, Veo 3 for the occasional showpiece.</b> You can ship the whole thing with $0 of video if you want.</p>
+</section>
+
+<!-- MUST -->
+<section id="must" class="reveal">
+  <p class="kicker">Your question, answered straight</p>
+  <h2>Is this everything? The MUST-haves</h2>
+  <div class="must">
+    <h3>✅ Yes — the core kit (all free/local except Veo)</h3>
+    <p style="margin:0"><b>ComfyUI · Flux.1 dev · PuLID · ControlNet Union-Pro · FaceDetailer · FluxGym (LoRA) · Wan 2.2 (free video)</b> — plus <b>Veo 3</b> only for money shots. That's the pipeline, start to finish.</p>
+  </div>
+  <div class="note bad"><b>Don't-forget MUSTs (these silently break it if missed):</b>
+    <ul class="tick" style="margin-bottom:0">
+      <li><b>Blackwell PyTorch:</b> the <code class="k">cu128</code> build + driver 570+ / CUDA 12.8+, and <b>no xformers</b> — or ComfyUI won't run on your cards.</li>
+      <li><b>FaceDetailer needs its detector model</b> (<code class="k">face_yolov8m.pt</code>) — it does nothing without it.</li>
+      <li><b>ffmpeg on PATH</b> · <b>HuggingFace login</b> (Flux is gated) · <b>onnxruntime-gpu</b> · <b>~500 GB fast SSD</b>.</li>
+      <li><b>Two GPUs = two ComfyUI instances</b> (<code class="k">--cuda-device 0</code> / <code class="k">--cuda-device 1</code>): run images on one card, Wan video on the other. There's no auto-pooling.</li>
+    </ul>
+  </div>
+  <div class="note"><b>Only if the persona talks:</b> add <b>Chatterbox</b> (voice clone) + <b>LatentSync</b> (lip-sync). For silent/voiceover clips you don't need either.</div>
+  <p class="mut" style="font-size:15px"><b>That's the whole kit — nothing else is a MUST.</b> Everything beyond this list (extra models, fancier upscalers, FLUX.2 for hero stills) is a nice-to-have, not required to ship.</p>
+</section>
+
+</main>
+
+<footer><div class="wrap">
+  <b>ai-persona</b> · build guide · internal, not for distribution · noindex<br>
+  <a href="index.html">← Strategy</a> · <a href="production.html">Production</a> · <a href="loop.html">Loop</a>
+</div></footer>
+
+<script>
+var prog=document.getElementById('prog');
+addEventListener('scroll',function(){var h=document.documentElement,max=h.scrollHeight-h.clientHeight;
+  prog.style.width=(max>0?(h.scrollTop||document.body.scrollTop)/max*100:0)+'%';},{passive:true});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.06});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+document.querySelectorAll('.copybtn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var el=document.getElementById(btn.getAttribute('data-copy'));if(!el)return;
+    var text=el.innerText;
+    function ok(){var o=btn.textContent;btn.textContent='✓ Copied';btn.classList.add('done');setTimeout(function(){btn.textContent=o;btn.classList.remove('done')},1500)}
+    function fb(){try{var ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';
+      document.body.appendChild(ta);ta.focus();ta.select();var d=document.execCommand('copy');document.body.removeChild(ta);
+      if(d)ok();else alert('Copy failed — select manually.')}catch(e){alert('Copy failed — select manually.')}}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(ok).catch(fb)}else{fb()}
+  });
+});
+</script>
