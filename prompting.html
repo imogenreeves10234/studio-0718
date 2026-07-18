@@ -1,7 +1,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Prompt Mastery — Nano Banana Pro + Omni-Flash</title>
+<title>Prompt Catalog — Blue-Collar Baddie (NB Pro → Omni-Flash)</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%AF%3C/text%3E%3C/svg%3E">
 <style>
 :root{
@@ -16,254 +16,245 @@ body{margin:0;background:
     radial-gradient(900px 600px at 6% 4%,rgba(255,92,174,.12),transparent 55%),var(--bg);
   color:var(--txt);font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   line-height:1.62;-webkit-font-smoothing:antialiased;letter-spacing:.1px}
-.wrap{max-width:1020px;margin:0 auto;padding:0 22px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 22px}
 a{color:var(--a3);text-decoration:none}a:hover{text-decoration:underline}
 #prog{position:fixed;top:0;left:0;height:3px;width:0;background:var(--grad);z-index:60;box-shadow:0 0 12px rgba(162,75,255,.6)}
-header{padding:62px 0 22px}
+header{padding:60px 0 20px}
 .eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);
   border:1px solid var(--line);background:rgba(255,255,255,.02);padding:7px 13px;border-radius:100px}
 .dot{width:7px;height:7px;border-radius:50%;background:var(--a1);box-shadow:0 0 10px var(--a1)}
 .back{font-size:13px;color:var(--mut);margin-left:8px}
-h1{font-size:clamp(26px,5vw,44px);line-height:1.06;margin:18px 0 8px;font-weight:800;letter-spacing:-.02em}
+h1{font-size:clamp(25px,5vw,42px);line-height:1.07;margin:16px 0 8px;font-weight:800;letter-spacing:-.02em}
 h1 .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-.sub{font-size:clamp(15px,2.2vw,18px);color:var(--mut);max-width:820px}
-.golden{margin:20px 0 4px;border:1px solid var(--line2);border-radius:var(--r);background:linear-gradient(160deg,rgba(255,184,77,.12),var(--card));padding:15px 19px}
-.golden b{color:var(--txt)}
-nav.toc{position:sticky;top:0;z-index:40;background:rgba(10,11,16,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);margin-top:24px}
-nav.toc .wrap{display:flex;gap:6px;overflow-x:auto;padding:11px 22px;scrollbar-width:none}
+.sub{font-size:clamp(15px,2.2vw,18px);color:var(--mut);max-width:840px}
+nav.toc{position:sticky;top:0;z-index:40;background:rgba(10,11,16,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);margin-top:22px}
+nav.toc .wrap{display:flex;gap:5px;overflow-x:auto;padding:11px 22px;scrollbar-width:none}
 nav.toc .wrap::-webkit-scrollbar{display:none}
-nav.toc a{white-space:nowrap;font-size:13px;color:var(--mut);padding:6px 12px;border-radius:100px;border:1px solid transparent}
+nav.toc a{white-space:nowrap;font-size:12.5px;color:var(--mut);padding:6px 11px;border-radius:100px;border:1px solid transparent}
 nav.toc a:hover{color:var(--txt);text-decoration:none;background:rgba(255,255,255,.03);border-color:var(--line)}
-section{padding:44px 0 8px;scroll-margin-top:60px}
+section{padding:40px 0 8px;scroll-margin-top:58px}
 .kicker{font-size:12.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--a2);font-weight:700;margin:0 0 4px}
-h2{font-size:clamp(21px,3.3vw,29px);margin:0 0 6px;font-weight:800;letter-spacing:-.02em}
+h2{font-size:clamp(20px,3.2vw,28px);margin:0 0 6px;font-weight:800;letter-spacing:-.02em}
 h2 .n{color:var(--dim);font-weight:700;font-size:.62em;margin-right:10px}
 .lead{color:var(--mut);font-size:15.5px;max-width:840px;margin:6px 0 14px}
-h3{font-size:17px;margin:22px 0 6px;font-weight:700}
-.card{background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--line);border-radius:var(--r);padding:16px 20px;margin:14px 0}
-.grid{display:grid;gap:14px}
-@media(min-width:720px){.g2{grid-template-columns:1fr 1fr}}
-.note{border-left:3px solid var(--a2);background:rgba(162,75,255,.06);padding:13px 17px;border-radius:0 12px 12px 0;margin:14px 0}
-.note.good{border-color:var(--good);background:rgba(55,217,160,.06)}
-.note.warn{border-color:var(--warn);background:rgba(255,184,77,.06)}
+h3{font-size:16.5px;margin:20px 0 6px;font-weight:700}
+.rule{background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--line);border-radius:var(--r);padding:16px 20px;margin:12px 0}
+.rule h3{margin-top:0}
+ul.tick{list-style:none;padding:0;margin:8px 0}
+ul.tick li{position:relative;padding:5px 0 5px 24px;color:var(--mut);font-size:14.5px}
+ul.tick li::before{content:"";position:absolute;left:3px;top:12px;width:7px;height:7px;border-radius:2px;background:var(--grad)}
+ul.tick li b{color:var(--txt)}
+.wordbox{display:grid;gap:12px;margin:12px 0}
+@media(min-width:640px){.wordbox{grid-template-columns:1fr 1fr}}
+.wl{border-radius:12px;padding:12px 15px;font-size:13.5px;line-height:1.7}
+.wl.no{border:1px solid rgba(255,107,107,.3);background:rgba(255,107,107,.06)}
+.wl.yes{border:1px solid rgba(55,217,160,.3);background:rgba(55,217,160,.06)}
+.wl b{display:block;margin-bottom:4px;font-size:12px;letter-spacing:.05em;text-transform:uppercase}
+.wl.no b{color:var(--bad)}.wl.yes b{color:var(--good)}
+.wl code{font-family:ui-monospace,Menlo,monospace;color:#cdd3e6}
+.note{border-left:3px solid var(--a2);background:rgba(162,75,255,.06);padding:12px 16px;border-radius:0 12px 12px 0;margin:14px 0}
 .note.bad{border-color:var(--bad);background:rgba(255,107,107,.08)}
+.note.good{border-color:var(--good);background:rgba(55,217,160,.06)}
 .note b{color:var(--txt)}
 code.k{background:rgba(255,255,255,.06);border:1px solid var(--line2);border-radius:6px;padding:1px 6px;font-size:.85em;font-family:ui-monospace,Menlo,Consolas,monospace;color:#d8dcec}
-ul.tick{list-style:none;padding:0;margin:10px 0}
-ul.tick li{position:relative;padding:5px 0 5px 26px;color:var(--mut)}
-ul.tick li::before{content:"";position:absolute;left:4px;top:12px;width:7px;height:7px;border-radius:2px;background:var(--grad)}
-ul.tick li b{color:var(--txt)}
-ul.bad-list li::before{background:var(--bad)}
-ul.good-list li::before{background:var(--good)}
-.beat{display:flex;gap:12px;align-items:baseline;padding:7px 0;border-bottom:1px solid var(--line)}
-.beat:last-child{border-bottom:none}
-.beat .t{font-family:ui-monospace,monospace;font-size:12.5px;color:var(--a3);min-width:62px;font-weight:700}
-.tbl{width:100%;overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);margin:16px 0}
-table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:640px}
-th,td{text-align:left;padding:11px 13px;border-bottom:1px solid var(--line);vertical-align:top}
-th{background:rgba(255,255,255,.025);color:var(--mut);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase}
-tr:last-child td{border-bottom:none}
-td b{color:var(--txt)}
-.copywrap{position:relative;margin:12px 0}
-.copywrap .bar{display:flex;justify-content:space-between;align-items:center;background:#0c0e15;border:1px solid var(--line);border-bottom:none;border-radius:12px 12px 0 0;padding:9px 14px}
-.copywrap .bar span{font-size:12.5px;color:var(--mut);font-weight:600}
-.copybtn{cursor:pointer;font:inherit;font-size:12.5px;font-weight:700;color:var(--txt);background:rgba(255,255,255,.04);border:1px solid var(--line2);padding:5px 12px;border-radius:8px;transition:.18s}
+.pack{border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;margin:18px 0;background:linear-gradient(180deg,var(--card2),var(--card))}
+.pack .ph{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:6px}
+.pack .num{font-size:13px;font-weight:800;color:#08090d;background:var(--grad);border-radius:8px;padding:3px 9px}
+.pack .name{font-size:18px;font-weight:800}
+.pack .meta{font-size:12.5px;color:var(--dim)}
+.plabel{font-size:11.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--a3);margin:12px 0 0}
+.plabel.vid{color:var(--a1)}
+.copywrap{position:relative;margin:6px 0}
+.copywrap .bar{display:flex;justify-content:space-between;align-items:center;background:#0c0e15;border:1px solid var(--line);border-bottom:none;border-radius:12px 12px 0 0;padding:8px 14px}
+.copywrap .bar span{font-size:12px;color:var(--mut);font-weight:600}
+.copybtn{cursor:pointer;font:inherit;font-size:12px;font-weight:700;color:var(--txt);background:rgba(255,255,255,.04);border:1px solid var(--line2);padding:4px 11px;border-radius:8px;transition:.18s}
 .copybtn:hover{background:var(--grad);color:#08090d;border-color:transparent}
 .copybtn.done{background:var(--good);color:#08120d;border-color:transparent}
-pre{margin:0;background:#0c0e15;border:1px solid var(--line);border-radius:0 0 12px 12px;padding:15px;overflow-x:auto;
-  font-family:"SF Mono",ui-monospace,"JetBrains Mono",Menlo,Consolas,monospace;font-size:12.5px;line-height:1.7;color:#cdd3e6;white-space:pre-wrap}
-.tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:100px;margin-left:8px}
-.tag.safe{color:var(--good);border:1px solid rgba(55,217,160,.4);background:rgba(55,217,160,.08)}
-.tag.hi{color:var(--warn);border:1px solid rgba(255,184,77,.4);background:rgba(255,184,77,.08)}
+pre{margin:0;background:#0c0e15;border:1px solid var(--line);border-radius:0 0 12px 12px;padding:14px;overflow-x:auto;
+  font-family:"SF Mono",ui-monospace,"JetBrains Mono",Menlo,Consolas,monospace;font-size:12.5px;line-height:1.65;color:#cdd3e6;white-space:pre-wrap}
+.tbl{width:100%;overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);margin:16px 0}
+table{width:100%;border-collapse:collapse;font-size:13px;min-width:680px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:rgba(255,255,255,.025);color:var(--mut);font-weight:600;font-size:11.5px;letter-spacing:.05em;text-transform:uppercase}
+tr:last-child td{border-bottom:none}
+td b{color:var(--txt)}
 .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
 .reveal.in{opacity:1;transform:none}
 .mut{color:var(--mut)}.dim{color:var(--dim)}.good{color:var(--good)}.warn{color:var(--warn)}.bad{color:var(--bad)}
-footer{border-top:1px solid var(--line);margin-top:52px;padding:28px 0 60px;color:var(--dim);font-size:13.5px}
+footer{border-top:1px solid var(--line);margin-top:50px;padding:26px 0 60px;color:var(--dim);font-size:13.5px}
 </style>
 
 <div id="prog"></div>
 
 <header><div class="wrap">
-  <span class="eyebrow"><span class="dot"></span> Prompt Mastery · ai-persona</span><a href="index.html" class="back">← strategy</a> · <a href="production.html" class="back" style="margin-left:0">production</a> · <a href="build.html" class="back" style="margin-left:0">build</a>
-  <h1>Prompt mastery — <span class="g">Nano Banana Pro</span> + Omni-Flash</h1>
-  <p class="sub">Two tools, two jobs: <b>Nano Banana Pro</b> (Gemini 3 Pro Image) makes/edits the locked still · <b>Omni-Flash</b> (Gemini Omni Flash — 3–10s, 720p, 24fps, native audio) animates it. Both are <b>reasoning LLMs, not tag-parsers</b> — they punish keyword soup, meta-instructions, and stacked actions. Everything here is built around that.</p>
-  <div class="golden"><b>Why your edit worked:</b> deleting <code class="k">"suggestive but not explicit / no nudity"</code> is exactly right — those words don't just fail (the model can't follow negation), they make the classifier read <b>"nudity / explicit / sexual"</b> in your string and <b>silently block your own request</b>. You were flagging yourself. Set the boundary by describing the real clothed outfit, never by disclaiming.</div>
+  <span class="eyebrow"><span class="dot"></span> Prompt Catalog · ai-persona</span><a href="index.html" class="back">← strategy</a> · <a href="build.html" class="back" style="margin-left:0">build</a>
+  <h1>The <span class="g">Blue-Collar Baddie</span> prompt catalog</h1>
+  <p class="sub">7 distinct trade-girl personas, each with a matched <b>image prompt</b> (Nano Banana Pro) + <b>video prompt</b> (Omni-Flash). Built to look like a real iPhone clip — <b>not AI slop</b> — attractive + sensual via light, sweat and gaze, grounded in real work. Mechanical sound only, no dialogue. Read the 4 rules once; the packs are self-contained.</p>
 </div></header>
 
 <nav class="toc"><div class="wrap">
-  <a href="#how">1 · How to prompt it</a>
-  <a href="#formula">2 · The I2V formula</a>
-  <a href="#prompts">3 · 6 ready prompts</a>
-  <a href="#fix">4 · Quick-fix table</a>
+  <a href="#rules">The 4 rules</a>
+  <a href="#p1">1·Construction</a>
+  <a href="#p2">2·Mechanic</a>
+  <a href="#p3">3·Welder</a>
+  <a href="#p4">4·Cowgirl</a>
+  <a href="#p5">5·Landscaper</a>
+  <a href="#p6">6·Forklift</a>
+  <a href="#p7">7·Painter</a>
+  <a href="#variety">Variety check</a>
 </div></nav>
 
 <main class="wrap">
 
-<!-- HOW -->
-<section id="how" class="reveal">
-  <p class="kicker">Rule #1: write prose, not tags</p>
-  <h2><span class="n">01</span>How to actually prompt it</h2>
-  <p class="lead">Both models reason over your prompt before rendering. Full sentences that state real spatial relationships beat Midjourney-style comma soup — a keyword list wastes their comprehension and leaves object relationships ambiguous.</p>
+<!-- RULES -->
+<section id="rules" class="reveal">
+  <p class="kicker">Read once</p>
+  <h2>The 4 rules that matter</h2>
 
-  <h3>The Nano Banana Pro still-prompt formula</h3>
-  <p class="mut">One paragraph, ~40–120 words, ordered clauses:</p>
-  <div class="copywrap"><div class="bar"><span>🖼️ Nano Banana Pro — still-prompt order</span><button class="copybtn" data-copy="stilltpl">Copy</button></div>
-<pre id="stilltpl">shot type -> subject -> wardrobe (specific garments + fit + fabric + colour)
--> pose / expression / eyeline -> setting + time -> lighting (source, direction,
-quality) -> camera (lens / focal length, aperture, angle) -> colour / mood
--> explicit aspect ratio + resolution</pre></div>
-  <ul class="tick">
-    <li>State resolution as <code class="k">1K</code> / <code class="k">2K</code> / <code class="k">4K</code> — <b>uppercase K</b> (`1k` is rejected). Faces are sharper at 2K/4K.</li>
-    <li>For edits, name <b>what to change AND what to preserve</b>: <em>"change only X to Y; keep her face, pose, lighting and the rest unchanged."</em></li>
-    <li>Iterate conversationally — refine in the next turn instead of cramming everything into one prompt.</li>
-  </ul>
-
-  <div class="grid g2">
-    <div class="card"><h3 style="margin-top:0" class="bad">✗ Meta that HURTS (delete these)</h3><ul class="tick bad-list">
-      <li><b>Safety-negation:</b> "suggestive but not explicit", "no nudity", "keep it tasteful", "sexy" — trips the silent block + does nothing.</li>
-      <li><b>Exclusions as "no X / don't show X"</b> — negation leaks ("no cars" can summon cars). Describe the positive alternative.</li>
-      <li><b>Video preamble</b> "make a video of… / turn this image into…" — gets half-parsed as content, muddies the motion. Open on the action.</li>
-    </ul></div>
-    <div class="card"><h3 style="margin-top:0" class="good">✓ Meta that HELPS (keep these)</h3><ul class="tick good-list">
-      <li><b>Craft/composition:</b> "shot on 85mm f/1.8", "keep background unchanged", "single continuous shot", "2K, 4:5".</li>
-      <li><b>Affirmative register</b> for the boundary: "editorial fashion photograph", "authentic jobsite documentary look", "catalog lighting".</li>
-      <li><b>Positive descriptions</b> of the real clothed outfit — attractiveness comes from face/build/framing, never from disclaimers.</li>
-    </ul></div>
-  </div>
-  <div class="note bad"><b>If a borderline prompt no-ops:</b> strip every flagged word, rephrase positively, and re-roll — consistency across runs isn't guaranteed, so a re-roll alone sometimes fixes it.</div>
-</section>
-
-<!-- FORMULA -->
-<section id="formula" class="reveal">
-  <p class="kicker">The image carries identity; the prompt carries time</p>
-  <h2><span class="n">02</span>The image-to-video formula</h2>
-  <p class="lead">Your locked persona already encodes her face, hair, wardrobe, freckles, hard hat. Spend <b>zero</b> words re-describing her — spend all of them on what happens over 10 seconds.</p>
-
-  <div class="copywrap"><div class="bar"><span>🎬 Reusable I2V template</span><button class="copybtn" data-copy="i2vtpl">Copy</button></div>
-<pre id="i2vtpl">[SUBJECT-ANCHOR: minimal — "she" / "the worker", tool already in her hands
- and contacting a surface]. [ONE ACTION ARC — a single primary beat, e.g.
- "she pulls the tape a few inches and reads the number"]. [MOTION DETAIL —
- breathing, weight shift hip-to-hip, loose ponytail drifting, blurred
- coworkers far behind]. At the end she looks up into the lens with a faint
- knowing half-smile. [CAMERA — ONE move only]. [AMBIENT — light continuity +
- audio]. Real-time natural speed, not slow motion. Keep the reference subject
- intact. Single continuous shot.</pre></div>
-
-  <h3>The 10-second beat sheet (three jobs max: one motion, one camera move, one consistency rule)</h3>
-  <div class="card" style="padding:8px 20px">
-    <div class="beat"><span class="t">0–2s</span><span><b>Settle</b> — already mid-posture, small breath / weight shift, eyes on the work (lets the model lock the frame).</span></div>
-    <div class="beat"><span class="t">2–6s</span><span><b>The task beat</b> — the single action, the only real change.</span></div>
-    <div class="beat"><span class="t">6–8s</span><span><b>Complete + reset</b> — lower/relax the tool, small nod, brush dust (stops it looping into a hallucinated 2nd motion).</span></div>
-    <div class="beat"><span class="t">8–10s</span><span><b>Look-to-camera</b> — eyes lift, faint half-smile, one breath (the persona hook, near-zero motion budget).</span></div>
+  <div class="rule"><h3>1 · The "prominent people" block — it's the FACE, not the words</h3>
+    <p class="mut" style="margin:0 0 6px">That gate is pixel-driven: it scores the face in your image and re-scans at the image→video step. You cannot caption your way past it.</p>
+    <ul class="tick">
+      <li><b>Originate every persona synthetically</b> — never img2img from a real photo, never write "looks like [someone]."</li>
+      <li><b>Avoid the generic "AI-supermodel" face</b> (too symmetric/filtered) — it clusters near real influencers and trips the recognizer. Bake in distinctiveness: a specific nose/jaw, slight asymmetry, a mole, freckles, unusual hair texture.</li>
+      <li><b>Lock ONE canonical face per persona and reuse that exact still.</b> The still owns identity; the video prompt owns motion only.</li>
+      <li><b>On a block, re-roll first</b> (outputs are non-deterministic — a face just over threshold usually clears on a fresh seed). If it repeats, nudge features; don't resubmit identically.</li>
+      <li><b>Age up, always.</b> The child-safety gate fires on <em>ambiguous</em> age. Read her as an adult woman (early-30s cues, mature features, professional context). If a persona keeps blocking on a suggestive beat, the fix is the face — age it up.</li>
+    </ul>
   </div>
 
-  <h3>The DON'Ts — each one is a melt guarantee</h3>
-  <ul class="tick bad-list">
-    <li><b>Don't stack actions</b> ("measures, then drills, then waves") → blends to mush. One verb.</li>
-    <li><b>Don't re-describe her face/hair/clothes</b> → identity drift (diffusion treats a restated face as a new prior and morphs it). Say <code class="k">keep the reference subject intact</code>.</li>
-    <li><b>Don't fight camera against subject</b> ("camera pulls back while she runs toward camera") → net motion ≈ 0, looks frozen. One moves, one holds.</li>
-    <li><b>Don't introduce a new object mid-clip</b> (reach off-frame, pick a plank off the ground) → it morphs into existence. Everything visible at t=0.</li>
-    <li><b>Don't leave motion vague</b> ("make it move") → tiny/no motion. Name a specific, directional, physical motion.</li>
-    <li><b>Don't ask for slow-mo or glassy camera</b> → that IS the "AI floaty" tell. Add <code class="k">real-time natural speed, not slow motion</code>, <code class="k">handheld, subtle shake, phone-shot documentary look</code>, and name contact points (tool on the board, feet planted) = gravity = not floating.</li>
-  </ul>
-  <div class="note good"><b>Camera vocab that works:</b> static/locked-off (safest), slow push-in, gentle dolly-in, tracking, low-angle, eye-level, rack focus. <b>Avoid</b> orbits, drone moves, and any shot where camera + subject both travel. <br><b>If a task keeps melting, fix the START FRAME, not the prompt</b> — regenerate the still so the tool is already touching a surface in her hands, then re-run.</div>
+  <div class="rule"><h3>2 · iPhone-real / anti-slop</h3>
+    <p class="mut" style="margin:0 0 6px">Two biggest levers: <b>(A)</b> harsh/directional light + visible skin texture at the still; <b>(B)</b> brisk real-time motion + handheld shake + hands holding a tool at the video. Short clips + occupied hands kill most artifacting on their own.</p>
+    <div class="wordbox">
+      <div class="wl no"><b>✗ Banish (summons slop)</b><code>cinematic, 8K, ultra-detailed, hyperrealistic, masterpiece, professional, flawless, perfect, smooth, glowing, elegant, graceful, stunning, glossy, polished, airbrushed, beauty, glamour, octane, render, HDR, slow motion</code></div>
+      <div class="wl yes"><b>✓ Reach for instead</b><code>candid, snapshot, handheld, amateur phone video, real-time, natural, unposed, harsh light, grain, flyaway, sweat, dust, worn</code></div>
+    </div>
+    <ul class="tick">
+      <li><b>Mix, don't stack:</b> anchor exactly ONE cue each — one motion (handheld shake), one grade (auto-exposure / no color grade), one texture (faint grain). Piling on shake + grain + vignette + "VHS" reads as a filter — its own fake. "Slightly" and "faint" are your friends.</li>
+      <li><b>Kill the tells:</b> waxy skin → <code class="k">visible pores, peach fuzz, uneven tone, faint redness on the nose</code> · HDR glow → <code class="k">hard single-source light, deep shadows, blown highlights</code> · dead eyes → <code class="k">real catchlights, natural blinks</code> · helmet hair → <code class="k">individual strands, flyaways, wisps stuck to a damp neck</code> · too-clean → <code class="k">grease, dust, dirt under the nails, a smudge of grime</code>.</li>
+    </ul>
+  </div>
+
+  <div class="rule"><h3>3 · Sensual but SFW — describe the MOTION, never the mood</h3>
+    <p class="mut" style="margin:0 0 6px">The line is pornography / sexual gratification, not attractiveness. Your whole margin: it reads "hot tradeswoman on the job," never "content made to arouse."</p>
+    <ul class="tick">
+      <li><b>Verbs of the body, not adjectives of the mood.</b> <code class="k">She lifts her hair off her neck</code> passes; <code class="k">she sensually lifts her hair</code> blocks. Same footage — the adjective is what the classifier keys on.</li>
+      <li><b>Give every sensual beat an innocent physical cause</b> — heat, sweat, exertion, hair in the way, dirty hands. The cause makes it read <em>real</em> AND gives the classifier a non-sexual rationale. Highest-leverage move in the pipeline.</li>
+      <li><b>Route the vibe through light + sweat + gaze</b> — none are body/intent words, so your sensuality budget there is unlimited. Raking light on a damp collarbone + eyes finding the lens does the work with zero flaggable tokens.</li>
+      <li><b>Stay above the collarbone or on arms/hands.</b> Safe motion targets: face, hair, neck-to-collarbone (stop there), forearms, gloves, sleeves, collar. Clothing is only <em>adjusted / tugged / rolled</em>, never opened.</li>
+      <li><b>The test:</b> "Would this clip be unremarkable in a real behind-the-scenes reel of a tradeswoman on a hot day?" Yes → it passes and reads hot-because-real.</li>
+    </ul>
+  </div>
+
+  <div class="rule"><h3>4 · The video rule</h3>
+    <ul class="tick">
+      <li>One clip = <b>one action arc</b>, present tense, unhurried, single continuous handheld take, no cuts.</li>
+      <li><b>Do NOT re-describe her face</b> (identity drift) — call her "she/her," describe what she does + how the light hits. Add <code class="k">keep the reference subject intact</code>.</li>
+      <li><b>Real-time speed</b> (I2V drifts floaty/fast — counter it). Start from an already-working pose so it <em>continues</em> a motion, not starts from static.</li>
+      <li><b>Native audio = real mechanical/machine sound only</b> — no music, no dialogue (a natural breath on a sweat-wipe is fine).</li>
+      <li><b>Three-beat shape:</b> open on a grounded work beat → land the sensual middle (hair-off-neck / sweat-wipe) → close on the look-to-camera.</li>
+    </ul>
+    <div class="note bad" style="margin-bottom:0"><b>Never write, in any prompt:</b> <code class="k">not explicit, no nudity, SFW, tasteful, safe</code> — naming the safety concept injects the exact tokens the classifier weights and silently trips the block.</div>
+  </div>
 </section>
 
-<!-- PROMPTS -->
-<section id="prompts" class="reveal">
-  <p class="kicker">For your exact image</p>
-  <h2><span class="n">03</span>6 ready-to-use ~10s prompts</h2>
-  <p class="lead">Each a different real task + different camera, no meta-negation, no face re-description. Copy as-is. <b>Test 3.1 first</b> — lowest artifact risk.</p>
+<!-- PACK 1 -->
+<section id="p1" class="reveal"><div class="pack">
+  <div class="ph"><span class="num">01</span><span class="name">Construction · Site Laborer</span><span class="meta">orange / tan / white · warm golden-hour · open site</span></div>
+  <p class="plabel">🖼️ Image prompt — Nano Banana Pro</p>
+  <div class="copywrap"><div class="bar"><span>still</span><button class="copybtn" data-copy="img1">Copy</button></div>
+<pre id="img1">A candid vertical phone photo of a woman in her early thirties working on an active construction site at golden hour. She wears a fitted white ribbed tank under an unzipped hi-vis orange safety vest hanging open, rolled-cuff tan carpenter pants and a low tool belt, a white hardhat pushed back off her forehead, one worn leather glove on. Low warm sun rakes across from the left, long shadows, an orange rim-light on her shoulders, fine dust drifting in the light. Natural skin texture with visible pores and peach fuzz, a light sheen of sweat at her hairline, faint redness on the nose, a smudge of grime on one cheek, real catchlights in her eyes, loose strands escaping her ponytail. Rebar and scaffolding behind, concrete forms. Shot on an iPhone at 1x, slightly soft, faint sensor grain, no color grade, casual off-center framing. 9:16, 2K.</pre></div>
+  <p class="plabel vid">🎬 Video prompt — Omni-Flash</p>
+  <div class="copywrap"><div class="bar"><span>motion</span><button class="copybtn" data-copy="vid1">Copy</button></div>
+<pre id="vid1">Handheld iPhone clip, real-time speed, single continuous shot. She is already leaning into a stud with a cordless impact driver; she drives the screw home in one brisk burst, the driver kicking slightly against her grip, then she straightens, drags the back of her gloved wrist across her damp brow leaving a faint streak, and her eyes drift up and settle on the lens for the last beat. Loose strands lift in the warm breeze, dust drifts through the low sun, her shoulders shift with the effort. Subtle camera shake, a small reframe, a brief auto-exposure flicker toward the sun. Keep the reference subject intact. Audio: the staccato whir of the impact driver spinning down, a ratchet clatter, faint site ambience.</pre></div>
+</div></section>
 
-  <div class="copywrap"><div class="bar"><span>3.1 · Spirit level check <span class="tag safe">test this first</span></span><button class="copybtn" data-copy="p1">Copy</button></div>
-<pre id="p1">She holds the spirit level flat against the steel framing at chest height,
-both hands steady on it. She nudges it a touch to true it up, eyes flicking
-down to the bubble, then gives a small satisfied nod. Subtle secondary motion:
-chest rising with a breath, a hip-to-hip weight shift, ponytail drifting
-slightly in the breeze, two blurred coworkers moving far behind her. At the
-end she lifts her eyes to the lens with a faint knowing half-smile. Camera
-locked off with a hint of handheld shake. Warm golden-hour light stays
-constant; ambient jobsite hum, distant power tool. Real-time natural speed,
-not slow motion. Single continuous shot. Keep the reference subject intact.</pre></div>
+<!-- PACK 2 -->
+<section id="p2" class="reveal"><div class="pack">
+  <div class="ph"><span class="num">02</span><span class="name">Auto Mechanic</span><span class="meta">navy / steel / red · cool fluorescent · tight garage</span></div>
+  <p class="plabel">🖼️ Image prompt — Nano Banana Pro</p>
+  <div class="copywrap"><div class="bar"><span>still</span><button class="copybtn" data-copy="img2">Copy</button></div>
+<pre id="img2">A candid vertical phone photo of a woman in her early thirties working in a fluorescent-lit auto bay. She wears navy mechanic's coveralls unzipped to the waist with the sleeves knotted around her hips, a grease-smudged grey cropped tee underneath, a red shop rag hanging from the back pocket, grime on her bare knuckles. A car sits up on a hoist behind her, oil-stained concrete, chrome tool chests glinting. Cold blue-white overhead tubes throw a hard clinical light with sharp shadows. Natural skin texture with visible pores, a faint sweat sheen on her collarbone, faint redness on the cheeks, a smudge of grease along her jaw, real catchlights from the tubes in her eyes, flyaway hairs. Shot on an iPhone, slightly soft, faint grain in the shadows, no color grade, phone held at chest height. 9:16, 2K.</pre></div>
+  <p class="plabel vid">🎬 Video prompt — Omni-Flash</p>
+  <div class="copywrap"><div class="bar"><span>motion</span><button class="copybtn" data-copy="vid2">Copy</button></div>
+<pre id="vid2">Handheld iPhone clip, real-time speed, one continuous take. She is already bent over the open fender; she spins a pneumatic impact wrench onto a lug nut in one quick brraap, bracing her weight against the kick, then straightens and wipes the back of her wrist slowly down the side of her neck to clear the sweat, chin lifting, and glances up into the lens as the corner of her mouth lifts. Loose hair sways, her shoulders settle, a red rag swings at her hip. Subtle handheld wobble, cold fluorescent flicker, faint auto-exposure hunt. Keep the reference subject intact. Audio: the air-impact wrench brraap and rattle over a compressor hiss and low shop hum.</pre></div>
+</div></section>
 
-  <div class="copywrap"><div class="bar"><span>3.2 · Tape-measure read</span><button class="copybtn" data-copy="p2">Copy</button></div>
-<pre id="p2">The tape measure is already pulled a few inches, the blade lying flat against
-a stud, one hand on the case and one pinching the tab. She draws the tape a
-couple more inches and glances at the number, then a tiny approving nod and
-tucks a loose strand of hair back. Subtle secondary motion: a slow breath,
-weight settling onto one hip, dust drifting in the light, blurred workers far
-behind. At the end she looks up into the lens with a soft half-smile. Camera
-holds a very slow push-in over the full shot. Golden-hour light holds steady;
-faint tape-reel click, distant site chatter. Real-time natural speed, not slow
-motion. Single continuous shot. Keep the reference subject intact.</pre></div>
+<!-- PACK 3 -->
+<section id="p3" class="reveal"><div class="pack">
+  <div class="ph"><span class="num">03</span><span class="name">Welder</span><span class="meta">black + spark-orange · dark strobing arc · night bay</span></div>
+  <p class="plabel">🖼️ Image prompt — Nano Banana Pro</p>
+  <div class="copywrap"><div class="bar"><span>still</span><button class="copybtn" data-copy="img3">Copy</button></div>
+<pre id="img3">A candid vertical phone photo of a woman in her early thirties in a dim industrial fabrication shop at night. She wears a heavy brown leather welding apron over a black fitted crop tank and dark cargo work pants, thick leather gauntlet gloves, a welding helmet flipped up on top of her head with her face clear, a bandana at her neck. The shop is mostly darkness, deep chiaroscuro — the only light is a shower of orange sparks and a blue-white arc flash strobing across her face and the leather apron. Natural skin texture with visible pores, sweat glistening on her collarbone in the spark-light, faint smudges of soot, real catchlights, wisps of hair stuck to her damp neck. Shot on an iPhone, slightly soft, faint grain, no color grade, off-center framing. 9:16, 2K.</pre></div>
+  <p class="plabel vid">🎬 Video prompt — Omni-Flash</p>
+  <div class="copywrap"><div class="bar"><span>motion</span><button class="copybtn" data-copy="vid3">Copy</button></div>
+<pre id="vid3">Handheld iPhone clip, real-time speed, single continuous shot. She is already mid-bead on a steel joint; she runs an angle grinder along the seam and a fan of bright orange sparks arcs out across the concrete with a thin curl of smoke, then she leans back to inspect the weld, tilting her chin up, and her eyes drift to the lens as the arc-light fades. Loose hair flutters in the heat, her shoulders shift with the effort, the spark-light strobes across her face and apron. Subtle camera shake, a hard auto-exposure flicker as the sparks flare and die. Keep the reference subject intact. Audio: the angle grinder screaming against steel, sparks crackling, then whining down to a low shop hum.</pre></div>
+</div></section>
 
-  <div class="copywrap"><div class="bar"><span>3.3 · Cordless drill drive</span><button class="copybtn" data-copy="p3">Copy</button></div>
-<pre id="p3">The cordless drill is already tip-to-board on a steel bracket at chest height,
-both hands in a natural grip. She squeezes the trigger and the drill dips
-slightly into the board, then eases back and blows the sawdust away. Subtle
-secondary motion: shoulders rising with a breath, a small weight shift, hi-vis
-vest shifting, blurred coworkers far in the background. At the end she raises
-her eyes to the camera with a faint knowing smile. Low-angle shot, locked off
-with subtle handheld shake. Warm sunset light stays constant; brief drill whir,
-ambient site noise. Real-time natural speed, not slow motion. Single continuous
-shot. Keep the reference subject intact.</pre></div>
+<!-- PACK 4 -->
+<section id="p4" class="reveal"><div class="pack">
+  <div class="ph"><span class="num">04</span><span class="name">Farmer · Rancher Cowgirl</span><span class="meta">gold + denim · bright dusty sun · open field</span></div>
+  <p class="plabel">🖼️ Image prompt — Nano Banana Pro</p>
+  <div class="copywrap"><div class="bar"><span>still</span><button class="copybtn" data-copy="img4">Copy</button></div>
+<pre id="img4">A candid vertical phone photo of a woman in her early thirties working a dusty ranch corral at midday. She wears a red-and-black plaid flannel shirt knotted at the midriff with the sleeves rolled, slim denim jeans with a leather belt and buckle, a tan straw cowboy hat, worn leather boots, a piece of hay in one hand. A weathered barn stands behind her, sun-bleached hay bales, warm haze of dust in the air. Bright high sun throws hard natural light with warm bounce off the dirt. Natural skin texture with visible pores and peach fuzz, a light sheen of sweat at her hairline, faint sunburn across the nose and cheeks, chalky dust on her forearms, real catchlights, flyaway strands under the hat. Shot on an iPhone at 1x, slightly soft, faint grain, no color grade, tilted horizon. 9:16, 2K.</pre></div>
+  <p class="plabel vid">🎬 Video prompt — Omni-Flash</p>
+  <div class="copywrap"><div class="bar"><span>motion</span><button class="copybtn" data-copy="vid4">Copy</button></div>
+<pre id="vid4">Handheld iPhone clip, real-time speed, one continuous take. She is already hauling a hay bale; she sets it down with a solid heave, straightens and slaps the dust off her jeans, then reaches up with one hand and lifts her damp hair off the back of her neck, tilting her head back in the heat, and her eyes drift down to the lens for the last beat. Dust drifts in the bright sun, her flannel creases as she reaches, loose strands catch the breeze. Subtle handheld wobble, a small reframe, warm auto-exposure. Keep the reference subject intact. Audio: the creak of rope and the thud of the bale, wind, a distant tractor idling.</pre></div>
+</div></section>
 
-  <div class="copywrap"><div class="bar"><span>3.4 · Mark a line (pencil + speed square)</span><button class="copybtn" data-copy="p4">Copy</button></div>
-<pre id="p4">A speed square is held flat against a plank, the pencil tip already touching
-the wood at the square's edge. She drags the pencil a short line along the
-square, straightens up, and tucks the pencil behind her ear. Subtle secondary
-motion: a natural blink, a breath, weight shifting hip to hip, ponytail moving
-a little, blurred coworkers far behind. At the end she glances up into the lens
-with a faint half-smile. Camera slowly tracks a few inches to the right. Golden
-light holds steady; soft pencil scratch, distant hammering. Real-time natural
-speed, not slow motion. Single continuous shot. Keep the reference subject intact.</pre></div>
+<!-- PACK 5 -->
+<section id="p5" class="reveal"><div class="pack">
+  <div class="ph"><span class="num">05</span><span class="name">Landscaper · Gardener</span><span class="meta">lush green + khaki · dappled midday · greenhouse</span></div>
+  <p class="plabel">🖼️ Image prompt — Nano Banana Pro</p>
+  <div class="copywrap"><div class="bar"><span>still</span><button class="copybtn" data-copy="img5">Copy</button></div>
+<pre id="img5">A candid vertical phone photo of a woman in her early thirties working inside a humid glass greenhouse at midday. She wears a fitted olive work shirt tied at the front, khaki utility shorts, a canvas gardener's apron loaded with hand tools, gardening gloves, her hair pinned up with soil smudges on her forearms. Dense green foliage and hanging plants surround her, terracotta pots, glass panes fogged with humidity. Soft dappled light filters through leaves and glass, floating pollen and fine mist in the air, warm-green ambience. Natural skin texture with visible pores, a dewy sheen on her skin, faint flush on her cheeks, a streak of soil on one temple, real catchlights, loose damp wisps at her neck. Shot on an iPhone, slightly soft, faint grain, no color grade, casual framing. 9:16, 2K.</pre></div>
+  <p class="plabel vid">🎬 Video prompt — Omni-Flash</p>
+  <div class="copywrap"><div class="bar"><span>motion</span><button class="copybtn" data-copy="vid5">Copy</button></div>
+<pre id="vid5">Handheld iPhone clip, real-time speed, single continuous shot. She is already trimming a hanging plant; she squeezes a hedge trimmer through one branch in a brisk pass, the motor buzzing, then lowers it, flicks a stray leaf off her forearm and pushes a damp strand of hair back from her face, and her gaze rises to settle on the lens as the corner of her mouth softens. Mist drifts through the dappled light, foliage sways, her tied shirt shifts with her shoulders. Subtle camera shake, a small push-in, soft auto-exposure through the leaves. Keep the reference subject intact. Audio: the hedge trimmer motor buzzing then spinning down, a hose mister hissing, faint birdsong.</pre></div>
+</div></section>
 
-  <div class="copywrap"><div class="bar"><span>3.5 · Carry a plank on the shoulder <span class="tag hi">higher reward</span></span><button class="copybtn" data-copy="p5">Copy</button></div>
-<pre id="p5">A long timber plank is already balanced on her shoulder, one hand steadying it
-near her collarbone. She settles the plank with a small weight shift and a
-half-step to plant her stance, breathing out. Subtle secondary motion: chest
-rising, hi-vis vest and ponytail shifting with the movement, blurred workers
-far behind in the haze. At the end she turns her eyes to the lens with a faint
-knowing half-smile. Camera holds steady, slight handheld shake. Warm
-golden-hour light stays constant; wood creak, ambient jobsite hum. Real-time
-natural speed, not slow motion. Single continuous shot. Keep the reference
-subject intact. The plank stays rigid and steady.</pre></div>
+<!-- PACK 6 -->
+<section id="p6" class="reveal"><div class="pack">
+  <div class="ph"><span class="num">06</span><span class="name">Warehouse Forklift Operator</span><span class="meta">steel-grey + yellow · cool overhead LED · cavernous</span></div>
+  <p class="plabel">🖼️ Image prompt — Nano Banana Pro</p>
+  <div class="copywrap"><div class="bar"><span>still</span><button class="copybtn" data-copy="img6">Copy</button></div>
+<pre id="img6">A candid vertical phone photo of a woman in her early thirties operating a forklift in an enormous warehouse. She wears a yellow hi-vis vest over a fitted black crop tee, slim charcoal work pants, steel-toe boots, a scanner clipped on a lanyard, her hair in a high ponytail under a backwards cap. Towering steel pallet racks vanish into the depth behind her, polished concrete floor, long geometric shadows. Cool overhead LED and metal-halide light, desaturated steel-grey and concrete tones with the yellow vest popping. Natural skin texture with visible pores, a faint sweat sheen at her hairline, faint redness on the cheeks, a smudge of dust on one forearm, real catchlights from the overhead lights, flyaway strands. Shot on an iPhone at 1x, slightly soft, faint grain in the shadows, no color grade, off-center framing. 9:16, 2K.</pre></div>
+  <p class="plabel vid">🎬 Video prompt — Omni-Flash</p>
+  <div class="copywrap"><div class="bar"><span>motion</span><button class="copybtn" data-copy="vid6">Copy</button></div>
+<pre id="vid6">Handheld iPhone clip, real-time speed, one continuous take. She is already seated at the forklift controls; she pulls the lever and the mast lifts a loaded pallet with a hydraulic whine, bracing one hand on the wheel, then glances back over her shoulder to spot the load, and her eyes come around and settle on the lens for the last beat. Her ponytail sways as she turns, the yellow vest shifts on her shoulders, long shadows stretch across the concrete. Subtle handheld wobble, a small reframe, cool steady LED exposure. Keep the reference subject intact. Audio: the forklift hydraulics whining, a reverse beeper, a low electric motor hum echoing in the space.</pre></div>
+</div></section>
 
-  <div class="copywrap"><div class="bar"><span>3.6 · Wipe brow + look to camera <span class="tag safe">near-zero risk</span></span><button class="copybtn" data-copy="p6">Copy</button></div>
-<pre id="p6">She lifts a gloved forearm and wipes her brow, then lowers her arm and lets out
-a slow breath, a light sheen on her skin in the warm light. Subtle secondary
-motion: shoulders rising and settling, a hip-to-hip weight shift, ponytail
-drifting in the breeze, dust motes floating, blurred coworkers far behind. At
-the end she looks directly into the lens with a faint knowing half-smile and
-one calm breath. Camera very slow push-in over the full shot. Golden-hour light
-holds constant; ambient site hum, distant chatter. Real-time natural speed, not
-slow motion. Single continuous shot. Keep the reference subject intact.</pre></div>
-</section>
+<!-- PACK 7 -->
+<section id="p7" class="reveal"><div class="pack">
+  <div class="ph"><span class="num">07</span><span class="name">Painter</span><span class="meta">white + rainbow splatter · high-key daylight · bright interior</span></div>
+  <p class="plabel">🖼️ Image prompt — Nano Banana Pro</p>
+  <div class="copywrap"><div class="bar"><span>still</span><button class="copybtn" data-copy="img7">Copy</button></div>
+<pre id="img7">A candid vertical phone photo of a woman in her early thirties painting a bright half-finished room. She wears white bib overalls with one strap unclipped and hanging, over a pastel cropped tee, everything speckled with multicolor paint splatter, a folded bandana headband, a smear of blue paint on one cheek and streaks up her forearms. White drop cloths cover the floor, open windows flood the room with soft high-key daylight, clean and airy and slightly overexposed. Natural skin texture with visible pores and peach fuzz, a light sheen at her hairline, faint flush on her cheeks, real catchlights from the windows, loose strands falling across her face. Shot on an iPhone, slightly soft, faint grain, no color grade, phone held at chest height, tilted framing. 9:16, 2K.</pre></div>
+  <p class="plabel vid">🎬 Video prompt — Omni-Flash</p>
+  <div class="copywrap"><div class="bar"><span>motion</span><button class="copybtn" data-copy="vid7">Copy</button></div>
+<pre id="vid7">Handheld iPhone clip, real-time speed, single continuous shot. She is already at the wall; she loads the roller in the tray with a wet slosh and runs one long even stroke up the wall, leaning her weight into it, then a loose strand falls across her face and she pushes her lower lip forward and blows it aside with a short puff, and her eyes flick up to the lens as it drifts back. Bright daylight floods the room, the hanging overall strap swings, her tee shifts with her shoulders. Subtle camera shake, a small reframe, bright high-key auto-exposure. Keep the reference subject intact. Audio: the wet squelch of the paint roller on the wall, the slosh of the tray, a soft brush tap.</pre></div>
+</div></section>
 
-<!-- FIX -->
-<section id="fix" class="reveal">
-  <p class="kicker">When it glitches</p>
-  <h2><span class="n">04</span>Quick-fix table</h2>
+<!-- VARIETY -->
+<section id="variety" class="reveal">
+  <p class="kicker">No two alike</p>
+  <h2>Variety check</h2>
   <div class="tbl"><table>
-    <tr><th>Symptom</th><th>Cause</th><th>Do this</th></tr>
-    <tr><td><b>Returns text/blank, no output</b></td><td>Safety classifier tripped — often by YOUR words ("suggestive", "no nudity", "sexy")</td><td>Delete all safety-negation words; describe the clothed reality positively; re-roll</td></tr>
-    <tr><td><b>Barely moves / frozen</b></td><td>Vague motion, or camera + subject fighting (net displacement ≈ 0)</td><td>Name one specific directional motion; make camera + subject cooperate (one moves, one holds)</td></tr>
-    <tr><td><b>Face morphs / drifts</b></td><td>You re-described her face/hair/wardrobe → identity-embedding drift</td><td>Remove all appearance description; add <code class="k">keep the reference subject intact</code></td></tr>
-    <tr><td><b>Hands/tool melt</b></td><td>Tool not in hand at t=0, or a big two-handed motion</td><td>Regenerate start frame with the tool already contacting a surface; keep motion small</td></tr>
-    <tr><td><b>Object spawns from nowhere</b></td><td>You asked for something not visible at t=0</td><td>Put everything the clip needs into the start frame; animate only what's already visible</td></tr>
-    <tr><td><b>"AI floaty" dreamy look</b></td><td>Slow-mo default + glassy camera + hazy bloom</td><td>Add "real-time natural speed, not slow motion", "handheld subtle shake, phone-shot look"; name contact points</td></tr>
-    <tr><td><b>Loops into a weird 2nd motion</b></td><td>No "reset" beat; model fills leftover time</td><td>Add the 6–8s complete/reset beat (lower tool, small nod) before the look-to-camera</td></tr>
-    <tr><td><b>Prompt partly ignored</b></td><td>Overload / contradiction / buried key detail</td><td>Cut to three jobs (one motion, one camera, one consistency rule); order the clauses</td></tr>
-    <tr><td><b>Garbled text in the still</b></td><td>Too much text, or Flash tier</td><td>Shorten; put exact copy in quotes; use Pro; raise to 2K/4K</td></tr>
-    <tr><td><b>Small face mangled in the still</b></td><td>Composed too wide / low res</td><td>Compose closer; request <code class="k">2K</code> or <code class="k">4K</code> (uppercase K)</td></tr>
-    <tr><td><b>Still melts no matter the prompt</b></td><td>It's an image problem, not a text problem</td><td>Fix the START FRAME, not the prompt — then re-run the same video prompt</td></tr>
+    <tr><th>#</th><th>Niche</th><th>Palette</th><th>Light</th><th>Space</th><th>Silhouette</th><th>Machine sound</th></tr>
+    <tr><td>1</td><td>Construction</td><td>orange / tan / white</td><td>golden-hour warm</td><td>open site</td><td>open hi-vis vest + hardhat</td><td>impact-driver whir</td></tr>
+    <tr><td>2</td><td>Mechanic</td><td>navy / steel / red</td><td>cool fluorescent</td><td>tight garage</td><td>peeled coveralls</td><td>air-wrench brraap</td></tr>
+    <tr><td>3</td><td>Welder</td><td>black + spark-orange</td><td>dark strobing arc</td><td>night bay</td><td>leather apron, helmet up</td><td>grinder scream / arc</td></tr>
+    <tr><td>4</td><td>Cowgirl</td><td>gold + denim</td><td>bright dusty sun</td><td>open field</td><td>knotted flannel + hat</td><td>rope creak + tractor</td></tr>
+    <tr><td>5</td><td>Landscaper</td><td>lush green + khaki</td><td>dappled midday</td><td>greenhouse</td><td>tied garden shirt</td><td>hedge-trimmer buzz</td></tr>
+    <tr><td>6</td><td>Forklift op</td><td>steel-grey + yellow</td><td>cool overhead LED</td><td>cavernous warehouse</td><td>vest + crop, backwards cap</td><td>hydraulic whine + beep</td></tr>
+    <tr><td>7</td><td>Painter</td><td>white + rainbow</td><td>high-key daylight</td><td>bright interior</td><td>one-strap overalls</td><td>roller squelch + slosh</td></tr>
   </table></div>
+  <div class="note good"><b>One-line recipe per clip:</b> harsh single-source light + textured, sweaty skin + one handheld cue + one grade cue + one grain cue + brisk real-time action on occupied hands + one micro-motion (blink / strand / breath) + one mechanical sound, landing on eyes-to-lens. Win the texture at the <b>still</b> — Omni-Flash preserves what it's given.</div>
 </section>
 
 </main>
 
 <footer><div class="wrap">
-  <b>ai-persona</b> · prompt mastery · internal, not for distribution · noindex<br>
+  <b>ai-persona</b> · prompt catalog · internal, not for distribution · noindex<br>
   <a href="index.html">← Strategy</a> · <a href="production.html">Production</a> · <a href="build.html">Build</a> · <a href="loop.html">Loop</a>
 </div></footer>
 
@@ -271,7 +262,7 @@ slow motion. Single continuous shot. Keep the reference subject intact.</pre></d
 var prog=document.getElementById('prog');
 addEventListener('scroll',function(){var h=document.documentElement,max=h.scrollHeight-h.clientHeight;
   prog.style.width=(max>0?(h.scrollTop||document.body.scrollTop)/max*100:0)+'%';},{passive:true});
-var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.06});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.05});
 document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
 document.querySelectorAll('.copybtn').forEach(function(btn){
   btn.addEventListener('click',function(){
