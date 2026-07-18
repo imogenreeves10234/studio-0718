@@ -1,0 +1,413 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>The Loop Skill — Buildable Guide</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%94%81%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#0a0b10;--card:#13151f;--card2:#171a26;--line:#242838;--line2:#2f3346;
+  --txt:#e7e9f2;--mut:#9aa0b4;--dim:#6d7288;
+  --a1:#ff5cae;--a2:#a24bff;--a3:#39c6ff;--good:#37d9a0;--warn:#ffb84d;--bad:#ff6b6b;
+  --grad:linear-gradient(100deg,var(--a1),var(--a2) 55%,var(--a3));--r:16px;font-synthesis:none;
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:
+    radial-gradient(1200px 700px at 82% -8%,rgba(162,75,255,.16),transparent 60%),
+    radial-gradient(900px 600px at 6% 4%,rgba(255,92,174,.12),transparent 55%),var(--bg);
+  color:var(--txt);font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  line-height:1.62;-webkit-font-smoothing:antialiased;letter-spacing:.1px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+a{color:var(--a3);text-decoration:none}a:hover{text-decoration:underline}
+#prog{position:fixed;top:0;left:0;height:3px;width:0;background:var(--grad);z-index:60;box-shadow:0 0 12px rgba(162,75,255,.6)}
+header{padding:66px 0 26px}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);
+  border:1px solid var(--line);background:rgba(255,255,255,.02);padding:7px 13px;border-radius:100px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--a1);box-shadow:0 0 10px var(--a1)}
+.back{font-size:13px;color:var(--mut);margin-left:10px}
+h1{font-size:clamp(28px,5vw,48px);line-height:1.05;margin:18px 0 8px;font-weight:800;letter-spacing:-.02em}
+h1 .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{font-size:clamp(15px,2.2vw,19px);color:var(--mut);max-width:800px}
+.verdict{margin:22px 0 4px;border:1px solid var(--line2);border-radius:var(--r);background:linear-gradient(160deg,rgba(55,217,160,.10),var(--card));padding:16px 20px}
+.verdict b{color:var(--txt)}
+nav.toc{position:sticky;top:0;z-index:40;background:rgba(10,11,16,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);margin-top:26px}
+nav.toc .wrap{display:flex;gap:6px;overflow-x:auto;padding:11px 22px;scrollbar-width:none}
+nav.toc .wrap::-webkit-scrollbar{display:none}
+nav.toc a{white-space:nowrap;font-size:13px;color:var(--mut);padding:6px 12px;border-radius:100px;border:1px solid transparent}
+nav.toc a:hover{color:var(--txt);text-decoration:none;background:rgba(255,255,255,.03);border-color:var(--line)}
+section{padding:48px 0 8px;scroll-margin-top:60px}
+.kicker{font-size:12.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--a2);font-weight:700;margin:0 0 6px}
+h2{font-size:clamp(22px,3.4vw,31px);margin:0 0 6px;font-weight:800;letter-spacing:-.02em}
+h2 .n{color:var(--dim);font-weight:700;font-size:.6em;margin-right:12px}
+.lead{color:var(--mut);font-size:16px;max-width:840px;margin:2px 0 20px}
+h3{font-size:18px;margin:26px 0 8px;font-weight:700;letter-spacing:-.01em}
+h4{font-size:15.5px;margin:16px 0 6px;font-weight:700;color:var(--txt)}
+.card{background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;margin:14px 0}
+.grid{display:grid;gap:14px}
+@media(min-width:720px){.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:1fr 1fr 1fr}}
+.note{border-left:3px solid var(--a2);background:rgba(162,75,255,.06);padding:13px 17px;border-radius:0 12px 12px 0;margin:16px 0}
+.note.good{border-color:var(--good);background:rgba(55,217,160,.06)}
+.note.warn{border-color:var(--warn);background:rgba(255,184,77,.06)}
+.note.bad{border-color:var(--bad);background:rgba(255,107,107,.07)}
+.note b{color:var(--txt)}
+.tbl{width:100%;overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);margin:16px 0}
+table{width:100%;border-collapse:collapse;font-size:14px;min-width:600px}
+th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:rgba(255,255,255,.025);color:var(--mut);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase}
+tr:last-child td{border-bottom:none}
+td b{color:var(--txt)}
+.real{color:var(--good);font-weight:700}.hype{color:var(--warn)}
+code.k{background:rgba(255,255,255,.06);border:1px solid var(--line2);border-radius:6px;padding:1px 6px;font-size:.86em;font-family:ui-monospace,Menlo,Consolas,monospace;color:#d8dcec}
+ol.principles{list-style:none;counter-reset:p;padding:0;margin:14px 0}
+ol.principles>li{counter-increment:p;position:relative;padding:12px 4px 12px 50px;border-bottom:1px solid var(--line);color:var(--mut)}
+ol.principles>li:last-child{border-bottom:none}
+ol.principles>li::before{content:counter(p);position:absolute;left:6px;top:12px;width:30px;height:30px;border-radius:9px;
+  background:var(--grad);color:#08090d;font-weight:800;display:grid;place-items:center;font-size:14px}
+ol.principles>li b{color:var(--txt)}
+ul.tick{list-style:none;padding:0;margin:10px 0}
+ul.tick li{position:relative;padding:5px 0 5px 26px;color:var(--mut)}
+ul.tick li::before{content:"";position:absolute;left:4px;top:12px;width:7px;height:7px;border-radius:2px;background:var(--grad)}
+ul.tick li b{color:var(--txt)}
+.copywrap{position:relative;margin:14px 0}
+.copywrap .bar{display:flex;justify-content:space-between;align-items:center;background:#0c0e15;border:1px solid var(--line);border-bottom:none;border-radius:12px 12px 0 0;padding:9px 14px}
+.copywrap .bar span{font-size:12.5px;color:var(--mut);font-weight:600}
+.copybtn{cursor:pointer;font:inherit;font-size:12.5px;font-weight:700;color:var(--txt);background:rgba(255,255,255,.04);border:1px solid var(--line2);padding:5px 12px;border-radius:8px;transition:.18s}
+.copybtn:hover{background:var(--grad);color:#08090d;border-color:transparent}
+.copybtn.done{background:var(--good);color:#08120d;border-color:transparent}
+pre{margin:0;background:#0c0e15;border:1px solid var(--line);border-radius:0 0 12px 12px;padding:15px;overflow-x:auto;
+  font-family:"SF Mono",ui-monospace,"JetBrains Mono",Menlo,Consolas,monospace;font-size:12.5px;line-height:1.65;color:#cdd3e6;white-space:pre}
+pre.wrap-pre{white-space:pre-wrap}
+pre.diagram{font-size:11px;line-height:1.5;color:#aeb6d0;border-radius:12px}
+.stage{border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;margin:12px 0;background:var(--card)}
+.stage h4{margin-top:0}
+.stage.crawl{border-left:4px solid var(--a3)}
+.stage.walk{border-left:4px solid var(--warn)}
+.stage.run{border-left:4px solid var(--good)}
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+.mut{color:var(--mut)}.dim{color:var(--dim)}.good{color:var(--good)}.warn{color:var(--warn)}.bad{color:var(--bad)}
+footer{border-top:1px solid var(--line);margin-top:56px;padding:30px 0 60px;color:var(--dim);font-size:13.5px}
+</style>
+
+<div id="prog"></div>
+
+<header><div class="wrap">
+  <span class="eyebrow"><span class="dot"></span> The Loop Skill · ai-persona</span><a href="index.html" class="back">← strategy</a> · <a href="production.html" class="back" style="margin-left:0">production →</a>
+  <h1>The <span class="g">Loop</span> skill — and how to build it this week</h1>
+  <p class="sub">@bounceidc sells a "loops guide." The technique is real and standard — and it maps 1:1 onto features you already have in Claude Code. This keeps the real skill and throws out the "$8k on autopilot" marketing.</p>
+  <div class="verdict"><b>One-line verdict:</b> the loop is real and buildable this week with tools you already own (Claude Code — <code class="k">CLAUDE.md</code> + a scheduled Routine + hooks — plus an official-API publisher). The <em>only</em> fictional part of the tweet is <b>"no manual touch for six weeks"</b> — on Meta in 2026 an unattended AI-persona poster is a ban liability. The winning build keeps a fast human <b>approve-and-disclose tap</b> in the middle of an otherwise automated cycle. Don't buy the guide.</div>
+</div></header>
+
+<nav class="toc"><div class="wrap">
+  <a href="#what">1 · What it is</a>
+  <a href="#principles">2 · Principles</a>
+  <a href="#constitution">3 · Constitution</a>
+  <a href="#stack">4 · Build stack</a>
+  <a href="#loop">5 · The loop</a>
+  <a href="#ramp">6 · Autonomy ramp</a>
+  <a href="#reality">7 · Reality &amp; guardrails</a>
+</div></nav>
+
+<main class="wrap">
+
+<!-- WHAT -->
+<section id="what" class="reveal">
+  <p class="kicker">No mystery here</p>
+  <h2><span class="n">01</span>What an AI "loop" really is</h2>
+  <p class="lead">A loop is an LLM + some tools, run on a schedule against a goal, that <b>generates something → does something with it → checks how it went → adjusts → repeats.</b> That's Anthropic's own definition of an agent: "LLMs using tools based on environmental feedback in a loop." The tweet's cycle — make content → post → read engagement → change next batch — is a completely standard shape. "Midjourney locks the face, Claude writes, a scheduler posts" is just <em>any image model + any LLM + any cron job</em>. The paid guide sells the wiring diagram, and the wiring diagram is free.</p>
+
+  <h3>Real technique vs. the "$8k autopilot" marketing</h3>
+  <div class="tbl"><table>
+    <tr><th>Real &amp; buildable</th><th>Marketing / the sales hook</th></tr>
+    <tr><td class="real">A scheduled orchestrator that drafts content, queues it, and reads yesterday's metrics back in as context</td><td class="hype">"$1k–3k/day passive on autopilot" — survivorship bias; over half of creators earn under $15k/yr</td></tr>
+    <tr><td class="real">Character-reference face-lock genuinely holds a face across stills</td><td class="hype">"Set it and forget it for six weeks" — loops <b>rot</b> without maintenance; people who run them say they need on-call babysitting</td></tr>
+    <tr><td class="real">Claude drafting captions/scripts in a fixed voice</td><td class="hype">Auto-DMing / auto-posting unattended → the ban node (§5)</td></tr>
+    <tr><td class="real">A checker sub-agent + evals gating each batch</td><td class="hype">"Engagement" as the only metric → the loop drifts toward clickbait and policy violations</td></tr>
+  </table></div>
+  <div class="note"><b>The honest core:</b> loop engineering is an <em>operations</em> skill — state, observability, blast radius, the discipline to let a thing fail cheaply and restart clean. The harness (scripts/scheduler) is the fragile part, not the AI. And for your model specifically: 2026 FB Content-Monetization RPMs are pennies and the algorithm actively suppresses <em>faceless</em> AI slop while favoring distinct personalities — so a consistent, characterful, <b>disclosed</b> persona is your edge. Build the loop because it makes you fast and consistent, not because it prints money while you sleep.</div>
+</section>
+
+<!-- PRINCIPLES -->
+<section id="principles" class="reveal">
+  <p class="kicker">Load-bearing</p>
+  <h2><span class="n">02</span>The 8 principles that make a loop reliable</h2>
+  <p class="lead">Synthesized from Anthropic + people who run loops in production. Ignore these and a loop is "a very expensive hallucination."</p>
+  <ol class="principles">
+    <li><b>Define "done" precisely and cap iterations.</b> "If you can't say what 'done' looks like, you don't have a loop — you have a wish." Most real loops need 3–5 iterations; more means it's stuck.</li>
+    <li><b>A governing constitution.</b> One always-loaded rulebook (<code class="k">CLAUDE.md</code>) encoding voice, hard rules, success criteria — so behavior is consistent across every run.</li>
+    <li><b>Real feedback before acting (evals, not vibes).</b> A separate <b>CHECKER sub-agent</b> reviews the primary agent's work. This is where your judgment lives.</li>
+    <li><b>Guardrails + a kill-switch.</b> <em>Hard</em> guardrails are code that physically blocks an action (a publish script that refuses without an approval flag). Start <b>read-only</b>; grant post permission last.</li>
+    <li><b>Human-in-the-loop checkpoints.</b> The agent pauses for sign-off at defined gates and whenever it hits a blocker.</li>
+    <li><b>Persistent state on disk, not in the context window.</b> Every concept, score, decision written to a file/git before the next step — a truncated conversation never erases memory.</li>
+    <li><b>Observability + graceful failure + small blast radius.</b> Log everything; let it fail cheaply and restart clean. "Build the part that pages you before the part that impresses you."</li>
+    <li><b>Start simple.</b> A cron + a good prompt gets ~80% of "adaptive" behavior. Add agentic complexity only when a plain prompt + a metrics file falls short.</li>
+  </ol>
+  <div class="note warn"><b>The metric-gaming trap:</b> every loop optimizes the number you gave it, not the thing you meant. A caption loop told to maximize "engagement" will happily drift toward clickbait and rule-breaking. Make your KPI <b>retention + per-view earnings</b>, not likes.</div>
+</section>
+
+<!-- CONSTITUTION -->
+<section id="constitution" class="reveal">
+  <p class="kicker">The rulebook</p>
+  <h2><span class="n">03</span>The CLAUDE.md "constitution" pattern</h2>
+  <p class="lead">A <code class="k">CLAUDE.md</code> is a persistent rulebook the agent reads automatically at the start of <em>every</em> session — including every scheduled cloud run — before any prompt. You never invoke it; it's just always there. It's not a style guide; it's where non-negotiable rules + success criteria live so behavior stays consistent. (Karpathy's 4-rule CLAUDE.md reportedly cut agent errors ~41% → ~11%.) Load order: <code class="k">~/.claude/CLAUDE.md</code> → <code class="k">./CLAUDE.md</code> → <code class="k">./CLAUDE.local.md</code>.</p>
+
+  <div class="copywrap">
+    <div class="bar"><span>📜 CLAUDE.md — persona constitution (fill the &lt;...&gt; slots)</span><button class="copybtn" data-copy="const">Copy</button></div>
+<pre id="const" class="wrap-pre"># PERSONA CONSTITUTION — &lt;Persona Name&gt;  (agent: read this before every action)
+
+## 0. What I am
+- &lt;Name&gt; is an OPENLY AI-GENERATED persona. One-person operation.
+- I (the agent) draft concepts, prompts, and captions. I NEVER publish.
+  A human approves every batch via `batches/&lt;date&gt;/approved.flag`.
+  No flag = I stop.
+
+## 1. Disclosure (non-negotiable — legal + platform survival)
+- Bio states "AI-generated / virtual creator." Every caption includes `#AI`
+  + a plain-language line (e.g. "AI-generated character").
+- Keep C2PA / AI metadata on all media INTACT. Never strip it to dodge labels.
+- NEVER claim or imply &lt;Name&gt; is a real human — in captions, comments, or DMs.
+- Undisclosed AI is an active strike category. Disclosure protects the whole
+  account and monetization eligibility. Treat it as a kill-switch condition.
+
+## 2. Voice
+- Tone: &lt;warm / dry-funny / hype — pick ONE and hold it&gt;.
+- Lines: 3-8 words on-screen; hook in the FIRST line; payoff by the end.
+- Yes: &lt;topics/vibes&gt;.  No emoji walls. No hashtag spam (max &lt;n&gt;).
+- Full samples + banned phrases in `constitution/voice.md`.
+
+## 3. Visual lock
+- Use `constitution/visual-lock.md` identity block on EVERY still
+  (SPECIES/FACE/HAIR/WARDROBE/DO-NOT). Run drift check vs reference
+  embedding; flag anything over threshold for human review.
+
+## 4. DO
+- SFW, positive, broadly relatable, trend-aware but on-brand.
+- Propose 3-5 clean concepts/day. If fewer than 3 survive the rules,
+  STOP and ask — do not fill the batch with junk.
+- Optimize for RETENTION and per-view earnings, not likes.
+
+## 5. DO-NOT (hard reject — these void `constitution_check`)
+- NSFW / suggestive / anything sexualizing the persona.
+- Minors, or content aimed at minors.
+- Health, medical, weight-loss, financial, or earnings claims/advice.
+- Politics, religion, protected-group commentary, real-person likeness/deepfake.
+- "DM me for...", giveaways, off-platform funnels, engagement-bait spam.
+- Auto-DMing strangers. DMs / comment replies are HUMAN-handled.
+- Anything requiring me to imply I am human.
+
+## 6. Posting rules
+- Publish ONLY via the official Meta path (Business Suite Planner, or Pages
+  Graph API `scheduled_publish_time`). NEVER browser-automation posters.
+  Pages only, never groups.
+- Max &lt;N&gt; posts/day, hard cap. Never publish without approved.flag.
+
+## 7. KPIs (priority order)
+1. 3-second / average watch retention
+2. Per-view earnings + RPM (Content Monetization dashboard)
+3. Follower growth toward monetization thresholds
+4. Save / share rate
+- Likes/comments are weak signals, not targets.
+
+## 8. Kill-switch (HALT loop, notify human, do NOT self-resume) if ANY:
+- A policy strike, monetization warning, or reach/earnings crash overnight.
+- Face-drift flagged on &gt;1 clip in a batch.
+- Fewer than 3 constitution-clean concepts available.
+- A trend seed touches any DO-NOT topic.
+- Publish auth fails, or metrics come back all-zero (tracking break).
+- Human places a `HOLD` file in the repo root.</pre>
+  </div>
+  <p class="mut">Supporting files: <code class="k">constitution/voice.md</code> (voice samples + a banned-phrase list your caption linter checks) and <code class="k">constitution/visual-lock.md</code> (the identity prompt block used on every still — your VegToons character-lock format).</p>
+</section>
+
+<!-- STACK -->
+<section id="stack" class="reveal">
+  <p class="kicker">You already own it</p>
+  <h2><span class="n">04</span>How to build it — Claude Code does this natively</h2>
+  <p class="lead">The tweet's "constitution + scheduler + integrations + autonomous execution" isn't a product you buy. It maps 1:1 onto features you already have:</p>
+  <div class="grid g2">
+    <div class="card"><ul class="tick">
+      <li><code class="k">CLAUDE.md</code> = the persistent constitution (what to do).</li>
+      <li>A <b>Routine on a cron schedule</b> (<code class="k">/schedule</code>) = the automated trigger (when), running on Anthropic's cloud so your laptop can be closed.</li>
+      <li><b>MCP connectors</b> = the integrations (a social publisher, etc.).</li>
+      <li><b>Hooks</b> in <code class="k">settings.json</code> = deterministic safety rules that always fire.</li>
+    </ul></div>
+    <div class="card"><h4>The native toolset</h4><ul class="tick">
+      <li><code class="k">/loop</code> — runs a prompt on an interval <em>inside an open session</em>. Good for polling while you work; <b>not</b> for unattended automation (dies when you close the terminal, auto-expires after 7 days).</li>
+      <li><code class="k">/schedule</code> → <b>Routines</b> — the real automation layer. Persistent cloud agents on cron (<code class="k">0 9 * * *</code> = daily 9am), or triggered by an API POST / GitHub event. Each run gets a full session, clones your repo fresh (so it loads <code class="k">./CLAUDE.md</code>), runs autonomously, exits. Min interval 1 hour. Test with "Run now" first.</li>
+      <li><b>Hooks</b> — shell commands at lifecycle events (<code class="k">PreToolUse</code> to block unsafe commands, <code class="k">Stop</code> to evaluate "is the work done?").</li>
+    </ul></div>
+  </div>
+  <div class="note warn"><b>Sandbox caveat:</b> cloud Routines run in a sandbox — they can't touch your local files or local Veo rig, only the cloned git repo + declared env vars + declared MCP connectors. That's why the design below keeps <b>generation local</b> and uses the repo + an MCP publisher as the bridge.</div>
+
+  <h3>Native Claude Code vs. n8n / Make — part by part</h3>
+  <div class="tbl"><table>
+    <tr><th>Part of the loop</th><th>Native Claude Code</th><th>n8n / Make</th></tr>
+    <tr><td>Constitution / rules</td><td><code class="k">CLAUDE.md</code> — free, versioned in git</td><td>Config scattered across nodes; no single rulebook</td></tr>
+    <tr><td>Scheduler</td><td><code class="k">/schedule</code> Routine (cloud cron), or local cron calling <code class="k">claude -p</code></td><td>n8n cron (self-host free); Zapier bills <b>per task</b> — punishing for frequent loops</td></tr>
+    <tr><td>LLM reasoning</td><td>The model <em>is</em> the runtime — no glue</td><td>An "AI agent" node calling an LLM API</td></tr>
+    <tr><td>Media gen (Veo)</td><td><code class="k">claude -p</code> writes prompts, your rig renders locally</td><td>An HTTP node with async polling (the one technical bit)</td></tr>
+    <tr><td>Publishing</td><td>MCP connector → official Meta Graph API</td><td>Facebook node + a native human-approval node</td></tr>
+    <tr><td>Insights</td><td>A script the routine runs against the Graph API</td><td>HTTP/Facebook node → store</td></tr>
+    <tr><td>State / audit</td><td>Files in a git repo (git = audit trail)</td><td>A database or Google Sheet</td></tr>
+  </table></div>
+  <div class="note good"><b>Recommendation:</b> start <b>native Claude Code</b> — you already run it, the constitution + git-as-memory pattern matches your workspace, nothing new to learn or pay for. Reach for <b>n8n</b> (self-hosted) only if you want to <em>see</em> the pipeline as boxes. Agent frameworks (CrewAI / LangGraph) are overkill for v1 — add them later only when you want the loop to genuinely <em>reason</em> over trends rather than follow fixed rules.</div>
+</section>
+
+<!-- THE LOOP -->
+<section id="loop" class="reveal">
+  <p class="kicker">The concrete build</p>
+  <h2><span class="n">05</span>The loop for the FB persona op</h2>
+  <p class="lead">One cycle = one day's batch (3–5 clips). The agent is <b>Claude Code on a schedule</b> over a git repo. <b>Files are the memory; git is the audit trail.</b></p>
+
+  <pre class="diagram">        ┌──────────────────────────────────────────────────────────┐
+        │  (0) CONSTITUTION — CLAUDE.md (voice, DO-NOT, KPIs, kill)  │
+        └──────────────────────────────────────────────────────────┘
+                            │  read first, every cycle
+  ┌────────┐  ┌──────────┐  ┌────────┐  ┌───────────┐  ┌────────┐  ┌────────┐
+  │1 IDEATE│─▶│2 GENERATE│─▶│3 WRITE │─▶│4 APPROVE  │─▶│5 READ  │─▶│6 ADAPT │─┐
+  │(Claude)│  │(Veo rig) │  │(Claude)│  │+ SCHEDULE │  │(Insights) │ │(Claude)│ │
+  └────────┘  └──────────┘  └────────┘  └───────────┘  └────────┘  └────────┘ │
+      ▲          human QA      linter    ◀ THE BAN NODE   read-only   proposes  │
+      │        (face drift)              human gate + API           tomorrow's  │
+      └──────────────── tomorrow's brief written to playbook.md ───────────────┘</pre>
+
+  <div class="tbl"><table>
+    <tr><th>Step</th><th>Tool</th><th>Auto vs. human</th><th>Safe / risky</th></tr>
+    <tr><td><b>1 Ideate</b></td><td>Claude reads CLAUDE.md + yesterday's metrics + trend seeds → <code class="k">concepts.json</code></td><td>Auto draft; trend <em>seeds</em> stay human-fed early</td><td class="good">✅ Rejects DO-NOT; if &lt;3 clean concepts, stops &amp; asks</td></tr>
+    <tr><td><b>2 Generate</b></td><td>Your rig: character-locked stills → Veo 3 I2V (batch driver)</td><td>Semi — prompts/render auto, <b>face-drift QA human</b></td><td class="warn">⚠️ Drift risk; embed + compare to reference, cap retries. Keep C2PA metadata</td></tr>
+    <tr><td><b>3 Write</b></td><td>Claude from <code class="k">voice.md</code> → captions + disclosure line</td><td>Auto draft, human approve (folded into step 4)</td><td class="good">✅ Banned-phrase linter (no "real girl", no health/earnings claims)</td></tr>
+    <tr><td><b>4 Approve + Schedule</b></td><td>Human drops <code class="k">approved.flag</code> → <code class="k">publish.py</code> via Pages Graph API (<code class="k">scheduled_publish_time</code>)</td><td><b>HUMAN-IN-LOOP, ALWAYS.</b> Scheduling auto; the <em>decision</em> is not</td><td class="bad">🚨 THE BAN NODE. Official API only. NEVER browser-auto posters. Pages only. Hard cap/day</td></tr>
+    <tr><td><b>5 Read</b></td><td><code class="k">pull_insights.py</code> → Graph API insights → <code class="k">metrics.json</code></td><td>Fully auto — read-only, safe unattended</td><td class="good">✅ Official metrics only; never scrape the dashboard. All-zero = flag tracking break</td></tr>
+    <tr><td><b>6 Adapt</b></td><td>Claude reads 7–14 days of metrics → updates <code class="k">playbook.md</code> + tomorrow's brief</td><td>Auto proposal, human sanity-check</td><td class="good">✅ Needs a min sample before killing a format; logs diffs so you can revert</td></tr>
+  </table></div>
+
+  <div class="note bad"><b>Burn this in — the ban node is auto-posting via unofficial tools.</b> Meta's 2026 delivery model cross-references behavioral timing, API fingerprints, and engagement velocity against organic baselines; headless-browser sessions are flagged as inauthentic, penalties hit at the <b>account level</b>, and removing the bot does <em>not</em> clear the flag. The official Graph API path is the <b>only</b> automated posting you should touch — and even that stays behind a human approve gate. (Also: "rewriting captions on already-posted clips" from the tweet is near-useless — editing a live post doesn't re-distribute it. Real adaptation happens on the <em>next</em> batch.)</div>
+
+  <div class="grid g2">
+    <div class="copywrap"><div class="bar"><span>📁 Repo layout</span><button class="copybtn" data-copy="repo">Copy</button></div>
+<pre id="repo">persona-loop/
+  CLAUDE.md                     # the constitution
+  constitution/
+    voice.md                    # voice samples + banned-phrase list
+    visual-lock.md              # identity prompt block
+  data/
+    trends/&lt;date&gt;.md            # human-seeded or light-scrape
+    metrics/&lt;date&gt;.json         # pulled insights
+    posts.json                  # published IDs (dedupe + audit)
+  batches/&lt;date&gt;/
+    concepts.json  prompts/  stills/
+    clips/  captions.md  approved.flag
+  playbook.md                   # living "what works"
+  scripts/
+    pull_insights.py            # Graph API, read-only
+    publish.py                  # refuses without approved.flag
+  loop.sh                       # one cycle
+  HOLD                          # presence = global kill-switch</pre></div>
+
+    <div class="copywrap"><div class="bar"><span>⏰ Schedule it natively (cloud, laptop-off)</span><button class="copybtn" data-copy="sched">Copy</button></div>
+<pre id="sched" class="wrap-pre">/schedule daily persona loop at 9am
+# repo:   your persona-loop
+# prompt: "run ./loop.sh"
+# cron:   0 9 * * *
+# connectors: (Walk+) your MCP publisher
+# env:    META_PAGE_TOKEN
+# Test with "Run now" before it goes live.</pre></div>
+  </div>
+
+  <div class="copywrap"><div class="bar"><span>🔧 loop.sh — one cycle (drafts only, never publishes)</span><button class="copybtn" data-copy="loopsh">Copy</button></div>
+<pre id="loopsh">#!/usr/bin/env bash
+set -euo pipefail
+cd "$(dirname "$0")"
+DATE=$(date +%F)
+
+# Global kill-switch
+[ -f HOLD ] &amp;&amp; { echo "HOLD present — halting."; exit 0; }
+
+# 5) READ yesterday's numbers (read-only, safe)
+python3 scripts/pull_insights.py --out "data/metrics/${DATE}.json" || \
+  { echo "Insights pull failed — halting, not retrying."; exit 1; }
+
+# 1+3+6) IDEATE, WRITE, ADAPT — drafts only, never publishes
+claude -p "Read CLAUDE.md. Run today's cycle for ${DATE}:
+  1. Ideate 3-5 constitution-clean concepts -&gt; batches/${DATE}/concepts.json
+     (each with constitution_check). If fewer than 3 survive, STOP and write
+     batches/${DATE}/NEEDS_HUMAN.md instead.
+  3. Draft captions.md with the disclosure line; pass the banned-phrase linter.
+  6. Update playbook.md from the last 14 days of metrics; write tomorrow's brief.
+  Do NOT publish. Do NOT create approved.flag."
+
+# 2) GENERATE runs on the local rig (prompts written above); face-drift QA is human.
+# 4) PUBLISH is intentionally NOT here — a human reviews the batch, drops
+#    batches/${DATE}/approved.flag, then runs: python3 scripts/publish.py --date ${DATE}
+
+echo "Cycle drafted for ${DATE}. Awaiting human approval before any publish."</pre></div>
+
+  <div class="copywrap"><div class="bar"><span>🛡️ publish.py — the hard guardrail (pseudocode)</span><button class="copybtn" data-copy="pub">Copy</button></div>
+<pre id="pub">if not os.path.exists(f"batches/{date}/approved.flag"):
+    sys.exit("No approved.flag — refusing to publish.")
+if count_posts_today() &gt;= MAX_POSTS_PER_DAY:
+    sys.exit("Daily cap reached — refusing.")
+# else: POST /{page-id}/videos, video_state=SCHEDULED,
+#       log the returned ID to data/posts.json  (idempotent, deduped)</pre></div>
+</section>
+
+<!-- RAMP -->
+<section id="ramp" class="reveal">
+  <p class="kicker">Earn the autonomy</p>
+  <h2><span class="n">06</span>Crawl → Walk → Run</h2>
+  <p class="lead">Automate the plumbing first, the judgment last. Trust is earned by clean cycles, not by a calendar.</p>
+  <div class="stage crawl"><h4>🐣 Crawl (weeks 1–3) — prove quality &amp; safety</h4>
+    <p class="mut">Agent proposes concepts, prompts, captions. <b>Human does everything else</b> — QA every clip, paste-post manually via Business Suite, review Adapt daily. <b>Exit when:</b> ~2 weeks of on-voice, on-model, zero-flag batches with disclosure correct every time.</p></div>
+  <div class="stage walk"><h4>🚶 Walk (weeks 3–6) — automate plumbing, keep ONE daily gate</h4>
+    <p class="mut">Auto: insights pull, ideation, generation, caption drafting, <b>and scheduling via the Graph API — but only after approval</b>. Human: <b>one ~10–15 min daily approve gate</b> (review batch + captions, drop <code class="k">approved.flag</code>) + the face-drift contact sheet. <b>Exit when:</b> ~2–3 weeks where your daily edits trend to zero.</p></div>
+  <div class="stage run"><h4>🏃 Run (week 6+) — unattended most days, exception-gated</h4>
+    <p class="mut">Full cycle runs unattended on normal days. <b>Realistic Run ≠ "6 weeks untouched"</b> — it's daily auto-run + exception-based human intervention + a weekly strategy review. Auto-HOLD triggers (reach/earnings drop, any strike, drift flag, DO-NOT trend, auth/metric failure) halt the loop and ping you. You never fully walk away — the failure mode (a strike, or a drifted run posting for days) is expensive and slow to undo.</p></div>
+</section>
+
+<!-- REALITY -->
+<section id="reality" class="reveal">
+  <p class="kicker">Straight talk</p>
+  <h2><span class="n">07</span>Honest reality &amp; guardrails</h2>
+  <div class="note bad"><b>Disclosure is not optional — it's survival.</b> Meta made AI labeling mandatory in 2026 and auto-detects AI media via C2PA metadata (which Veo output carries). So: bio says "AI-generated," every caption carries the disclosure, metadata stays <b>intact</b> (stripping it to dodge the label is the fast track to a strike), and nothing ever implies she's a real human. One strike endangers the whole account <em>and</em> your Content-Monetization eligibility.</div>
+  <div class="grid g2">
+    <div class="card"><h4>Automate at your peril (keep human)</h4><ul class="tick">
+      <li><b>The publish decision</b> — the non-negotiable gate.</li>
+      <li><b>Face-drift QA</b> — a wrong-face clip is brand poison.</li>
+      <li><b>Disclosure + policy compliance.</b></li>
+      <li><b>DMs &amp; comment replies</b> — auto-DM = spam/inauthentic + deception risk.</li>
+      <li>New/edgy <b>trend seeds</b>; anything involving spend or off-platform funnels.</li>
+    </ul></div>
+    <div class="card"><h4>Safe to run unattended</h4><ul class="tick">
+      <li>Insights pull + aggregation.</li>
+      <li>Ideation / prompt / caption / playbook <em>drafts</em>.</li>
+      <li>Scheduling API calls for content that <b>already passed the gate</b>.</li>
+      <li>Bookkeeping (post-ID logging, dedupe, git commits).</li>
+    </ul></div>
+  </div>
+  <div class="note warn"><b>What breaks:</b> the harness most of all (scripts/scheduler = the part most likely to break for no reason — build alerting before cleverness); the eval via metric-gaming (keep KPIs on retention + per-view earnings); and the economics (2026 FB RPMs are pennies, faceless AI is suppressed — a distinct, disclosed persona is your only real edge). The loop makes you <b>fast and consistent</b>; don't let the tooling convince you the money is automatic.</div>
+</section>
+
+</main>
+
+<footer><div class="wrap">
+  <b>ai-persona</b> · the Loop skill · internal, not for distribution · noindex<br>
+  <a href="index.html">← Strategy plan</a> · <a href="production.html">Production guide →</a>
+</div></footer>
+
+<script>
+var prog=document.getElementById('prog');
+addEventListener('scroll',function(){var h=document.documentElement,max=h.scrollHeight-h.clientHeight;
+  prog.style.width=(max>0?(h.scrollTop||document.body.scrollTop)/max*100:0)+'%';},{passive:true});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.06});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+document.querySelectorAll('.copybtn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var el=document.getElementById(btn.getAttribute('data-copy'));if(!el)return;
+    var text=el.innerText;
+    function ok(){var o=btn.textContent;btn.textContent='✓ Copied';btn.classList.add('done');setTimeout(function(){btn.textContent=o;btn.classList.remove('done')},1500)}
+    function fb(){try{var ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';
+      document.body.appendChild(ta);ta.focus();ta.select();var d=document.execCommand('copy');document.body.removeChild(ta);
+      if(d)ok();else alert('Copy failed — select manually.')}catch(e){alert('Copy failed — select manually.')}}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(ok).catch(fb)}else{fb()}
+  });
+});
+</script>
